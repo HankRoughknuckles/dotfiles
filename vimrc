@@ -130,9 +130,11 @@
             nnoremap tm  :tabm<Space>
         "Close a tab with td
             nnoremap td  :tabclose<CR>
-            
+             
     "Switch between windows in the same tab
-        nnoremap <silent> <C-l> <C-w><C-w>
+        nnoremap <silent> <C-h> <C-w>h
+        nnoremap <silent> <C-j> <C-w>j
+        nnoremap <silent> <C-l> <C-w>l
 
     "tComment stuff
         "Press leader+c to comment instead of ctrl+_ ctrl+_
