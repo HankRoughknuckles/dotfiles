@@ -193,6 +193,10 @@
         nnoremap <leader>gl :Glog<cr>
         nnoremap <leader>gc :Gcommit -m ""<left>
 
+        nnoremap <leader>gd :Gdiff<cr>
+        nmap <leader>dp dp
+        vnoremap <leader>dp :diffput<cr>:diffupdate<cr>
+
     "open up php SnipMate snippets file
         nnoremap <leader>es :tab new<cr>:e ~/.vim/snippets/php.snippets<cr>
 
