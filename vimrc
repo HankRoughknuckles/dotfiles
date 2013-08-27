@@ -204,3 +204,9 @@
 
     "make vim.ack easier to reach
         nnoremap <leader>a :Ack<space>
+
+    "insert an erb <% %> tag (with no output)
+        inoremap <C-e> <%<space><space>%><left><left><left><left> 
+    
+    "insert an erb <% %> tag (with output)
+        inoremap <C-r> <%=<space><space>%><left><left><left><left> 
