@@ -13,7 +13,7 @@
  olddir=~/dotfiles_old      # old dotfiles backup directory
 
  # list of files/folders to symlink in homedir
- files="bashrc vimrc gitconfig gitignore_global"       
+ files="bashrc vimrc gitconfig gitignore_global inputrc"       
 
  ##########
 
