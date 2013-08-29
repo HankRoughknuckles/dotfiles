@@ -92,11 +92,37 @@
  
 
 
- "%%%%%%%%%%%%%%%%%%%%   PLUGIN CONFIGURATIONS   %%%%%%%%%%%%%%%%%%%%%% 
+ "%%%%%%%%%%%%%%%%%%%%   PLUGIN MAPPING AND CONFIG   %%%%%%%%%%%%%%%%%%%%% 
      "EasyMotion Config:
          let g:EasyMotion_leader_key = ']'
 
 
+    "Fugitive commands
+        nnoremap <leader>ga :Gwrite<cr>
+        nnoremap <leader>gr :Gread<cr>
+        nnoremap <leader>gs :Gstatus<cr>
+        nnoremap <leader>gl :Glog<cr>
+        nnoremap <leader>gc :Gcommit -m ""<left>
+        nnoremap <leader>gd :Gdiff<cr>
+        nmap <leader>dp dp
+        vnoremap <leader>dp :diffput<cr>:diffupdate<cr>
+
+    "Command-t commands
+        nnoremap <leader>t :CommandTFlush<cr>:CommandT<cr>
+
+    "NERDTree
+        map <leader>n :NERDTreeToggle<CR>B
+
+    "make vim-surround use lowercase s instead of capital
+        vmap s S
+
+    "open up php SnipMate snippets file
+        nnoremap <leader>es :tab new<cr>:e ~/.vim/snippets/php.snippets<cr>
+
+    "tComment stuff
+        "Press leader+c to comment instead of ctrl+_ ctrl+_
+        map <leader>c <c-_><c-_>
+        
  "%%%%%%%%%%%%%%%%%%%%   COLOR SCHEMA   %%%%%%%%%%%%%%%%%%%%%% 
      syntax enable
      set background=dark
@@ -104,16 +130,13 @@
      let g:solarized_termcolors=256
 
 
- "%%%%%%%%%%%%%%%%%%%%   KEY MAPS   %%%%%%%%%%%%%%%%%%%%%% 
+ "%%%%%%%%%%%%%%%%%%%%   MISC KEY MAPS   %%%%%%%%%%%%%%%%%%%%%% 
  
     "Set leader key to comma (,)
         :let mapleader = ","
         
     "Set regular backspace during insert mode
         set backspace=indent,eol,start
-
-    "NERDTree
-        map <leader>n :NERDTreeToggle<CR>B
 
     "Tab stuff
         "Switch between tabs using th and tj
@@ -136,10 +159,6 @@
         nnoremap <silent> <C-j> <C-w>j
         nnoremap <silent> <C-l> <C-w>l
 
-    "tComment stuff
-        "Press leader+c to comment instead of ctrl+_ ctrl+_
-        map <leader>c <c-_><c-_>
-        
     "save time by pressing space instead of colon
         nmap <space> :
 
@@ -185,28 +204,12 @@
     "insert $this
         inoremap <C-t> $this
 
-    "make vim-surround use lowercase s instead of capital
-        vmap s S
-
-    "Fugitive commands
-        nnoremap <leader>ga :Gwrite<cr>
-        nnoremap <leader>gr :Gread<cr>
-        nnoremap <leader>gs :Gstatus<cr>
-        nnoremap <leader>gl :Glog<cr>
-        nnoremap <leader>gc :Gcommit -m ""<left>
-
-        nnoremap <leader>gd :Gdiff<cr>
-        nmap <leader>dp dp
-        vnoremap <leader>dp :diffput<cr>:diffupdate<cr>
-
-    "open up php SnipMate snippets file
-        nnoremap <leader>es :tab new<cr>:e ~/.vim/snippets/php.snippets<cr>
-
     "make vim.ack easier to reach
         nnoremap <leader>a :Ack<space>
 
     "insert an erb <% %> tag (with no output)
         inoremap <C-e> <%<space>%><left><left><left> 
         
-    "insert an erb <% %> tag (with output)
+    "insert an erb <%= %> tag (with output)
         inoremap <C-r> <%=<space>%><left><left><left> 
+
