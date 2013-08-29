@@ -1,0 +1,45 @@
+//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+//      STEP 1 - Check Vim Ruby Support
+//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Check that your vim configuration has ruby support.  Type this in the
+terminal:
+    vim --version | grep ruby
+The output should have something that has +ruby (if it has -ruby, you'll
+need to install a vim version with ruby support)
+
+
+If you need to install a vim version with ruby support, use the synaptic
+package manager (In Ubuntu).  In the terminal, type:
+    sudo apt-get install vim-nox
+
+Once it has installed, use:
+    vim --version | grep ruby
+again and make sure that the output has +ruby in it.
+
+
+
+
+//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+//      STEP 2 - Install command-t
+//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Once your vim has ruby support, install by opening up command-t-1.4.vba in
+vim using the following in the terminal
+    vim command-t-1.4.vba
+
+
+Source the vimball while in vim by the following into the vim command line
+    :so %
+
+
+Look at the output of the vimball extract to see what folder it extracted
+everything to.  (The folder should be something like
+~/.vim/bundle/vundle/command-t or something)
+
+
+In the terminal type in
+    cd <<the path of the folder where everything extracted to>>
+    ruby extconf.rb
+    make
+
+
+Command-T should now be working!
