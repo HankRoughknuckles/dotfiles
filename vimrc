@@ -39,11 +39,11 @@
     
     "Tabs and indenting
     set expandtab       "make all tabs into spaces
-    set shiftwidth=4    "when indenting with >> and <<, make it
-                        "4 spaces
-    set softtabstop=4   "when hitting tab in insert mode, it'll be
-                        "4 spaces
-    set tabstop=4       "will display all tabs in test as 4 spaces
+    set shiftwidth=2    "when indenting with >> and <<, make it
+                        "2 spaces
+    set softtabstop=2   "when hitting tab in insert mode, it'll be
+                        "2 spaces
+    set tabstop=2       "will display all tabs in test as 2 spaces
     set preserveindent  "keep same indent as the previous line when
                         " making a new line
 
