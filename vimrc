@@ -98,7 +98,7 @@
 
 
     "Fugitive commands
-        nnoremap <leader>ga :Gwrite<cr>
+        nnoremap <leader>ga :Git<space>commit<space>--amend<cr>
         nnoremap <leader>gr :Gread<cr>
         nnoremap <leader>gs :Gstatus<cr>
         nnoremap <leader>gl :Glog<cr>
