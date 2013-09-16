@@ -127,7 +127,9 @@
      syntax enable
      set background=dark
      colorscheme solarized
-     let g:solarized_termcolors=256
+     " let g:solarized_termolors=256 "For some reason, when this is
+     " uncommented, sourcing the vimrc file while vim is running will make
+     " the colors all screwy
 
 
  "%%%%%%%%%%%%%%%%%%%%   MISC KEY MAPS   %%%%%%%%%%%%%%%%%%%%%% 
@@ -179,6 +181,9 @@
 
     "open up .vimrc
         nnoremap <leader>ev :tab new<cr>:e $MYVIMRC<cr>
+
+    "source .vimrc
+      nnoremap <leader>sv :source<Space>$MYVIMRC<cr>
 
     "make the default regex type to be Perl regex
         nnoremap / /\v
