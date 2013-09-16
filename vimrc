@@ -24,6 +24,7 @@
     set showmode        "display the current mode
     set cursorline      "highlight the current line
     set hlsearch        "highlight search patterns
+    set visualbell      "no sounds
     set autoindent      
     set smartindent
     set ignorecase      "ignore case when search query is all
@@ -100,6 +101,7 @@
     "Fugitive commands
         nnoremap <leader>ga :Git<space>commit<space>--amend<cr>
         nnoremap <leader>gr :Gread<cr>
+        nnoremap <leader>gw :Gwrite<cr>
         nnoremap <leader>gs :Gstatus<cr>
         nnoremap <leader>gl :Glog<cr>
         nnoremap <leader>gc :Gcommit -m ""<left>
@@ -219,3 +221,16 @@
     "insert an erb <%= %> tag (with output)
         inoremap <C-r> <%=<space>%><left><left><left> 
 
+    "make the current word UPPERCASE
+      inoremap <C-c> <Esc>viWUEa
+      nnoremap <C-c> viWUE
+      vnoremap <C-c> U`>
+      vnoremap U <nop> "training to get me to stop using the old way
+
+    "insert a padding space on the inside of the selected ()
+      nnoremap <leader>is vi(<Esc>a<Space><Esc>`<i<Space><Esc>h%
+      vnoremap <leader>is <Esc>vi(<Esc>a<Space><Esc>`<i<Space><Esc>h%
+
+    "delete a padding space on the inside of the selected ()
+      nnoremap <leader>ds vi(<Esc>x`<xh%
+      vnoremap <leader>ds <Esc>vi(<Esc>x`<xh%
