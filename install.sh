@@ -7,15 +7,15 @@
  ############################
 
 
- ########## Variables
-
- dir=~/dotfiles             # dotfiles directory
+ #########################   Variables   #########################
+ dir=$(pwd)                 # dotfiles directory
  olddir=~/dotfiles_old      # old dotfiles backup directory
 
  # list of files/folders to symlink in homedir
- files="bashrc vimrc gitconfig gitignore_global inputrc"       
-
- ##########
+ files="bashrc gitconfig gitignore_global inputrc"       
+ vim_dir="vim"
+ vimrc_name="vimrc"
+ #################################################################
 
 
  # create dotfiles_old in homedir
@@ -30,9 +30,15 @@
 
  # move any existing dotfiles in homedir to dotfiles_old directory, then
  # create symlinks 
+ echo "Moving any existing dotfiles from ~ to $olddir"
  for file in $files; do
-     echo "Moving any existing dotfiles from ~ to $olddir"
+     echo "Creating symlink in the home directory to $file"
      mv ~/.$file ~/dotfiles_old/
-     echo "Creating symlink to $file in home directory."
      ln -s $dir/$file ~/.$file
  done
+
+ # set up vim stuff
+ echo "Creating symlink in the home directory to $vim_dir/$vimrc_name"
+ mv ~/.$vimrc_name ~/dotfiles_old/
+ ln -s $dir/$vim_dir/$vimrc_name ~/.$vimrc_name
+

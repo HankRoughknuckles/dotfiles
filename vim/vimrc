@@ -70,6 +70,7 @@
     Bundle 'Lokaltog/vim-easymotion'
     Bundle 'scrooloose/nerdtree'
     Bundle 'bling/vim-airline'
+    Bundle 'vim-scripts/tComment'
 
     Bundle "MarcWeber/vim-addon-mw-utils"
     Bundle "tomtom/tlib_vim"
@@ -133,7 +134,6 @@
     " uncommented, sourcing the vimrc file while vim is running will make
     " the colors all screwy
 
-    "
 
 
 "%%%%%%%%%%%%%%%%%%%%%%%%%%%   FUNCTIONS   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
