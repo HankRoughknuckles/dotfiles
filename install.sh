@@ -1,6 +1,6 @@
 #!/bin/bash
 ############################
- # .make.sh
+ # install.sh
  #
  # This script creates symlinks from the home directory to any desired
  # dotfiles in ~/dotfiles
@@ -14,6 +14,7 @@
  # list of files/folders to symlink in homedir
  files="bashrc gitconfig gitignore_global inputrc"       
  vim_dir="vim"
+ vim_color_dir=$vim_dir/colors
  vimrc_name="vimrc"
  #################################################################
 
@@ -42,3 +43,7 @@
  mv ~/.$vimrc_name ~/dotfiles_old/
  ln -s $dir/$vim_dir/$vimrc_name ~/.$vimrc_name
 
+ #set up colors
+ echo -n "Installing solarized color scheme for vim..."
+ cp $vim_color_dir/solarized.vim ~/.vim/colors/solarized.vim
+ echo "done"
