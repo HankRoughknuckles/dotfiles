@@ -166,8 +166,8 @@
 
   "Tab stuff
     "Switch between tabs using th and tj
-      nnoremap tj  :tabnext<CR>
-      nnoremap tk  :tabprev<CR>
+      nnoremap tk  :tabnext<CR>
+      nnoremap tj  :tabprev<CR>
     "Go to first and last tabs with th and tl
       nnoremap th  :tabfirst<CR>
       nnoremap tl  :tablast<CR>
