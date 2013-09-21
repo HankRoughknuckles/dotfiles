@@ -111,3 +111,6 @@ fi
 
 alias ~="cd ~"
 alias cddot="cd ~/Dropbox/dotfiles"
+
+# make rvm (Ruby Version Manager)
+source $HOME/.rvm/scripts/rvm
