@@ -110,7 +110,7 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
 fi
 
 alias ~="cd ~"
-alias cddot="cd ~/Dropbox/dotfiles"
+alias cddot="cd $(pwd)"
 
 # make rvm (Ruby Version Manager)
 source $HOME/.rvm/scripts/rvm
