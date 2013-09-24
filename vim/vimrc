@@ -135,7 +135,6 @@
     " the colors all screwy
 
 
-
 "%%%%%%%%%%%%%%%%%%%%%%%%%%%   FUNCTIONS   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   " Use Q to intelligently close a window 
   " (if there are multiple windows into the same buffer)
@@ -203,16 +202,14 @@
   "make <leader>v re-highlight the last thing you just highlighted
     nnoremap <leader>v V`]
 
-  "open up .vimrc
+  "open up .vimrc with <leader>ev
     nnoremap <leader>ev :tab new<cr>:e $MYVIMRC<cr>
 
-  "source .vimrc
+  "source .vimrc with <leader>sv
     nnoremap <leader>sv :source<Space>$MYVIMRC<cr>
 
   "make the default regex type to be Perl regex
     nnoremap / /\v
-    nnoremap / /\v
-    vnoremap ? ?\v
     vnoremap ? ?\v
 
   "get rid of search results
@@ -222,34 +219,36 @@
     nnoremap <tab> %
     vnoremap <tab> %
 
-  "insert a -> arrow
+  "insert a -> arrow with <C-l>
     inoremap <C-l> ->
 
-  "insert a => hash rocket
+  "insert a => hash rocket <C-k>
     inoremap <C-k> =><Space>
 
   "insert a $ at the front of the current word so as to make it a variable
+  "with <C-v>
     inoremap <C-v> <Esc>bi$<Esc>ea
 
-  "insert $this
+  "insert $this with <C-t>
     inoremap <C-t> $this
 
-  "make vim.ack easier to reach
+  "make vim.ack easier to reach with <leader>a
     nnoremap <leader>a :Ack<space>
 
-  "insert an erb <% %> tag (with no output)
+  "insert an erb <% %> tag (with no output) using <C-e>
     inoremap <C-e> <%<space>%><left><left><left> 
 
-  "insert an erb <%= %> tag (with output)
+  "insert an erb <%= %> tag (with output) using <C-r>
     inoremap <C-r> <%=<space>%><left><left><left> 
 
-  "make the current word UPPERCASE
+  "make the current word UPPERCASE with <C-c>
     inoremap <C-c> <Esc>viWUEa
     nnoremap <C-c> viWUE
     vnoremap <C-c> U`>
     vnoremap U <nop> "training to get me to stop using the old way
 
-  "insert a padding space on the inside of the selected ()
+  "insert a padding space on the inside of the selected () with <leader>
+  "is
     nnoremap <leader>is vi(<Esc>a<Space><Esc>`<i<Space><Esc>h%
     vnoremap <leader>is <Esc>vi(<Esc>a<Space><Esc>`<i<Space><Esc>h%
 
@@ -259,5 +258,4 @@
     
   "Use Q to intelligently close a window 
     nnoremap <silent> Q :call CloseWindowOrKillBuffer()<CR>
-
     
