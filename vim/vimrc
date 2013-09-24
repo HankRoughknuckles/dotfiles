@@ -216,8 +216,8 @@
     nnoremap <leader><space> :noh<cr>   
 
   "make tab go to the corresponding parens or brackets
-    nnoremap <tab> %
-    vnoremap <tab> %
+    nnoremap <leader><tab> %
+    vnoremap <leader><tab> %
 
   "insert a -> arrow with <C-l>
     inoremap <C-l> ->
