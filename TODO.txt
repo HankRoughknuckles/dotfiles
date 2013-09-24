@@ -1,0 +1,4 @@
+This document details what changes to make to the dotfiles repo
+===============================================================
+1) make language-specific "variable" functions for <c-v> while the editor
+   is in insert mode
