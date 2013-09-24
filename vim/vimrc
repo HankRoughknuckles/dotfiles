@@ -108,6 +108,7 @@
     nnoremap <leader>gd :Gdiff<cr>
     nmap <leader>dp dp
     vnoremap <leader>dp :diffput<cr>:diffupdate<cr>
+    nnoremap <leader>gh :Gedit HEAD<cr>
 
   "Command-t commands
     nnoremap <leader>t :CommandTFlush<cr>:CommandT<cr>
