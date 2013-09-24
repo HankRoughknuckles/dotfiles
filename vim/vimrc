@@ -67,6 +67,7 @@
   " My Bundles here:
     Bundle 'tpope/vim-fugitive'
     Bundle 'tpope/vim-surround'
+    Bundle 'tpope/vim-unimpaired'
     Bundle 'Lokaltog/vim-easymotion'
     Bundle 'scrooloose/nerdtree'
     Bundle 'bling/vim-airline'
@@ -95,7 +96,7 @@
 
 "%%%%%%%%%%%%%%%%%%%%   PLUGIN MAPPING AND CONFIG   %%%%%%%%%%%%%%%%%%%%% 
   "EasyMotion Config:
-    let g:EasyMotion_leader_key = ']'
+    let g:EasyMotion_leader_key = ";"
 
 
   "Fugitive commands
@@ -119,8 +120,8 @@
   "make vim-surround use lowercase s instead of capital
     vmap s S
 
-  "open up php SnipMate snippets file
-    nnoremap <leader>es :tab new<cr>:e ~/.vim/snippets/php.snippets<cr>
+  "open up php SnipMate snippets file (alter snippets)
+    nnoremap <leader>as :tab new<cr>:e ~/.vim/snippets/php.snippets<cr>
 
   "tComment stuff
     "Press leader+c to comment instead of ctrl+_ ctrl+_
@@ -203,8 +204,8 @@
   "make <leader>v re-highlight the last thing you just highlighted
     nnoremap <leader>v V`]
 
-  "open up .vimrc with <leader>ev
-    nnoremap <leader>ev :tab new<cr>:e $MYVIMRC<cr>
+  "open up .vimrc with <leader>av (alter vimrc)
+    nnoremap <leader>av :tab new<cr>:e $MYVIMRC<cr>
 
   "source .vimrc with <leader>sv
     nnoremap <leader>sv :source<Space>$MYVIMRC<cr>
