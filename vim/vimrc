@@ -262,3 +262,7 @@
   "Use Q to intelligently close a window 
     nnoremap <silent> Q :call CloseWindowOrKillBuffer()<CR>
     
+  "Use <leader>p to toggle paste.  When paste is set, then pasting from
+  "the system clipboard will have the right format
+    nnoremap <leader>p :set paste!<cr>
+    vnoremap <leader>p :set paste!<cr>
