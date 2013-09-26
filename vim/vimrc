@@ -109,6 +109,7 @@
     nnoremap <leader>gd :Gdiff<cr>
     nmap <leader>dp dp
     vnoremap <leader>dp :diffput<cr>:diffupdate<cr>
+    nmap <leader>du :diffupdate<cr>
     nnoremap <leader>gh :Gedit<space>HEAD<cr>
     nnoremap <leader>ge :Gedit<cr>
 
