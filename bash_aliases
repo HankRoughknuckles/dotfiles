@@ -6,6 +6,7 @@ alias ~="cd ~"
 #git aliases
 alias gpom='git push origin master'
 alias gpoa='git push origin --all'
+alias g='git'
 
 #cd to the dotfiles directory
 alias cddot="cd $(dirname $(ls -l ~/.bashrc | awk '{print $11}'))"
