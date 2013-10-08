@@ -10,5 +10,5 @@ alias gpoa='git push origin --all'
 #cd to the dotfiles directory
 alias cddot="cd $(dirname $(ls -l ~/.bashrc | awk '{print $11}'))"
 
-#reload bashrc 
+#source bashrc 
 alias sb='source ~/.bashrc'
