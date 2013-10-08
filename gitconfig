@@ -2,12 +2,20 @@
 	name = Thomas Morris
 	email = thomas.imorris@gmail.com
 
-#[http]
-#	proxy = 168.219.61.252:8080
-#	sslVerify = false
+[http]
+	proxy = 168.219.61.252:8080
+	sslVerify = false
 
 [alias]
 	g = grep --break --heading --line-number
+  s = status
+  com = commit
+  br = branch
+  c = checkout
+  df = diff
+  l = log 
+  lp = log -p
+	lg = log --graph --oneline
 
 [color]
 	status = auto
