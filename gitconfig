@@ -10,7 +10,7 @@
 	g = grep --break --heading --line-number
   s = status
   com = commit
-  br = branch
+  b = branch
   c = checkout
   df = diff
   l = log 
