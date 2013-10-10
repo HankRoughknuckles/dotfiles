@@ -206,10 +206,10 @@
   "make <leader>v re-highlight the last thing you just highlighted
     nnoremap <leader>v V`]
 
-  "open up .vimrc with <leader>av (alter vimrc)
+  "open up .vimrc with <leader>av (think: alter vimrc)
     nnoremap <leader>av :tab new<cr>:e $MYVIMRC<cr>
 
-  "source .vimrc with <leader>sv
+  "source .vimrc with <leader>sv (think: source vimrc)
     nnoremap <leader>sv :source<Space>$MYVIMRC<cr>
 
   "make the default regex type to be Perl regex
