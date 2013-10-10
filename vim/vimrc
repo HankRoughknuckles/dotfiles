@@ -236,9 +236,6 @@
   "insert $this with <C-t>
     inoremap <C-t> $this
 
-  "make vim.ack easier to reach with <leader>a
-    nnoremap <leader>a :Ack<space>
-
   "insert an erb <% %> tag (with no output) using <C-e>
     inoremap <C-e> <%<space>%><left><left><left> 
 
