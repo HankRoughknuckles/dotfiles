@@ -260,6 +260,10 @@
     nnoremap <leader>p :set paste!<cr>
     vnoremap <leader>p :set paste!<cr>
 
+  "Operator for "in next parenthesis" (think: next parameter)
+    onoremap in( :<c-u>normal! f(vi(<cr>
+    onoremap il( :<c-u>normal! F)vi(<cr>
+
 "%%%%%%%%%%%%%%%%%%%%%%%%%    AUTOCOMMANDS    %%%%%%%%%%%%%%%%%%%%%%%%%%%%
   " PHP autocommands
     augroup filetype_php
