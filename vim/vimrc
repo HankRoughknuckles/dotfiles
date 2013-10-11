@@ -286,12 +286,3 @@
       "front)
         autocmd FileType ruby inoremap <buffer> <C-b> <Esc>bi@<Esc>ea
     augroup END
-    
-"%%%%%%%%%%%%%%%%%%%%%%%%%   ABBREVIATIONS   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  "set r as an abbreviation for "return"
-    :iabbrev r return
-    :iabbrev return NOPENOPENOPE
-
-  "set f as an abbreviation for "function"
-    :iabbrev f function
-    :iabbrev function NOPENOPENOPE
