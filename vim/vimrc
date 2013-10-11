@@ -55,9 +55,11 @@
     set colorcolumn=74
 
   "Make a horizontal line on the current line if in insert mode
-    :autocmd InsertEnter * set cul
-    :autocmd InsertLeave * set nocul
-
+    augroup insert_mode
+      autocmd!
+      autocmd InsertEnter * set cul
+      autocmd InsertLeave * set nocul
+    augroup END
 
 "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   VUNDLE   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   set rtp+=~/.vim/bundle/vundle/
@@ -229,16 +231,6 @@
   "insert a => hash rocket <C-k>
     inoremap <C-k> =><Space>
 
-  "make the currently typed word into a variable with <C-v>
-    autocmd FileType php inoremap <buffer> <C-v> <Esc>bi$<Esc>ea
-    autocmd FileType ruby inoremap <buffer> <C-v> }<Esc>bi#{<Esc>ea
-
-  "in ruby, make the currently typed word into an attribute (@ in front)
-    autocmd FileType ruby inoremap <buffer> <C-b> <Esc>bi@<Esc>ea
-
-  "insert $this with <C-t> (when in a PHP file)
-    autocmd FileType php inoremap <C-t> $this
-
   "insert an erb <% %> tag (with no output) using <C-e>
     inoremap <C-e> <%<space>%><left><left><left> 
 
@@ -268,12 +260,34 @@
     nnoremap <leader>p :set paste!<cr>
     vnoremap <leader>p :set paste!<cr>
 
+"%%%%%%%%%%%%%%%%%%%%%%%%%    AUTOCOMMANDS    %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  " PHP autocommands
+    augroup filetype_php
+      autocmd!
+      "make the currently typed word into a variable with <C-v>
+        autocmd FileType php inoremap <buffer> <C-v> <Esc>bi$<Esc>ea
+        
+      "insert $this with <C-t> (when in a PHP file)
+        autocmd FileType php inoremap <C-t> $this
+    augroup END
+
+
+  " RUBY autocommands
+    augroup filetype_ruby
+      autocmd!
+      "make the currently typed word into a variable with <C-v>
+        autocmd FileType ruby inoremap <buffer> <C-v> }<Esc>bi#{<Esc>ea
+
+      "in ruby, make the currently typed word into an attribute (@ in
+      "front)
+        autocmd FileType ruby inoremap <buffer> <C-b> <Esc>bi@<Esc>ea
+    augroup END
     
 "%%%%%%%%%%%%%%%%%%%%%%%%%   ABBREVIATIONS   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   "set r as an abbreviation for "return"
-    :iabbrev <buffer> r return
-    :iabbrev <buffer> return NOPENOPENOPE
+    :iabbrev r return
+    :iabbrev return NOPENOPENOPE
 
   "set f as an abbreviation for "function"
-    :iabbrev <buffer> f function
-    :iabbrev <buffer> function NOPENOPENOPE
+    :iabbrev f function
+    :iabbrev function NOPENOPENOPE
