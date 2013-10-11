@@ -267,3 +267,13 @@
   "the system clipboard will have the right format
     nnoremap <leader>p :set paste!<cr>
     vnoremap <leader>p :set paste!<cr>
+
+    
+"%%%%%%%%%%%%%%%%%%%%%%%%%   ABBREVIATIONS   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  "set r as an abbreviation for "return"
+    :iabbrev <buffer> r return
+    :iabbrev <buffer> return NOPENOPENOPE
+
+  "set f as an abbreviation for "function"
+    :iabbrev <buffer> f function
+    :iabbrev <buffer> function NOPENOPENOPE
