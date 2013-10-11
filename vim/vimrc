@@ -229,12 +229,15 @@
   "insert a => hash rocket <C-k>
     inoremap <C-k> =><Space>
 
-  "insert a $ at the front of the current word so as to make it a variable
-  "with <C-v>
-    inoremap <C-v> <Esc>bi$<Esc>ea
+  "make the currently typed word into a variable with <C-v>
+    autocmd FileType php inoremap <buffer> <C-v> <Esc>bi$<Esc>ea
+    autocmd FileType ruby inoremap <buffer> <C-v> }<Esc>bi#{<Esc>ea
 
-  "insert $this with <C-t>
-    inoremap <C-t> $this
+  "in ruby, make the currently typed word into an attribute (@ in front)
+    autocmd FileType ruby inoremap <buffer> <C-b> <Esc>bi@<Esc>ea
+
+  "insert $this with <C-t> (when in a PHP file)
+    autocmd FileType php inoremap <C-t> $this
 
   "insert an erb <% %> tag (with no output) using <C-e>
     inoremap <C-e> <%<space>%><left><left><left> 
