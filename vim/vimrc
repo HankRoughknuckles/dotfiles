@@ -260,9 +260,41 @@
     nnoremap <leader>p :set paste!<cr>
     vnoremap <leader>p :set paste!<cr>
 
-  "Operator for "in next parenthesis" (think: next parameter)
+  "This is a test string here (although it may not seem) or behave (like it)
+  "This {can be} considered a [test] string {too}
+
+  "Operator for "in next ___" (___ can be (, ), {, }, [, or ] )
     onoremap in( :<c-u>normal! f(vi(<cr>
+    onoremap in) :<c-u>normal! f(vi(<cr>
+    onoremap in{ :<c-u>normal! f{vi{<cr>
+    onoremap in} :<c-u>normal! f{vi{<cr>
+    onoremap in[ :<c-u>normal! f[vi[<cr>
+    onoremap in] :<c-u>normal! f[vi[<cr>
+
+  "in last ___
     onoremap il( :<c-u>normal! F)vi(<cr>
+    onoremap il) :<c-u>normal! F)vi(<cr>
+    onoremap il{ :<c-u>normal! F}vi{<cr>
+    onoremap il} :<c-u>normal! F}vi{<cr>
+    onoremap il[ :<c-u>normal! F]vi[<cr>
+    onoremap il] :<c-u>normal! F]vi[<cr>
+
+  "around next ___
+    onoremap an( :<c-u>normal! f(va(<cr>
+    onoremap an) :<c-u>normal! f(va(<cr>
+    onoremap an{ :<c-u>normal! f{va{<cr>
+    onoremap an} :<c-u>normal! f{va{<cr>
+    onoremap an[ :<c-u>normal! f[va[<cr>
+    onoremap an] :<c-u>normal! f[va[<cr>
+
+  "around last ___
+    onoremap al( :<c-u>normal! F)va(<cr>
+    onoremap al) :<c-u>normal! F)va(<cr>
+    onoremap al{ :<c-u>normal! F}va{<cr>
+    onoremap al} :<c-u>normal! F}va{<cr>
+    onoremap al[ :<c-u>normal! F]va[<cr>
+    onoremap al] :<c-u>normal! F]va[<cr>
+
 
 "%%%%%%%%%%%%%%%%%%%%%%%%%    AUTOCOMMANDS    %%%%%%%%%%%%%%%%%%%%%%%%%%%%
   " PHP autocommands
