@@ -16,6 +16,7 @@
  vim_dir="vim"
  vim_color_dir=$vim_dir/colors
  vimrc_name="vimrc"
+ snippet_dir_name="mySnippets"
  #################################################################
 
 
@@ -36,10 +37,17 @@
  done
 
  # set up vim stuff
- echo "Creating symlink in the home directory to $vim_dir/$vimrc_name"
+ echo "Creating vimrc symlink in the home directory to $vim_dir/$vimrc_name"
  mv ~/.$vimrc_name ~/dotfiles_old/
  ln -s $dir/$vim_dir/$vimrc_name ~/.$vimrc_name
 
+ # set up vim snippets
+   # for some reason, the snippets folder in the user's .vim directory
+   # must be named "after"
+ echo "Creating snippets symlink in .vim directory to $vim_dir/$snippet_dir_name"
+ mv ~/.$vim_dir/after ~/dotfiles_old/
+ ln -s $dir/$vim_dir/$snippet_dir_name ~/.vim/after
+ 
  #set up colors
  echo -n "Installing solarized color scheme for vim..."
  cp $vim_color_dir/solarized.vim ~/.vim/colors/solarized.vim

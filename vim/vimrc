@@ -125,7 +125,7 @@
     vmap s S
 
   "open up php SnipMate snippets file (alter snippets)
-    nnoremap <leader>as :tab new<cr>:e ~/.vim/snippets/php.snippets<cr>
+    nnoremap <leader>as :tab new<cr>:e ~/.vim/after/snippets/php.snippets<cr>
 
   "tComment stuff
     "Press leader+c to comment instead of ctrl+_ ctrl+_
