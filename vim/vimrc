@@ -263,13 +263,15 @@
   "This is a test string here (although it may not seem) or behave (like it)
   "This {can be} considered a [test] string {too}
 
-  "Operator for "in next ___" (___ can be (, ), {, }, [, or ] )
+  "Operator for "in next ___" (___ can be (, ), {, }, [, ], ', or " )
     onoremap in( :<c-u>normal! f(vi(<cr>
     onoremap in) :<c-u>normal! f(vi(<cr>
     onoremap in{ :<c-u>normal! f{vi{<cr>
     onoremap in} :<c-u>normal! f{vi{<cr>
     onoremap in[ :<c-u>normal! f[vi[<cr>
     onoremap in] :<c-u>normal! f[vi[<cr>
+    onoremap in' :<c-u>normal! f'lvi'<cr>
+    onoremap in" :<c-u>normal! f"lvi"<cr>
 
   "in last ___
     onoremap il( :<c-u>normal! F)vi(<cr>
@@ -278,6 +280,8 @@
     onoremap il} :<c-u>normal! F}vi{<cr>
     onoremap il[ :<c-u>normal! F]vi[<cr>
     onoremap il] :<c-u>normal! F]vi[<cr>
+    onoremap il' :<c-u>normal! F'hvi'<cr>
+    onoremap il" :<c-u>normal! F"hvi"<cr>
 
   "around next ___
     onoremap an( :<c-u>normal! f(va(<cr>
@@ -286,6 +290,8 @@
     onoremap an} :<c-u>normal! f{va{<cr>
     onoremap an[ :<c-u>normal! f[va[<cr>
     onoremap an] :<c-u>normal! f[va[<cr>
+    onoremap an' :<c-u>normal! f'lva'<cr>
+    onoremap an" :<c-u>normal! f"lva"<cr>
 
   "around last ___
     onoremap al( :<c-u>normal! F)va(<cr>
@@ -294,6 +300,8 @@
     onoremap al} :<c-u>normal! F}va{<cr>
     onoremap al[ :<c-u>normal! F]va[<cr>
     onoremap al] :<c-u>normal! F]va[<cr>
+    onoremap al' :<c-u>normal! F'hva'<cr>
+    onoremap al" :<c-u>normal! F"hva"<cr>
 
 
 "%%%%%%%%%%%%%%%%%%%%%%%%%    AUTOCOMMANDS    %%%%%%%%%%%%%%%%%%%%%%%%%%%%
