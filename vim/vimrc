@@ -124,9 +124,6 @@
   "make vim-surround use lowercase s instead of capital
     vmap s S
 
-  "open up php SnipMate snippets file (alter snippets)
-    nnoremap <leader>as :tab new<cr>:e ~/.vim/after/snippets/php.snippets<cr>
-
   "tComment stuff
     "Press leader+c to comment instead of ctrl+_ ctrl+_
       map <leader>c <c-_><c-_>
@@ -312,7 +309,11 @@
         autocmd FileType php inoremap <buffer> <C-v> <Esc>bi$<Esc>ea
         
       "insert $this with <C-t> (when in a PHP file)
-        autocmd FileType php inoremap <C-t> $this
+        autocmd FileType php inoremap <buffer> <C-t> $this
+
+      "open up php SnipMate snippets file (alter snippets)
+        autocmd FileType php nnoremap <buffer> <leader>as :tab new<cr>:e ~/.vim/after/snippets/php.snippets<cr>
+
     augroup END
 
 
