@@ -79,6 +79,7 @@
     Bundle "tomtom/tlib_vim"
     Bundle "snipmate-snippets"
     Bundle "garbas/vim-snipmate"
+    Bundle 'mileszs/ack.vim'
 
   " Other repos
     Bundle 'https://github.com/terryma/vim-multiple-cursors.git'
@@ -128,6 +129,9 @@
     "Press leader+c to comment instead of ctrl+_ ctrl+_
       map <leader>c <c-_><c-_>
 
+  "ack.vim stuff
+    "call Ack-grep
+      nnoremap <leader>ag :Ack<space>
 
 "%%%%%%%%%%%%%%%%%%%%%%%%%%   COLOR SCHEMA   %%%%%%%%%%%%%%%%%%%%%%%%%%%% 
   syntax enable
