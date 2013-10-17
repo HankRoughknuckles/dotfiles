@@ -102,5 +102,8 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
 fi
 
 
+# make vim the default editor
+export EDITOR="vi"
+
 # make rvm (Ruby Version Manager)
 source $HOME/.rvm/scripts/rvm
