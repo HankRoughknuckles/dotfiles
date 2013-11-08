@@ -16,6 +16,7 @@
   l = log 
   lp = log -p
 	lg = log --graph --oneline
+	today = !git log --since=midnight --author=\"$(git config user.name)\" --oneline
 
 [color]
 	status = auto
