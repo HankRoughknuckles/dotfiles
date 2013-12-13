@@ -52,3 +52,8 @@
  echo -n "Installing solarized color scheme for vim..."
  cp $vim_color_dir/solarized.vim ~/.vim/colors/solarized.vim
  echo "done"
+
+ #install snippets
+ echo "Installing snippets for vim"
+ ./install-snippets.sh
+ echo "finished installing snippets"

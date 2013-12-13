@@ -306,6 +306,7 @@
     onoremap al' :<c-u>normal! F'hva'<cr>
     onoremap al" :<c-u>normal! F"hva"<cr>
 
+    nnoremap <leader>as :tab new<cr>:NERDTree ~/.vim/after/snippets/<cr>
 
 "%%%%%%%%%%%%%%%%%%%%%%%%%    AUTOCOMMANDS    %%%%%%%%%%%%%%%%%%%%%%%%%%%%
   " PHP autocommands
@@ -329,7 +330,9 @@
       "make the currently typed word into a variable with <C-v>
         autocmd FileType ruby inoremap <buffer> <C-v> }<Esc>bi#{<Esc>ea
 
-      "in ruby, make the currently typed word into an attribute (@ in
-      "front)
+      "make the currently typed word into an attribute (@ in front)
         autocmd FileType ruby inoremap <buffer> <C-b> <Esc>bi@<Esc>ea
+
+      "make the currently typed word into a symbol (: in front)
+        autocmd FileType ruby inoremap <buffer> <C-y> <Esc>bi:<Esc>ea
     augroup END
