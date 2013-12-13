@@ -306,7 +306,8 @@
     onoremap al' :<c-u>normal! F'hva'<cr>
     onoremap al" :<c-u>normal! F"hva"<cr>
 
-    nnoremap <leader>as :tab new<cr>:NERDTree ~/.vim/after/snippets/<cr>
+    "alter snippets with [leader]as
+    nnoremap <leader>as :tab new<cr>:NERDTree ~/.vim/bundle/snipmate-snippets/snippets<cr>
 
 "%%%%%%%%%%%%%%%%%%%%%%%%%    AUTOCOMMANDS    %%%%%%%%%%%%%%%%%%%%%%%%%%%%
   " PHP autocommands
