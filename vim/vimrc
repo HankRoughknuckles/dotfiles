@@ -329,7 +329,7 @@
     augroup filetype_ruby
       autocmd!
       "make the currently typed word into a variable with <C-v>
-        autocmd FileType ruby inoremap <buffer> <C-v> }<Esc>bi#{<Esc>ea
+        autocmd FileType ruby inoremap <buffer> <C-v> #{}<Esc>i
 
       "make the currently typed word into an attribute (@ in front)
         autocmd FileType ruby inoremap <buffer> <C-b> <Esc>bi@<Esc>ea
