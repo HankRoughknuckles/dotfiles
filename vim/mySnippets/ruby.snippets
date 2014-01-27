@@ -4,6 +4,10 @@ snippet #!
 
 # New Block
 snippet block
+	${1:name} do 
+	  ${3}
+	end
+snippet blockv
 	${1:name} do |${2:var}|
 	  ${3}
 	end
@@ -533,21 +537,46 @@ snippet mrc
 	remove_column :${1:table_name}, :${2:column_name}
 snippet mrenc
 	rename_column :${1:table_name}, :${2:old_column_name}, :${3:new_column_name}
+
 #rspec
+snippet testheader
+	require 'spec_helper'
+
+	describe "${1:NameOfPage}" do
+	  subject { page }
+	end
+snippet let
+	let!(:${1:factory}) { FactoryGirl.create :${2:factory} }
 snippet it
-	it "${1:spec_name}" do
-		${2}
+	it { ${1} }
+snippet ishc
+	it { should have_content ${1} }
+snippet isnhc
+	it { should_not have_content ${1} }
+snippet isht
+	it { should have_title ${1} }
+snippet isnht
+	it { should_not have_title ${1} }
+snippet ishf
+	it { should have_field ${1} }
+snippet isnhf
+	it { should_not have_field ${1} }
+snippet ishx
+	it { should have_xpath ${1} }
+snippet isnht
+	it { should_not have_xpath ${1} }
+snippet print
+	print page.html
+snippet bef
+	before do
+	  ${1}
 	end
 snippet desc
-	describe ${1:class_name} do
-		${2}
+	describe "${1:description}" do
+	  ${2}
 	end
 snippet cont
 	context "${1:message}" do
-		${2}
-	end
-snippet bef
-	before(:${1:each}) do
 		${2}
 	end
 snippet aft
@@ -563,4 +592,3 @@ snippet cfor
 	<% content_for :${1:head} do %>
 		${2}
 	<% end %>
->>>>>>> d46588cad4f48f1fe6f0e80c06b87f9b78792422
