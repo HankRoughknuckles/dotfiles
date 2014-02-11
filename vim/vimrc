@@ -76,6 +76,7 @@
     Bundle 'scrooloose/nerdtree'
     Bundle 'bling/vim-airline'
     Bundle 'vim-scripts/tComment'
+    Bundle 'kchmck/vim-coffee-script'
 
     Bundle "MarcWeber/vim-addon-mw-utils"
     Bundle "tomtom/tlib_vim"
