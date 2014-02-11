@@ -12,8 +12,12 @@
 
 #git aliases
   alias gpom='git push origin master'
+  alias gphm='git push heroku master'
   alias gpoa='git push origin --all'
   alias g='git'
+
+#heroku aliases
+  alias h='heroku'
 
 #cd to the dotfiles directory
   alias cddot="cd $(dirname $(ls -l ~/.bashrc | awk '{print $11}'))"
