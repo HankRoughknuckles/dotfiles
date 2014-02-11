@@ -17,7 +17,6 @@ snippet th
 	<th>${1}</th>
 snippet td
 	<td>${1}</td>
-
 # Rails *****************************
 snippet rc
 	<% ${1} -%>
@@ -31,9 +30,10 @@ snippet for
 	<% end %>
 snippet prov
 	<% provide( :${1:variable}, "${2:value}" ) %>
-
-
-
+snippet jit
+	<%= javascript_include_tag "${1:file_name}" %>
+snippet style
+	<%= stylesheet_link_tag "${1:sheet_name}" %>
 #			  Form tags
 #form_for
 snippet ff
@@ -48,8 +48,6 @@ snippet ftf
 	<%= f.text_field :${1:var_name} %>
 snippet fsub
 	<%= f.submit "${1:Save}" %>
-
-
 snippet rp
 	<%= render :partial => '${1:item}' %>
 snippet rpl
@@ -75,8 +73,7 @@ snippet yield
 snippet conf
 	<% content_for ${1::foo} do %>
 		${2}
-	<% end -%>
-
+	<% end %>
 # Ruby ******************************
 snippet :
 	:${1:key} => ${2:"value"}${3}
