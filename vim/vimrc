@@ -274,6 +274,14 @@
     vnoremap <C-c> U`>
     vnoremap U <nop> "training to get me to stop using the old way
 
+  "change dir to ~/Projects/Andradas-portfolio-site/website-code (think
+  "'c'hange to 'w'ebsite directory)
+    nnoremap <leader>cw :cd ~/Projects/Andradas-portfolio-site/website-code<cr>
+
+  "change dir to ~/Dropbox/dotfiles/ (think 'c'hange to 'd'otfile
+  "directory)
+    nnoremap <leader>cd :cd ~/Dropbox/dotfiles<cr>
+
   "insert a padding space on the inside of the selected () with <leader>
   "is
     nnoremap <leader>is vi(<Esc>a<Space><Esc>`<i<Space><Esc>h%
