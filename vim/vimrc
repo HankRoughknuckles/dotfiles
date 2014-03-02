@@ -95,7 +95,6 @@
 
   " vim-scripts repos
     "Bundle 'L9'
-    "Bundle 'FuzzyFinder'
 
   " git repos on your local machine (ie. when wrking on yr own plugin)
     "Bundle 'file:///Users/gmarik/path/to/plugin'
