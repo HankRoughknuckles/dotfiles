@@ -11,6 +11,8 @@
   "Change leader key
     let mapleader = ","
 
+  "Use fuzzy matching for Unite
+	  call unite#filters#matcher_default#use(['matcher_fuzzy'])
 
   "Miscellaneous variables to set
     set laststatus=2    "always show the status line
@@ -83,6 +85,7 @@
     Bundle "snipmate-snippets"
     Bundle "garbas/vim-snipmate"
     Bundle 'mileszs/ack.vim'
+    Bundle 'Shougo/unite.vim'
 
   " Other repos
     Bundle 'https://github.com/terryma/vim-multiple-cursors.git'
@@ -135,6 +138,22 @@
   "ack.vim stuff
     "call Ack-grep
       nnoremap <leader>ag :Ack<space>
+
+  "Unite stuff
+    " ignore case when typing in Unite
+      call unite#custom#profile('buffer', 'ignorecase', 1)
+
+    "open files/buffers/bookmarks using Unite
+	    nnoremap <leader>f 
+              \ :<C-u>Unite -no-split -buffer-name=buffer
+              \ -profile-name=buffer -start-insert file_rec<cr>
+      nnoremap <leader>b 
+              \ :<C-u>Unite -no-split -buffer-name=buffer
+              \ -profile-name=buffer -start-insert buffer<cr>
+      nnoremap <leader>m 
+              \ :<C-u>Unite -no-split -buffer-name=buffer
+              \ -profile-name=buffer -start-insert bookmark<cr>
+
 
 "%%%%%%%%%%%%%%%%%%%%%%%%%%   COLOR SCHEMA   %%%%%%%%%%%%%%%%%%%%%%%%%%%% 
   syntax enable
