@@ -237,6 +237,10 @@
   "source .vimrc with <leader>sv (think: source vimrc)
     nnoremap <leader>sv :source<Space>$MYVIMRC<cr>
 
+  "open up TO-DO file for Andrada's project
+    nnoremap <leader>at :tab new<cr>:e 
+            \ ~/Projects/Andradas-portfolio-site/website-code/TO-DO<cr>
+
   "make the default regex type to be Perl regex
     nnoremap / /\v
     vnoremap ? ?\v
