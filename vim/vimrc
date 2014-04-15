@@ -11,13 +11,9 @@
   "Change leader key
     let mapleader = ","
 
-  "Use fuzzy matching for Unite
-	  call unite#filters#matcher_default#use(['matcher_fuzzy'])
-
   "Miscellaneous variables to set
     set laststatus=2    "always show the status line
     set t_Co=256        "set colors to 256
-
 
     set number          "show line number on side
     set rnu             "make the line numbers be relative to cursor
@@ -170,7 +166,7 @@
     nnoremap <leader>ge :Gedit<cr>
 
   "Command-t commands
-    nnoremap <leader>t :CommandTFlush<cr>:CommandT<cr>
+    " nnoremap <leader>t :CommandTFlush<cr>:CommandT<cr>
 
   "NERDTree
     map <leader>n :NERDTreeToggle<CR>B
@@ -223,15 +219,7 @@
 
 
     "open files/buffers/bookmarks using Unite
-	    nnoremap <leader>f 
-              \ :<C-u>Unite -no-split -buffer-name=buffer
-              \ -profile-name=buffer -start-insert file_rec<cr>
-      nnoremap <leader>b 
-              \ :<C-u>Unite -no-split -buffer-name=buffer
-              \ -profile-name=buffer -start-insert buffer<cr>
-      nnoremap <leader>m 
-              \ :<C-u>Unite -no-split -buffer-name=buffer
-              \ -profile-name=buffer -start-insert bookmark<cr>
+      nnoremap <silent> <buffer> <expr> <leader>r <Plug>(unite_redraw)
 
       nnoremap <silent> <leader>b 
              \ :<C-u>Unite -no-split -buffer-name=files
@@ -281,7 +269,7 @@
   syntax enable
   set background=dark
   colorscheme solarized
-  " let g:solarized_termolors=256 "For some reason, when this is
+  let g:solarized_termolors=256 "For some reason, when this is
     " uncommented, sourcing the vimrc file while vim is running will make
     " the colors all screwy
 
@@ -361,7 +349,7 @@
 
   "open up TO-DO file for Andrada's project
     nnoremap <leader>at :tab new<cr>:e 
-            \ ~/Projects/Andradas-portfolio-site/website-code/TO-DO<cr>
+            \ ~/Desktop/TO-DO<cr>
 
   "make the default regex type to be Perl regex
     nnoremap / /\v
@@ -398,7 +386,7 @@
 
   "change dir to ~/Projects/Andradas-portfolio-site/website-code (think
   "'c'hange to 'w'ebsite directory)
-    nnoremap <leader>cw :cd ~/Projects/Andradas-portfolio-site/website-code<cr>
+    nnoremap <leader>cw :cd ~/Projects/AndradasPortfolioSite/website-code<cr>
 
   "change dir to ~/Dropbox/dotfiles/ (think 'c'hange to 'd'otfile
   "directory)
@@ -420,9 +408,6 @@
   "the system clipboard will have the right format
     nnoremap <leader>p :set paste!<cr>
     vnoremap <leader>p :set paste!<cr>
-
-  "This is a test string here (although it may not seem) or behave (like it)
-  "This {can be} considered a [test] string {too}
 
   "Operator for "in next ___" (___ can be (, ), {, }, [, ], ', or " )
     onoremap in( :<c-u>normal! f(vi(<cr>
@@ -451,6 +436,7 @@
     onoremap an} :<c-u>normal! f{va{<cr>
     onoremap an[ :<c-u>normal! f[va[<cr>
     onoremap an] :<c-u>normal! f[va[<cr>
+    onoremap an] :<c-u>normal! f[va[<cr>
     onoremap an' :<c-u>normal! f'lva'<cr>
     onoremap an" :<c-u>normal! f"lva"<cr>
 
@@ -465,7 +451,8 @@
     onoremap al" :<c-u>normal! F"hva"<cr>
 
     "alter snippets with [leader]as
-    nnoremap <leader>as :tab new<cr>:NERDTree ~/.vim/bundle/snipmate-snippets/snippets<cr>
+    nnoremap <leader>as :tab new<cr>:NERDTree 
+             \ ~/.vim/bundle/neosnippet-snippets/neosnippets<cr>
 
 "%%%%%%%%%%%%%%%%%%%%%%%%%    AUTOCOMMANDS    %%%%%%%%%%%%%%%%%%%%%%%%%%%%
   " PHP autocommands
