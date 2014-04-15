@@ -67,32 +67,79 @@
     augroup END
 
 "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   VUNDLE   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  set rtp+=~/.vim/bundle/vundle/
-  call vundle#rc() " let Vundle manage Vundle - required! 
-  Bundle 'gmarik/vundle'
+  " set rtp+=~/.vim/bundle/vundle/
+  set runtimepath+=~/.vim/bundle/neobundle.vim/
+  call neobundle#rc(expand('~/.vim/bundle/')) "required!
+  
+  " Let NeoBundle manage NeoBundle
+  " Required:
+  NeoBundleFetch 'Shougo/neobundle.vim'
 
-  " My Bundles here:
-    Bundle 'tpope/vim-fugitive'
-    Bundle 'tpope/vim-surround'
-    Bundle 'tpope/vim-unimpaired'
-    Bundle 'Lokaltog/vim-easymotion'
-    Bundle 'scrooloose/nerdtree'
-    Bundle 'bling/vim-airline'
-    Bundle 'vim-scripts/tComment'
-    Bundle 'kchmck/vim-coffee-script'
+  "call vundle#rc() " let Vundle manage Vundle - required! 
+  " NeoBundle 'gmarik/vundle'
 
-    Bundle "MarcWeber/vim-addon-mw-utils"
-    Bundle "tomtom/tlib_vim"
-    Bundle "snipmate-snippets"
-    Bundle "garbas/vim-snipmate"
-    Bundle 'mileszs/ack.vim'
-    Bundle 'Shougo/unite.vim'
+  " Git integration with fugitive
+  NeoBundle 'tpope/vim-fugitive'
 
-  " Other repos
-    Bundle 'https://github.com/terryma/vim-multiple-cursors.git'
+  "Easily surround words with quotes, brackets, etc.
+  NeoBundle 'tpope/vim-surround'
 
-    "Bundle 'stacruz/sparkup', {'rtp': 'vim/'}
-    "Bundle 'tpope/vim-rails.git'
+  "Switch between buffers easier
+  NeoBundle 'tpope/vim-unimpaired'
+
+  "Move around easier
+  NeoBundle 'Lokaltog/vim-easymotion'
+
+  "File navigation
+  NeoBundle 'scrooloose/nerdtree'
+
+  "Status line
+  NeoBundle 'bling/vim-airline'
+
+  "Comment code easier
+  NeoBundle 'vim-scripts/tComment'
+
+  "Coffeescript integration and syntax highlighting
+  NeoBundle 'kchmck/vim-coffee-script'
+
+  NeoBundle 'Shougo/neocomplcache.vim'
+  NeoBundle 'Shougo/neosnippet'
+  NeoBundle 'Shougo/neosnippet-snippets'
+  
+  " NeoBundle "MarcWeber/vim-addon-mw-utils"
+  " Bundle "tomtom/tlib_vim"
+  " " Bundle "snipmate-snippets"
+  "
+  " "Use ack to search files from Vim
+  NeoBundle 'mileszs/ack.vim'
+
+  "Search lists of files and open buffers with Unite
+  NeoBundle 'Shougo/unite.vim'
+
+  "Allow making multiple processes with vimproc
+  NeoBundle 'Shougo/vimproc', {
+        \ 'build' : {
+        \     'windows' : 'make -f make_mingw32.mak',
+        \     'cygwin' : 'make -f make_cygwin.mak',
+        \     'mac' : 'make -f make_mac.mak',
+        \     'unix' : 'make -f make_unix.mak',
+        \    },
+        \ }
+
+  "enable smooth scrolling when hitting <c-f> or <c-b>, etc.
+  NeoBundle 'terryma/vim-smooth-scroll'
+
+  "Multiple cursors like in Sublime Text
+  NeoBundle 'https://github.com/terryma/vim-multiple-cursors.git'
+
+  "Sparkup for fast html writing
+  NeoBundle 'rstacruz/sparkup', {'rtp': 'vim/'}
+
+  "Ruby shortcuts and key bindings
+  NeoBundle "vim-ruby/vim-ruby"
+
+  "Ruby on Rails shortcuts and whatnot
+  NeoBundle 'tpope/vim-rails.git'
 
   " vim-scripts repos
     "Bundle 'L9'
@@ -140,8 +187,40 @@
       nnoremap <leader>ag :Ack<space>
 
   "Unite stuff
-    " ignore case when typing in Unite
-      call unite#custom#profile('buffer', 'ignorecase', 1)
+    "Use fuzzy matching for Unite
+	    call unite#filters#matcher_default#use(['matcher_fuzzy'])
+    "Sort candidates found by length
+      call unite#filters#sorter_default#use(['sorter_length'])
+
+    "Use ag to help speed up Unite's searching
+    if executable('ag')
+      let g:unite_source_rec_async_command= 'ag --nocolor --nogroup --hidden -g ""' 
+	    nnoremap <silent> <leader>f 
+             \  :<C-u>Unite -no-split -buffer-name=files
+             \ -profile-name=buffer -start-insert file_rec/async:!<cr>
+    else
+	    nnoremap <silent> <leader>f 
+             \  :<C-u>Unite -no-split -buffer-name=files
+             \ -profile-name=buffer -start-insert file_rec:!<cr>
+    endif
+
+	  if executable('ack-grep')
+	    let g:unite_source_grep_command = 'ack-grep'
+    endif
+
+    "Alter keybindings that run inside of the Unite buffer
+    autocmd FileType unite call s:unite_settings()
+    function! s:unite_settings()
+      "Ctrl-x to horiz-split with the selected unite candidate
+      imap <silent><buffer><expr> <C-x> unite#do_action('below')
+
+      "Ctrl-v to vert-split with the selected unite candidate
+      imap <silent><buffer><expr> <C-v> unite#do_action('right')
+
+      "Ctrl-t to open the selected unite candidate in a new tab
+      imap <silent><buffer><expr> <C-t> unite#do_action('tabopen')
+    endfunction
+
 
     "open files/buffers/bookmarks using Unite
 	    nnoremap <leader>f 
@@ -154,6 +233,49 @@
               \ :<C-u>Unite -no-split -buffer-name=buffer
               \ -profile-name=buffer -start-insert bookmark<cr>
 
+      nnoremap <silent> <leader>b 
+             \ :<C-u>Unite -no-split -buffer-name=files
+             \ -profile-name=buffer -start-insert buffer<cr>
+      nnoremap <silent> <leader>m 
+             \ :<C-u>Unite -no-split -buffer-name=files
+             \ -profile-name=buffer -start-insert bookmark<cr>
+
+
+  "Neocomplcache stuff
+    " Disable AutoComplPop.
+    let g:acp_enableAtStartup = 0
+    " Use neocomplcache.
+    let g:neocomplcache_enable_at_startup = 1
+    " Use smartcase.
+    let g:neocomplcache_enable_smart_case = 1
+    " Set minimum syntax keyword length.
+    let g:neocomplcache_min_syntax_length = 2
+    let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*' 
+
+
+  "Neosnippet stuff
+    "use the currently selected snippet by pressing tab
+    imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+        \ "\<Plug>(neosnippet_expand_or_jump)"
+        \: pumvisible() ? "\<C-n>" : "\<TAB>"
+    smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+        \ "\<Plug>(neosnippet_expand_or_jump)"
+        \: "\<TAB>"
+
+
+  "Smooth scroll stuff
+    noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 10, 1)<CR>
+    noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 10, 1)<CR>
+    noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 10, 2)<CR>
+    noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 10, 2)<CR>
+
+
+  "Rails.vim shortcuts
+    noremap <leader>rc :Econtroller<CR>
+    noremap <leader>rv :Eview<CR>
+    noremap <leader>rj :Ejavascript<CR>
+    noremap <leader>rs :Estylesheet<CR>
+    vnoremap <leader>rx :Rextract 
 
 "%%%%%%%%%%%%%%%%%%%%%%%%%%   COLOR SCHEMA   %%%%%%%%%%%%%%%%%%%%%%%%%%%% 
   syntax enable
