@@ -495,3 +495,25 @@
       "make the currently typed word into a symbol (: in front)
         autocmd FileType ruby inoremap <buffer> <C-y> <Esc>bi:<Esc>ea
     augroup END
+
+
+  " Filetype commands
+    augroup filetypes
+      autocmd!
+        au FileType scss set ft=scss.css
+    augroup END
+
+
+  " Automatically reload firefox when a front-end file is saved
+    autocmd BufWriteCmd *.html,*.css,*.scss,*.gtpl,*.js,*.coffee,*.coffee.erb :call Refresh_firefox()
+    function! Refresh_firefox()
+      if &modified
+        write
+        silent !echo  'vimYo = content.window.pageYOffset;
+              \ vimXo = content.window.pageXOffset;
+              \ BrowserReload();
+              \ content.window.scrollTo(vimXo,vimYo);
+              \ repl.quit();'  |
+              \ nc -w 1 localhost 4242 2>&1 > /dev/null
+      endif
+    endfunction
