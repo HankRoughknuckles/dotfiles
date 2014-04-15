@@ -20,6 +20,7 @@
 
 
     set number          "show line number on side
+    set rnu             "make the line numbers be relative to cursor
     set mousehide       "hide mouse cursor while typing
     set showmode        "display the current mode
     set cursorline      "highlight the current line
