@@ -1,5 +1,5 @@
 #!/bin/bash
-############################
+ ###########################
  # install.sh
  #
  # This script creates symlinks from the home directory to any desired
@@ -12,7 +12,7 @@
  olddir=~/dotfiles_old      # old dotfiles backup directory
 
  # list of files/folders to symlink in homedir
- files="bashrc bash_aliases gitconfig gitignore_global inputrc curlrc bash_profile"       
+ files="bashrc bash_aliases gitconfig gitignore_global inputrc curlrc bash_profile rspec"       
  vim_dir="vim"
  vim_color_dir=$vim_dir/colors
  vimrc_name="vimrc"
