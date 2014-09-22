@@ -9,7 +9,7 @@
 
 "%%%%%%%%%%%%%%%%%%%%%%%%%   SET VARIABLES   %%%%%%%%%%%%%%%%%%%%%%%%%%%% 
   "Change leader key
-    let mapleader = ","
+    let mapleader = " "
 
   "Miscellaneous variables to set
     set laststatus=2    "always show the status line
