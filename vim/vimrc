@@ -77,6 +77,9 @@
   " Git integration with fugitive
   NeoBundle 'tpope/vim-fugitive'
 
+  " Fuzzy finding for files
+  NeoBundle 'kien/ctrlp.vim'
+
   "Easily surround words with quotes, brackets, etc.
   NeoBundle 'tpope/vim-surround'
 
@@ -108,9 +111,6 @@
   "
   " "Use ack to search files from Vim
   NeoBundle 'mileszs/ack.vim'
-
-  "Search lists of files and open buffers with Unite
-  NeoBundle 'Shougo/unite.vim'
 
   "Allow making multiple processes with vimproc
   NeoBundle 'Shougo/vimproc', {
@@ -158,8 +158,8 @@
     nnoremap <leader>gh :Gedit<space>HEAD<cr>
     nnoremap <leader>ge :Gedit<cr>
 
-  "Command-t commands
-    " nnoremap <leader>t :CommandTFlush<cr>:CommandT<cr>
+  "ctrl-p commands
+    nnoremap <leader>f :CtrlP .<cr>
 
   "NERDTree
     map <leader>n :NERDTreeToggle<CR>B
@@ -174,53 +174,6 @@
   "ack.vim stuff
     "call Ack-grep
       nnoremap <leader>ag :Ack<space>
-
-  "Unite stuff
-    "Use fuzzy matching for Unite
-	    call unite#filters#matcher_default#use(['matcher_fuzzy'])
-    "Sort candidates found by length
-      call unite#filters#sorter_default#use(['sorter_length'])
-
-    "Use ag to help speed up Unite's searching
-    if executable('ag')
-      let g:unite_source_rec_async_command= 'ag --nocolor --nogroup --hidden -g ""' 
-	    nnoremap <silent> <leader>f 
-             \  :<C-u>Unite -no-split -buffer-name=files
-             \ -profile-name=buffer -start-insert file_rec/async:!<cr>
-    else
-	    nnoremap <silent> <leader>f 
-             \  :<C-u>Unite -no-split -buffer-name=files
-             \ -profile-name=buffer -start-insert file_rec:!<cr>
-    endif
-
-	  if executable('ack-grep')
-	    let g:unite_source_grep_command = 'ack-grep'
-    endif
-
-    "Alter keybindings that run inside of the Unite buffer
-    autocmd FileType unite call s:unite_settings()
-    function! s:unite_settings()
-      "Ctrl-x to horiz-split with the selected unite candidate
-      imap <silent><buffer><expr> <C-x> unite#do_action('below')
-
-      "Ctrl-v to vert-split with the selected unite candidate
-      imap <silent><buffer><expr> <C-v> unite#do_action('right')
-
-      "Ctrl-t to open the selected unite candidate in a new tab
-      imap <silent><buffer><expr> <C-t> unite#do_action('tabopen')
-    endfunction
-
-
-    "open files/buffers/bookmarks using Unite
-      nnoremap <silent> <buffer> <expr> <leader>r <Plug>(unite_redraw)
-
-      nnoremap <silent> <leader>b 
-             \ :<C-u>Unite -no-split -buffer-name=files
-             \ -profile-name=buffer -start-insert buffer<cr>
-      nnoremap <silent> <leader>m 
-             \ :<C-u>Unite -no-split -buffer-name=files
-             \ -profile-name=buffer -start-insert bookmark<cr>
-
 
   "Neocomplcache stuff
     " Disable AutoComplPop.
@@ -371,6 +324,10 @@
   "change dir to ~/Dropbox/dotfiles/ (think 'c'hange to 'd'otfile
   "directory)
     nnoremap <leader>cd :cd ~/Dropbox/dotfiles<cr>
+
+  "change dir to ~/Projects/ishtvan/ishtvan-kinect (think 'c'hange to
+  "'i'shtvan app
+    nnoremap <leader>ci :cd ~/Projects/ishtvan/ishtvan-kinect<cr>
 
   "insert a padding space on the inside of the selected () with <leader>
   "is
