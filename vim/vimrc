@@ -321,9 +321,6 @@
     nnoremap <silent> <C-l> <C-w>l
     nnoremap <silent> <C-k> <C-w>k
 
-  "save time by pressing space instead of colon
-    nmap <space> :
-
   "make ctrl backspace delete the entire word when in insert mode
     inoremap <C-BS> <C-W>
 
