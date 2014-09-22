@@ -301,6 +301,12 @@
     "TODO: make a command that will surrounded the highlighted text in
     "eruby tags - aka: <%=  %>
 
+  "make a vertical split with <leader>vv
+    nnoremap <leader>vv :vsp<cr>
+
+  "make a horizontal split with <leader>vs
+    nnoremap <leader>vs :sp<cr>
+
   "make the current word UPPERCASE with <C-c>
     inoremap <C-c> <Esc>viWUEa
     nnoremap <C-c> viWUE
