@@ -144,10 +144,6 @@
 
 
 "%%%%%%%%%%%%%%%%%%%%   PLUGIN MAPPING AND CONFIG   %%%%%%%%%%%%%%%%%%%%% 
-  "EasyMotion Config:
-    let g:EasyMotion_leader_key = ";"
-
-
   "Fugitive commands
     nnoremap <leader>ga :Git<space>commit<space>--amend<cr>
     nnoremap <leader>gr :Gread<cr>
