@@ -9,7 +9,7 @@
 
 "%%%%%%%%%%%%%%%%%%%%%%%%%   SET VARIABLES   %%%%%%%%%%%%%%%%%%%%%%%%%%%% 
   "Change leader key
-    let mapleader = " "
+    let mapleader = "\<Space>"
 
   "Miscellaneous variables to set
     set laststatus=2    "always show the status line
@@ -286,9 +286,6 @@
 
 
 "%%%%%%%%%%%%%%%%%%%%%%%%%%%%   KEY MAPS   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  "Set leader key to comma (,)
-  :let mapleader = ","
-
   "Set regular backspace during insert mode
   set backspace=indent,eol,start
 
@@ -343,7 +340,7 @@
     vnoremap ? ?\v
 
   "get rid of search results
-    nnoremap <leader><space> :noh<cr>   
+    nnoremap <leader>, :noh<cr>   
 
   "make tab go to the corresponding parens or brackets
     nnoremap <leader><tab> %
