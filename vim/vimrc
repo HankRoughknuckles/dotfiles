@@ -112,16 +112,6 @@
   " "Use ack to search files from Vim
   NeoBundle 'mileszs/ack.vim'
 
-  "Allow making multiple processes with vimproc
-  NeoBundle 'Shougo/vimproc', {
-        \ 'build' : {
-        \     'windows' : 'make -f make_mingw32.mak',
-        \     'cygwin' : 'make -f make_cygwin.mak',
-        \     'mac' : 'make -f make_mac.mak',
-        \     'unix' : 'make -f make_unix.mak',
-        \    },
-        \ }
-
   "Multiple cursors like in Sublime Text
   NeoBundle 'https://github.com/terryma/vim-multiple-cursors.git'
 
