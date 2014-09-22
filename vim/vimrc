@@ -122,9 +122,6 @@
         \    },
         \ }
 
-  "enable smooth scrolling when hitting <c-f> or <c-b>, etc.
-  NeoBundle 'terryma/vim-smooth-scroll'
-
   "Multiple cursors like in Sublime Text
   NeoBundle 'https://github.com/terryma/vim-multiple-cursors.git'
 
