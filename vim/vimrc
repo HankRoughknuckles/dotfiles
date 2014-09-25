@@ -325,6 +325,10 @@
   "'i'shtvan app
     nnoremap <leader>ci :cd ~/Projects/ishtvan/ishtvan-kinect<cr>
 
+  "change dir to ~/Projects/Freelancing/mealapp (think 'c'hange to
+  "'f'reelancing project
+    nnoremap <leader>cf :cd ~/Projects/Freelancing/mealapp<cr>
+
   "insert a padding space on the inside of the selected () with <leader>
   "is
     nnoremap <leader>is vi(<Esc>a<Space><Esc>`<i<Space><Esc>h%
