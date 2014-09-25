@@ -1,0 +1,364 @@
+snippet     if
+abbr        if ... end
+  if ${1:#:condition}
+    ${2:TARGET}
+  end
+
+snippet     def
+abbr        def ... end
+  def ${1:#:method_name}
+    ${2:TARGET}
+  end
+
+snippet     defrescue
+alias       defr
+abbr        def ... rescue ... end
+  def ${1:#:method_name}
+    ${2:TARGET}
+  rescue ${3:#:StandardError} => ${4:error}
+    ${5}
+  end
+
+snippet     do
+abbr        do ... end
+  do
+    ${1:TARGET}
+  end
+
+snippet     dovar
+abbr        do |var| ... end
+  do |${1:#:var}|
+    ${2:TARGET}
+  end
+
+snippet     block
+abbr        { ... }
+  {
+    ${1:TARGET}
+  }
+
+snippet     blockvar
+abbr        {|var| ... }
+  { |${1:#:var}|
+    ${2:TARGET}
+  }
+
+snippet     fileopen
+alias       open
+abbr        File.open(filename) do ... end
+  File.open(${1:#:filename}, '${2:#:mode}') do |${3:io}|
+    ${0:TARGET}
+  end
+
+snippet     edn
+abbr        => end?
+  end
+
+snippet     urlencode
+  # coding: utf-8
+  require 'erb'
+  puts ERB::Util.url_encode '${1}'
+
+snippet encoding
+alias   enc
+  # coding: utf-8
+  ${0}
+
+snippet each
+options word
+  each { |${1:#:variable}| ${2} }
+
+snippet each_do
+options word
+  each do |${1:#:variable}|
+    ${2}
+  end
+
+snippet each_byte
+options word
+  each_byte { |${1:#:variable}| ${2} }
+
+snippet each_char
+options word
+  each_char { |${1:#:variable}| ${2} }
+
+snippet each_index
+options word
+  each_index { |${1:#:variable}| ${2} }
+
+snippet each_key
+options word
+  each_key { |${1:#:variable}| ${2} }
+
+snippet each_line
+options word
+  each_line { |${1:#:variable}| ${2} }
+
+snippet each_with_index
+options word
+  each_with_index { |${1:#:variable}| ${2} }
+
+snippet map
+options word
+  map { |${1:#:variable}| ${2} }
+
+snippet sort
+options word
+  sort { |${1:#:variable}| ${2} }
+
+snippet sort_by
+options word
+  sort_by { |${1:#:variable}| ${2} }
+
+snippet lambda
+options word
+  -> (${1:#:args}) { ${2} }
+
+snippet lambda-keyword
+options word
+  lambda { |${1:#:args}| ${2} }
+
+snippet     main
+options     head
+  if __FILE__ == \$0
+    ${0:TARGET}
+  end
+
+# This idiom is only for legacy ruby such as 1.9.3
+snippet filedir-legacy-compatibility
+alias __dir__
+abbr File.dirname(...)
+  File.dirname(File.expand_path(__FILE__))
+
+snippet     glob
+options     head
+  Dir.glob(${1:'**/*'}) do |fname|
+    ${0:TARGET}
+  end
+
+snippet     case
+abbr        case ... when ... else ... end
+options     head
+  case ${1}
+  when ${2}
+    ${3}
+  else
+    ${4}
+  end
+
+snippet     class
+  class ${1:#:Name}
+    ${0}
+  end
+
+# vim:set et ts=2 sts=2 sw=2 tw=0:
+
+
+# Tests
+snippet     before-inline
+abbr        before-inline
+alias       bel
+options     head
+  before { ${1} }
+
+snippet     before
+abbr        before
+alias       before
+options     head
+  before do
+    ${1}
+  end
+
+snippet     visit
+abbr        visit
+alias       vis
+options     head
+  visit { ${1} }
+
+snippet     it-inline
+abbr        it-inline
+alias       itl
+options     head
+  it { ${1} }
+
+snippet     describe
+abbr        describe
+alias       desc
+options     head
+  describe "${1}" do
+    ${2}
+  end
+
+snippet     it
+abbr        it
+alias       it
+options     head
+  it "${1}" do
+    ${2}
+  end
+
+snippet     fill-in
+abbr        fill-in
+alias       fill
+options     head
+  find(:css, "${1:selector}").set ${2:value-to-set}
+
+snippet     click
+abbr        click
+alias       click
+options     head
+  click '${1:text of link or button}'
+
+# respond to
+snippet     it-should-respond-to
+abbr        it-should-respond-to
+alias       isrt
+options     head
+  it { should respond_to(${1}) }
+
+snippet     it-should-not-respond-to
+abbr        it-should-not-respond-to
+alias       isnrt
+options     head
+  it { should_not respond_to(${1}) }
+
+
+# be valid
+snippet     it-should-be-valid
+abbr        it-should-be-valid
+alias       isbv
+options     head
+  it { should be_valid }${1}
+
+snippet     it-should-not-be-valid
+abbr        it-should-not-be-valid
+alias       isnbv
+options     head
+  it { should_not be_valid }
+
+
+# have title
+snippet     it-should-have-title
+abbr        it-should-have-title
+alias       isht
+options     head
+  it { should have_title(${1}) }
+
+snippet     it-should-not-have-title
+abbr        it-should-not-have-title
+alias       isnht
+options     head
+  it { should_not have_title(${1}) }
+
+
+# have content
+snippet     it-should-have-content
+abbr        it-should-have-content
+alias       ishc
+options     head
+  it { should have_content(${1}) }
+
+snippet     it-should-not-have-content
+abbr        it-should-not-have-content
+alias       isnhc
+options     head
+  it { should_not have_content(${1}) }
+
+
+# have css
+snippet     it-should-have-css
+abbr        it-should-have-css
+alias       ishcss
+options     head
+  it { should have_css(${1}) }
+
+snippet     it-should-not-have-css
+abbr        it-should-not-have-css
+alias       isnhcss
+options     head
+  it { should_not have_css(${1}) }
+
+# have xpath
+snippet     it-should-have-xpath
+abbr        it-should-have-xpath
+alias       ishx
+options     head
+  it { should have_xpath('//${1}')}
+
+snippet     it-should-not-have-xpath
+abbr        it-should-not-have-xpath
+alias       isnhx
+options     head
+  it { should_not have_xpath('//${1}') }
+
+# have selector
+snippet     it-should-have-selector
+abbr        it-should-have-selector
+alias       ishs
+options     head
+  it { should have_selector("${1}")}
+
+snippet     it-should-not-have-selector
+abbr        it-should-not-have-selector
+alias       isnhs
+options     head
+  it { should_not have_selector("${1}") }
+
+# have link
+snippet     it-should-have-link
+abbr        it-should-have-link
+alias       ishl
+options     head
+  it { should have_selector(:link_or_button, "${1}")}
+
+snippet     it-should-not-have-link
+abbr        it-should-not-have-link
+alias       isnhl
+options     head
+  it { should_not have_selector(:link_or_button, "${1}") }
+
+# have button
+snippet     it-should-have-button
+abbr        it-should-have-button
+alias       ishb
+options     head
+  it { should have_selector(:link_or_button, "${1}")}
+
+snippet     it-should-not-have-button
+abbr        it-should-not-have-button
+alias       isnhb
+options     head
+  it { should_not have_selector(:link_or_button, "${1}") }
+
+
+#Authentication
+snippet     sign-out
+abbr        sign-out
+alias       signout
+options     head
+  logout(${1:user-variable})
+
+snippet     log-out
+abbr        log-out
+alias       logout
+options     head
+  logout(${1:user-variable})
+
+snippet     sign-in
+abbr        sign-in
+alias       signin
+options     head
+  login_as(${1:user-variable})
+
+snippet     log-in
+abbr        log-in
+alias       login
+options     head
+  login_as(${1:user-variable})
+
+snippet     let!
+abbr        let!
+alias       let
+options     head
+  let!(:${1}) { FactoryGirl.create(:${2:factory_name}) }
+
