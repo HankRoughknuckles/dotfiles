@@ -22,6 +22,8 @@
     set cursorline      "highlight the current line
     set hlsearch        "highlight search patterns
     set visualbell      "no sounds
+    set directory=~/.vim/swap//   "set swap file directory so it won't be
+                                  the working directory
     set autoindent      
     set smartindent
     set ignorecase      "ignore case when search query is all lower-case
