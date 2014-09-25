@@ -149,7 +149,7 @@
     nnoremap <leader>ge :Gedit<cr>
 
   "ctrl-p commands
-    nnoremap <leader>f :CtrlP .<cr>
+    nnoremap <leader>f :CtrlPClearCache<cr>:CtrlP .<cr>
 
   "NERDTree
     map <leader>n :NERDTreeToggle<CR>B
