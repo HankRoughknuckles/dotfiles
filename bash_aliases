@@ -19,8 +19,11 @@
 #heroku aliases
   alias h='heroku'
 
-#cd to the dotfiles directory
-  alias cddot="cd $(dirname $(ls -l ~/.bashrc | awk '{print $11}'))"
+# Change directories
+# to the dotfiles directory
+  alias cddot="cd ~/Dropbox/dotfiles"
+# to your current freelancing project
+  alias cdfree="cd ~/Projects/Freelancing/mealapp"
 
 #source bashrc 
   alias sb='source ~/.bashrc'
