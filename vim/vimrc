@@ -77,6 +77,9 @@
   " Git integration with fugitive
   NeoBundle 'tpope/vim-fugitive'
 
+  " Allow easy movement between vim splits and tmux panes
+  NeoBundle 'christoomey/vim-tmux-navigator'
+
   " Fuzzy finding for files
   NeoBundle 'kien/ctrlp.vim'
 
@@ -114,6 +117,12 @@
 
   "Multiple cursors like in Sublime Text
   NeoBundle 'https://github.com/terryma/vim-multiple-cursors.git'
+
+  "Run rspec tests from inside vim
+  NeoBundle 'thoughtbot/vim-rspec'
+
+  "Send rspec commands through tmux
+  NeoBundle 'jgdavey/tslime.vim'
 
   "Sparkup for fast html writing
   NeoBundle 'rstacruz/sparkup', {'rtp': 'vim/'}
@@ -176,6 +185,12 @@
     let g:neocomplcache_min_syntax_length = 2
     let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*' 
 
+  "Send rspec commands through tslime to tmux
+    let g:rspec_command = 'call Send_to_Tmux("rspec {spec}\n")'
+    map <Leader>rf :call RunCurrentSpecFile()<CR>
+    map <Leader>rn :call RunNearestSpec()<CR>
+    map <Leader>rl :call RunLastSpec()<CR>
+    map <Leader>ra :call RunAllSpecs()<CR>
 
   "Neosnippet stuff
     "use the currently selected snippet by pressing tab
@@ -197,11 +212,10 @@
 "%%%%%%%%%%%%%%%%%%%%%%%%%%   COLOR SCHEMA   %%%%%%%%%%%%%%%%%%%%%%%%%%%% 
   syntax enable
   set background=dark
-  colorscheme solarized
   let g:solarized_termolors=256 "For some reason, when this is
     " uncommented, sourcing the vimrc file while vim is running will make
     " the colors all screwy
-
+  colorscheme solarized
 
 "%%%%%%%%%%%%%%%%%%%%%%%%%%%   FUNCTIONS   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   " Use Q to intelligently close a window 
@@ -277,6 +291,12 @@
   "make the default regex type to be Perl regex
     nnoremap / /\v
     vnoremap ? ?\v
+
+  "leader md will call the bash mkdir command
+    nnoremap <leader>md :!mkdir 
+
+  "leader mv will call the bash mv command
+    nnoremap <leader>mv :!mv 
 
   "get rid of search results
     nnoremap <leader>, :noh<cr>   
@@ -429,15 +449,15 @@
 
 
   " Automatically reload firefox when a front-end file is saved
-    autocmd BufWriteCmd *.html,*.css,*.scss,*.gtpl,*.js,*.coffee,*.coffee.erb :call Refresh_firefox()
-    function! Refresh_firefox()
-      if &modified
-        write
-        silent !echo  'vimYo = content.window.pageYOffset;
-              \ vimXo = content.window.pageXOffset;
-              \ BrowserReload();
-              \ content.window.scrollTo(vimXo,vimYo);
-              \ repl.quit();'  |
-              \ nc -w 1 localhost 4242 2>&1 > /dev/null
-      endif
-    endfunction
+    " autocmd BufWriteCmd *.html,*.css,*.scss,*.gtpl,*.js,*.coffee,*.coffee.erb :call Refresh_firefox()
+    " function! Refresh_firefox()
+    "   if &modified
+    "     write
+    "     silent !echo  'vimYo = content.window.pageYOffset;
+    "           \ vimXo = content.window.pageXOffset;
+    "           \ BrowserReload();
+    "           \ content.window.scrollTo(vimXo,vimYo);
+    "           \ repl.quit();'  |
+    "           \ nc -w 1 localhost 4242 2>&1 > /dev/null
+    "   endif
+    " endfunction
