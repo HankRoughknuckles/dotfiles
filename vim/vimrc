@@ -301,6 +301,9 @@
   "leader mv will call the bash mv command
     nnoremap <leader>mv :!mv 
 
+  "leader rm will call the bash command rm 
+    nnoremap <leader>rm :!rm<space>
+
   "get rid of search results
     nnoremap <leader>, :noh<cr>   
 
