@@ -258,6 +258,9 @@
     "Close a tab with td
       nnoremap td  :tabclose<CR>
 
+  "Save quicker with <C-w>
+    nnoremap <leader>w :w<CR>
+
   "Switch between windows in the same tab
     nnoremap <silent> <C-h> <C-w>h
     nnoremap <silent> <C-j> <C-w>j
