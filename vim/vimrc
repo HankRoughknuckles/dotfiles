@@ -186,7 +186,7 @@
     let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*' 
 
   "Send rspec commands through tslime to tmux
-    let g:rspec_command = 'call Send_to_Tmux("rspec {spec}\n")'
+    let g:rspec_command = 'call Send_to_Tmux("rspec --drb {spec}\n")'
     map <Leader>rf :call RunCurrentSpecFile()<CR>
     map <Leader>rn :call RunNearestSpec()<CR>
     map <Leader>rl :call RunLastSpec()<CR>
