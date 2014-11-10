@@ -318,9 +318,7 @@
     inoremap <C-k> =><Space>
 
   "insert an erb <%= %> tag (with output) using <C-r>
-    inoremap <C-r> <%=<space>%><left><left><left> 
-    "TODO: make a command that will surrounded the highlighted text in
-    "eruby tags - aka: <%=  %>
+    inoremap <C-t> <%=<space>%><left><left><left> 
 
   "make a vertical split with <leader>vv
     nnoremap <leader>vv :vsp<cr>
