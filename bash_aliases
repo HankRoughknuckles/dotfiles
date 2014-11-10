@@ -14,16 +14,28 @@
   alias gpom='git push origin master'
   alias gphm='git push heroku master'
   alias gpoa='git push origin --all'
+  alias gpo='git push origin'
+  alias guo='git pull origin'
   alias g='git'
+  alias gcb='git checkout -b'
+  alias gcd='git checkout develop'
+  alias gcm='git checkout master'
+  alias gbd='git branch -d'
+  alias gbD='git branch -D'
+
 
 #heroku aliases
   alias h='heroku'
 
 # Change directories
 # to the dotfiles directory
-  alias cddot="cd ~/Dropbox/dotfiles"
+  alias cdd="cd ~/Dropbox/dotfiles"
 # to your current freelancing project
-  alias cdfree="cd ~/Projects/Freelancing/mealapp"
+  alias cdf="cd ~/Projects/Freelancing/no-smoking/website_code"
+# to your current practice site
+  alias cdp="cd ~/Projects/practice-code/social_news"
+# to your typical rails setup folder
+  alias cdt="cd ~/Projects/typical-rails_setup/"
 
 #source bashrc 
   alias sb='source ~/.bashrc'
