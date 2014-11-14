@@ -1,3 +1,4 @@
+
 "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 "
 "                               .vimrc                          
@@ -24,12 +25,13 @@
     set visualbell      "no sounds
     set autoindent      
     set smartindent
-    set ignorecase      "ignore case when search query is all lower-case
-    set smartcase       "switch to case sensitive searching if a capital
-                        "letter is present
-    set gdefault        "makes search/replace global by default
-    set backspace=2     "make backspace able to go over end of lines
-    set encoding=utf-8  "make encoding be unicode
+    set ignorecase        "ignore case when search query is all lower-case
+    set smartcase         "switch to case sensitive searching if a capital
+                          "letter is present
+    set gdefault          "makes search/replace global by default
+    set backspace=2       "make backspace able to go over end of lines
+    set encoding=utf-8    "make encoding be unicode
+    set diffopt=vertical  "make vim diff vertical when using fugitive
     set guifont=Consolas:h14  "set font in gvim (and macvim) to Consolas
                               "size 14
 
@@ -105,12 +107,16 @@
   NeoBundle 'kchmck/vim-coffee-script'
 
   NeoBundle 'Shougo/neocomplcache.vim'
-  NeoBundle 'Shougo/neosnippet'
-  NeoBundle 'Shougo/neosnippet-snippets'
+  " NeoBundle 'Shougo/neosnippet'
+  " NeoBundle 'Shougo/neosnippet-snippets'
+
+  NeoBundle 'SirVer/ultisnips'
+  " NeoBundle 'honza/vim-snippets'
+
   
   " NeoBundle "MarcWeber/vim-addon-mw-utils"
   " Bundle "tomtom/tlib_vim"
-  " " Bundle "snipmate-snippets"
+  " " Bundle "nipmate-snippets"
   "
   " "Use ack to search files from Vim
   NeoBundle 'mileszs/ack.vim'
@@ -258,7 +264,7 @@
     "Close a tab with td
       nnoremap td  :tabclose<CR>
 
-  "Save quicker with <C-w>
+  "Save quicker with <leader>w
     nnoremap <leader>w :w<CR>
 
   "Switch between windows in the same tab
