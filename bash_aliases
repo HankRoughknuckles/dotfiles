@@ -31,7 +31,7 @@
 # to the dotfiles directory
   alias cdd="cd ~/Dropbox/dotfiles"
 # to your current freelancing project
-  alias cdf="cd ~/Projects/Freelancing/no-smoking/website_code"
+  alias cdf="cd ~/Projects/Freelancing/Preferisa/website_code"
 # to your current practice site
   alias cdp="cd ~/Projects/practice-code/social_news"
 # to your typical rails setup folder
