@@ -25,3 +25,6 @@
 
 [push]
 	default = current
+
+[branch "master"]
+  mergeoptions = --no-ff
