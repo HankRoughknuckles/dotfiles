@@ -2,10 +2,6 @@
 	name = Thomas Morris
 	email = thomas.imorris@gmail.com
 
-[http]
-	#proxy = 168.219.61.252:8080
-	#sslVerify = false
-
 [alias]
 	g = grep --break --heading --line-number
   s = status
