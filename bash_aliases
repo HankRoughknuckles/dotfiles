@@ -18,20 +18,25 @@
   alias guo='git pull origin'
   alias g='git'
   alias gcb='git checkout -b'
+  alias gnb='git checkout -b' #think git new branch
   alias gcd='git checkout develop'
   alias gcm='git checkout master'
   alias gbd='git branch -d'
   alias gbD='git branch -D'
 
+# rails aliases
+  alias raro='rake routes'
+  alias mig='rake db:migrate'
+  alias migs='rake db:migrate:status'
 
-#heroku aliases
+# heroku aliases
   alias h='heroku'
 
 # Change directories
 # to the dotfiles directory
   alias cdd="cd ~/Dropbox/dotfiles"
 # to your current freelancing project
-  alias cdf="cd ~/Projects/Freelancing/Preferisa/website_code"
+  alias cdf="cd ~/Projects/Freelancing/no-smoking/website_code"
 # to your current practice site
   alias cdp="cd ~/Projects/practice-code/social_news"
 # to your typical rails setup folder
