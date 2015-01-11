@@ -16,7 +16,7 @@
     set t_Co=256        "set colors to 256
 
     set number          "show line number on side
-    set nornu           "make the line numbers be relative to cursor
+    set nornu           "don't make the line numbers be relative to cursor
     set mousehide       "hide mouse cursor while typing
     set showmode        "display the current mode
     set cursorline      "highlight the current line
@@ -194,14 +194,14 @@
 
   "Neocomplcache stuff
     " Disable AutoComplPop.
-    " let g:acp_enableAtStartup = 0
-    " " Use neocomplcache.
-    " let g:neocomplcache_enable_at_startup = 1
-    " " Use smartcase.
-    " let g:neocomplcache_enable_smart_case = 1
-    " " Set minimum syntax keyword length.
-    " let g:neocomplcache_min_syntax_length = 2
-    " let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*' 
+    let g:acp_enableAtStartup = 0
+    " Use neocomplcache.
+    let g:neocomplcache_enable_at_startup = 1
+    " Use smartcase.
+    let g:neocomplcache_enable_smart_case = 1
+    " Set minimum syntax keyword length.
+    let g:neocomplcache_min_syntax_length = 2
+    let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*' 
 
   " Ultisnips and YouCompleteMe stuff
     " Make YouCompleteMe work properly on tab
@@ -316,13 +316,9 @@
   "source .vimrc with <leader>sv (think: source vimrc)
     nnoremap <leader>sv :source<Space>$MYVIMRC<cr>
 
-  "open up TO-DO file for Andrada's project
-    nnoremap <leader>at :tab new<cr>:e 
-            \ ~/Desktop/TO-DO<cr>
-
   "make the default regex type to be Perl regex
     nnoremap / /\v
-    vnoremap ? ?\v
+    nnoremap ? ?\v
 
   "leader md will call the bash mkdir command
     nnoremap <leader>md :!mkdir 
