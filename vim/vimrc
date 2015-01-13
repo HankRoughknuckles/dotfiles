@@ -16,7 +16,7 @@
     set t_Co=256        "set colors to 256
 
     set number          "show line number on side
-    set nornu           "don't make the line numbers be relative to cursor
+    set rnu             "make the line numbers be relative to cursor
     set mousehide       "hide mouse cursor while typing
     set showmode        "display the current mode
     set cursorline      "highlight the current line
@@ -480,6 +480,9 @@
 
   " Use hard tab stops for make files
     autocmd FileType make set noexpandtab
+
+  " Always set relative number lines when any file is opened
+    autocmd BufRead,BufNewFile * set rnu
 
   " Automatically reload firefox when a front-end file is saved
     " autocmd BufWriteCmd *.html,*.css,*.scss,*.gtpl,*.js,*.coffee,*.coffee.erb :call Refresh_firefox()
