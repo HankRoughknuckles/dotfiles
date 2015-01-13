@@ -194,6 +194,8 @@
   "ack.vim stuff
     "call Ack-grep
       nnoremap <leader>ag :Ack<space>
+    "call Ack-grep on the current word
+      nnoremap <leader>aw "9yiw:Ack<space><C-r>9<CR>
 
   "Neocomplcache stuff
     " Disable AutoComplPop.
