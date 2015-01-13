@@ -37,9 +37,7 @@
   alias cdf="cd ~/Projects/Freelancing/no-smoking/website_code" # current freelancing project
   alias cdp="cd ~/Projects/practice-code/social_news" # current practice site
   alias cdt="cd ~/Projects/typical-rails_setup/" # typical rails setup folder
-  alias cdp="cd ~/Projects/practice-code/social_news" # to your current practice site
-# to your typical rails setup folder
-  alias cdt="cd ~/Projects/typical-rails_setup/"
+  alias cdw="cd ~/Work/" # typical rails setup folder
 
 #source bashrc 
   alias sb='source ~/.bashrc'
