@@ -474,6 +474,9 @@
         au FileType scss set ft=scss.css
     augroup END
 
+  " Filetype indentations
+    autocmd BufRead,BufNewFile *.brs,*.html set tabstop=4 | set softtabstop=4 | set shiftwidth=4
+
 
   " Automatically reload firefox when a front-end file is saved
     " autocmd BufWriteCmd *.html,*.css,*.scss,*.gtpl,*.js,*.coffee,*.coffee.erb :call Refresh_firefox()
