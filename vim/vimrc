@@ -478,7 +478,7 @@
 
   " Filetype indentations
     "4 space indentation, expandtab
-    autocmd BufRead,BufNewFile *.brs,*.html set tabstop=4 | set softtabstop=4 | set shiftwidth=4
+    autocmd BufRead,BufNewFile *.brs,*.html setlocal tabstop=4 | setlocal softtabstop=4 | setlocal shiftwidth=4
 
   " Use hard tab stops for make files
     autocmd FileType make set noexpandtab
