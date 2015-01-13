@@ -144,6 +144,9 @@
   "Ruby on Rails shortcuts and whatnot
   NeoBundle 'tpope/vim-rails.git'
 
+  "Brightscript syntax highlighting
+  NeoBundle 'chooh/brightscript.vim'
+
   "make ruby methods and blocks into text objects
     " NeoBundle 'nelstrom/vim-textobj-rubyblock'
 
