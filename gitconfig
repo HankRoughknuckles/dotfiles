@@ -22,7 +22,7 @@
 [core]
 	autocrlf = input
 	excludesfile = ~/.gitignore_global
-	editor = /usr/bin/vim
+	editor = vim
 
 [push]
 	default = current
