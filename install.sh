@@ -32,20 +32,20 @@
  echo "Moving any existing dotfiles from ~ to $olddir..."
  for file in $files; do
      echo "Creating symlink in the home directory to $file"
-     mv ~/.$file ~/dotfiles_old/
+     mv ~/.$file $olddir
      ln -s $dir/$file ~/.$file
  done
 
  # set up vim stuff
  echo "Creating vimrc symlink in the home directory to $vim_dir/$vimrc_name"
- mv ~/.$vimrc_name ~/dotfiles_old/
+ mv ~/.$vimrc_name $olddir
  ln -s $dir/$vim_dir/$vimrc_name ~/.$vimrc_name
 
  # set up vim snippets
    # for some reason, the snippets folder in the user's .vim directory
    # must be named "after"
  echo "Creating snippets symlink in .vim directory to $vim_dir/$snippet_dir_name"
- mv ~/.$vim_dir/after ~/dotfiles_old/
+ mv ~/.$vim_dir/after $olddir
  ln -s $dir/$vim_dir/$snippet_dir_name ~/.vim/after
  
  #set up colors
