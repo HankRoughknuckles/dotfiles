@@ -33,12 +33,11 @@
   alias h='heroku'
 
 # Change directories
-# to the dotfiles directory
-  alias cdd="cd ~/Dropbox/dotfiles"
-# to your current freelancing project
-  alias cdf="cd ~/Projects/Freelancing/no-smoking/website_code"
-# to your current practice site
-  alias cdp="cd ~/Projects/practice-code/social_news"
+  alias cdd="cd ~/Dropbox/dotfiles" # dotfiles directory
+  alias cdf="cd ~/Projects/Freelancing/no-smoking/website_code" # current freelancing project
+  alias cdp="cd ~/Projects/practice-code/social_news" # current practice site
+  alias cdt="cd ~/Projects/typical-rails_setup/" # typical rails setup folder
+  alias cdp="cd ~/Projects/practice-code/social_news" # to your current practice site
 # to your typical rails setup folder
   alias cdt="cd ~/Projects/typical-rails_setup/"
 
