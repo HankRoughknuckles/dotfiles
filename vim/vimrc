@@ -480,7 +480,10 @@
     "4 space indentation, expandtab
     autocmd BufRead,BufNewFile *.brs,*.html setlocal tabstop=4 | setlocal softtabstop=4 | setlocal shiftwidth=4
 
-  " Use hard tab stops for make files
+  " nowrap based on filetype
+    autocmd BufRead,BufNewFile *.brs,*.html setlocal nowrap
+
+  " Use hard tab stops for makefiles
     autocmd FileType make set noexpandtab
 
   " Always set relative number lines when any file is opened
