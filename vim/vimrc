@@ -440,6 +440,9 @@
     nnoremap <leader>aas :tab new<cr>:NERDTree 
              \ ~/.vim/UltiSnips<cr>
 
+    "run a make file install routine with <leader>mi
+    nnoremap <leader>mi :! make install<cr>
+
 "%%%%%%%%%%%%%%%%%%%%%%%%%    AUTOCOMMANDS    %%%%%%%%%%%%%%%%%%%%%%%%%%%%
   " PHP autocommands
     augroup filetype_php
