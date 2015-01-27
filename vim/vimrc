@@ -481,10 +481,10 @@
 
   " Filetype indentations
     "4 space indentation, expandtab
-    autocmd BufRead,BufNewFile *.brs,*.html setlocal tabstop=4 | setlocal softtabstop=4 | setlocal shiftwidth=4
+    autocmd BufRead,BufEnter,BufNewFile *.brs,*.html,*.xml setlocal tabstop=4 | setlocal softtabstop=4 | setlocal shiftwidth=4
 
   " nowrap based on filetype
-    autocmd BufRead,BufNewFile *.brs,*.html setlocal nowrap
+    autocmd BufRead,BufEnter,BufNewFile *.brs,*.html,*.xml setlocal nowrap
 
   " Use hard tab stops for makefiles
     autocmd FileType make set noexpandtab
