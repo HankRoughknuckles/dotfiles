@@ -113,4 +113,5 @@ PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 
-export ROKU_DEV_TARGET=10.0.1.73
+export ROKU_DEV_TARGET=172.16.66.229
+export DEVPASSWORD=rokudev
