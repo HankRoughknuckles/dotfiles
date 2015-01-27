@@ -433,7 +433,7 @@
     onoremap al' :<c-u>normal! F'hva'<cr>
     onoremap al" :<c-u>normal! F"hva"<cr>
 
-    "alter snippets for current file type with [leader]as
+    "alter snippets for current file type with <leader>as
     nnoremap <leader>as :UltiSnipsEdit<cr>
 
     "alter all snippets with [leader]aas
