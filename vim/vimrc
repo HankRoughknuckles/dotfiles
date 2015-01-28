@@ -478,21 +478,34 @@
         au FileType scss set ft=scss.css
     augroup END
 
-  " Filetype indentations
     "4 space indentation, expandtab
-    autocmd BufRead,BufEnter,BufNewFile *.brs,*.html,*.xml setlocal tabstop=4 | setlocal softtabstop=4 | setlocal shiftwidth=4
+    augroup 4_indent
+      autocmd!
+      autocmd BufRead,BufEnter,BufNewFile *.brs,*.html,*.xml setlocal tabstop=4 | setlocal softtabstop=4 | setlocal shiftwidth=4
+    augroup END
 
   " nowrap based on filetype
-    autocmd BufRead,BufEnter,BufNewFile *.brs,*.html,*.xml setlocal nowrap
+    augroup nowrap
+      autocmd!
+      autocmd BufRead,BufEnter,BufNewFile *.brs,*.html,*.xml setlocal nowrap
+    augroup END
 
   " Use hard tab stops for makefiles
-    autocmd FileType make set noexpandtab
+    augroup filetype_make
+      autocmd!
+      autocmd FileType make set noexpandtab
+    augroup END
 
   " Always set relative number lines when any file is opened
-    autocmd BufRead,BufNewFile * set rnu
+    augroup relative_number
+      autocmd!
+      autocmd BufRead,BufNewFile * set rnu
+    augroup END
 
   " Use spellcheck when in text files
-    autocmd BufRead,BufEnter,BufNewFile *.txt setlocal spell
+    augroup filetype_txt
+      autocmd BufRead,BufEnter,BufNewFile *.txt setlocal spell
+    augroup END
 
   " Automatically reload firefox when a front-end file is saved
     " autocmd BufWriteCmd *.html,*.css,*.scss,*.gtpl,*.js,*.coffee,*.coffee.erb :call Refresh_firefox()
