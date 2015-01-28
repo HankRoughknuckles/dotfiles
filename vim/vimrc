@@ -492,6 +492,9 @@
   " Always set relative number lines when any file is opened
     autocmd BufRead,BufNewFile * set rnu
 
+  " Use spellcheck when in text files
+    autocmd BufRead,BufEnter,BufNewFile *.txt setlocal spell
+
   " Automatically reload firefox when a front-end file is saved
     " autocmd BufWriteCmd *.html,*.css,*.scss,*.gtpl,*.js,*.coffee,*.coffee.erb :call Refresh_firefox()
     " function! Refresh_firefox()
