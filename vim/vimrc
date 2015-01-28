@@ -455,7 +455,6 @@
 
       "open up php SnipMate snippets file (alter snippets)
         autocmd FileType php nnoremap <buffer> <leader>as :tab new<cr>:e ~/.vim/after/snippets/php.snippets<cr>
-
     augroup END
 
 
