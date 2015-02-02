@@ -448,6 +448,7 @@
     augroup filetypes
       autocmd!
         au FileType scss set ft=scss.css
+        au BufNewFile,BufRead,BufEnter *.md set filetype=markdown
     augroup END
 
   " PHP autocommands
@@ -464,7 +465,7 @@
     augroup END
 
 
-  " RUBY autocommands
+  " Ruby autocommands
     augroup filetype_ruby
       autocmd!
       "make the currently typed word into a variable with <C-v>
