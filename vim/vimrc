@@ -444,6 +444,12 @@
     nnoremap <leader>mi :! make install<cr>
 
 "%%%%%%%%%%%%%%%%%%%%%%%%%    AUTOCOMMANDS    %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  " Filetype commands
+    augroup filetypes
+      autocmd!
+        au FileType scss set ft=scss.css
+    augroup END
+
   " PHP autocommands
     augroup filetype_php
       autocmd!
@@ -472,10 +478,9 @@
     augroup END
 
 
-  " Filetype commands
-    augroup filetypes
+    " Markdown autocommands
+    augroup filetype_md
       autocmd!
-        au FileType scss set ft=scss.css
     augroup END
 
     "4 space indentation, expandtab
