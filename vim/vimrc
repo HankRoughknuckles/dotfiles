@@ -482,6 +482,9 @@
     " Markdown autocommands
     augroup filetype_md
       autocmd!
+      " Change in/around header
+      autocmd Filetype markdown onoremap <buffer> ih :<c-u>execute "normal! ?^\[=-\]\\+$\r:nohlsearch\rkvg_"<cr>
+      autocmd Filetype markdown onoremap <buffer> ah :<c-u>execute "normal! ?^\[=-\]\\+$\r:nohlsearch\rg_vk0"<cr>
     augroup END
 
     "4 space indentation, expandtab
