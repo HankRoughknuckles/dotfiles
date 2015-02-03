@@ -465,56 +465,81 @@
     augroup END
 
 
-  " Ruby autocommands
-    augroup filetype_ruby
-      autocmd!
-      "make the currently typed word into a variable with <C-v>
-        autocmd FileType ruby inoremap <buffer> <C-v> #{}<Esc>i
+  " Ruby (*.rb) autocommands -------------------------{{{
+  augroup filetype_ruby
+    autocmd!
+    "make the currently typed word into a variable with <C-v>
+      autocmd FileType ruby inoremap <buffer> <C-v> #{}<Esc>i
 
-      "make the currently typed word into an attribute (@ in front)
-        autocmd FileType ruby inoremap <buffer> <C-b> <Esc>bi@<Esc>ea
+    "make the currently typed word into an attribute (@ in front)
+      autocmd FileType ruby inoremap <buffer> <C-b> <Esc>bi@<Esc>ea
 
-      "make the currently typed word into a symbol (: in front)
-        autocmd FileType ruby inoremap <buffer> <C-y> <Esc>bi:<Esc>ea
-    augroup END
+    "make the currently typed word into a symbol (: in front)
+      autocmd FileType ruby inoremap <buffer> <C-y> <Esc>bi:<Esc>ea
+  augroup END
+  "}}}
 
 
-    " Markdown autocommands
-    augroup filetype_md
-      autocmd!
-      " Change in/around header
-      autocmd Filetype markdown onoremap <buffer> ih :<c-u>execute "normal! ?^\[=-\]\\+$\r:nohlsearch\rkvg_"<cr>
-      autocmd Filetype markdown onoremap <buffer> ah :<c-u>execute "normal! ?^\[=-\]\\+$\r:nohlsearch\rg_vk0"<cr>
-    augroup END
+  " Markdown autocommands -------------------------{{{
+  augroup filetype_md
+    autocmd!
+    " Change in/around header
+    autocmd Filetype markdown onoremap <buffer> ih :<c-u>execute "normal! ?^\[=-\]\\+$\r:nohlsearch\rkvg_"<cr>
+    autocmd Filetype markdown onoremap <buffer> ah :<c-u>execute "normal! ?^\[=-\]\\+$\r:nohlsearch\rg_vk0"<cr>
+  augroup END
+  "}}}
 
-    "4 space indentation, expandtab
-    augroup 4_indent
-      autocmd!
-      autocmd BufRead,BufEnter,BufNewFile *.brs,*.html,*.xml setlocal tabstop=4 | setlocal softtabstop=4 | setlocal shiftwidth=4
-    augroup END
 
-  " nowrap based on filetype
-    augroup nowrap
-      autocmd!
-      autocmd BufRead,BufEnter,BufNewFile *.brs,*.html,*.xml setlocal nowrap
-    augroup END
+  " Textfile (.txt) file settings -------------------------{{{
+  "4 space indentation, expandtab
+  augroup 4_indent
+    autocmd!
+    autocmd BufRead,BufEnter,BufNewFile *.brs,*.html,*.xml setlocal tabstop=4 | setlocal softtabstop=4 | setlocal shiftwidth=4
+  augroup END
+  " }}}
 
-  " Use hard tab stops for makefiles
-    augroup filetype_make
-      autocmd!
-      autocmd FileType make set noexpandtab
-    augroup END
 
-  " Always set relative number lines when any file is opened
-    augroup relative_number
-      autocmd!
-      autocmd BufRead,BufNewFile * set rnu
-    augroup END
+  " nowrap based on filetype -------------------------{{{
+  augroup nowrap
+    autocmd!
+    autocmd BufRead,BufEnter,BufNewFile *.brs,*.html,*.xml setlocal nowrap
+  augroup END
+  " }}}
 
-  " Use spellcheck when in text files
-    augroup filetype_txt
-      autocmd BufRead,BufEnter,BufNewFile *.txt setlocal spell
-    augroup END
+
+  " Makefile settings -------------------------{{{
+  augroup filetype_make
+    autocmd!
+    " Use hard tab stops for makefiles
+    autocmd FileType make set noexpandtab
+  augroup END
+  " }}}
+
+
+  " Universal (*.*) file settings -------------------------{{{
+  augroup relative_number
+    autocmd!
+    " Always set relative number lines when any file is opened
+    autocmd BufRead,BufNewFile * set rnu
+  augroup END
+  " }}}
+
+
+  " Textfile (*.txt) file settings -------------------------{{{
+  augroup filetype_txt
+    autocmd!
+    " Use spellcheck when in text files
+    autocmd BufRead,BufEnter,BufNewFile *.txt setlocal spell
+  augroup END
+  " }}}
+
+
+  " Vimscript file settings -------------------------{{{
+  augroup filetype_vim
+    autocmd!
+    autocmd FileType vim setlocal foldmethod=marker
+  augroup END
+  " }}}
 
   " Automatically reload firefox when a front-end file is saved
     " autocmd BufWriteCmd *.html,*.css,*.scss,*.gtpl,*.js,*.coffee,*.coffee.erb :call Refresh_firefox()
