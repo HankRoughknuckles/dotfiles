@@ -7,62 +7,64 @@
   filetype off                   " required!
 
 
-"%%%%%%%%%%%%%%%%%%%%%%%%%   SET VARIABLES   %%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-  "Change leader key
-    let mapleader = "\<Space>"
+"Set variables-------------------------{{{
+"Change leader key
+  let mapleader = "\<Space>"
 
-  "Miscellaneous variables to set
-    set laststatus=2    "always show the status line
-    set t_Co=256        "set colors to 256
+"Miscellaneous variables to set
+set laststatus=2    "always show the status line
+set t_Co=256        "set colors to 256
 
-    set number          "show line number on side
-    set relativenumber  "make the line numbers be relative to cursor
-    set mousehide       "hide mouse cursor while typing
-    set showmode        "display the current mode
-    set cursorline      "highlight the current line
-    set hlsearch        "highlight search patterns
-    set visualbell      "no sounds
-    set ignorecase        "ignore case when search query is all lower-case
-    set smartcase         "switch to case sensitive searching if a capital
-                          "letter is present
-    set gdefault          "makes search/replace global by default
-    set backspace=2       "make backspace able to go over end of lines
-    set encoding=utf-8    "make encoding be unicode
-    set diffopt=vertical  "make vim diff vertical when using fugitive
-    set guifont=Consolas:h14  "set font in gvim (and macvim) to Consolas
-                              "size 14
+set number          "show line number on side
+set relativenumber  "make the line numbers be relative to cursor
+set mousehide       "hide mouse cursor while typing
+set showmode        "display the current mode
+set cursorline      "highlight the current line
+set hlsearch        "highlight search patterns
+set visualbell      "no sounds
+set ignorecase        "ignore case when search query is all lower-case
+set smartcase         "switch to case sensitive searching if a capital
+                      "letter is present
+set gdefault          "makes search/replace global by default
+set backspace=2       "make backspace able to go over end of lines
+set encoding=utf-8    "make encoding be unicode
+set diffopt=vertical  "make vim diff vertical when using fugitive
+set guifont=Consolas:h14  "set font in gvim (and macvim) to Consolas
+                          "size 14
 
-  "Code folding stuff
-    set foldmethod=indent   "fold based on indent
-    set foldnestmax=10      "deepest fold is 10 levels
-    set nofoldenable        "dont fold by default
-    set foldlevel=1         "this is just what i use
+"Code folding stuff
+set foldmethod=indent   "fold based on indent
+set foldnestmax=10      "deepest fold is 10 levels
+set nofoldenable        "dont fold by default
+set foldlevel=1         "this is just what i use
 
-  "Tabs and indenting
-    set tabstop=2       "will display all tabs in test as 2 spaces
-    set softtabstop=2   "make the indentation be the same as tabstop
-    set shiftwidth=2    "when indenting with >> and <<, make it
-                        "2 spaces
-    set expandtab       "make all tabs into spaces
-    set autoindent      
-    set smartindent
-    " set preserveindent  "keep same indent as the previous line when
-                        "making a new line
+"Tabs and indenting
+set tabstop=2       "will display all tabs in test as 2 spaces
+set softtabstop=2   "make the indentation be the same as tabstop
+set shiftwidth=2    "when indenting with >> and <<, make it
+                    "2 spaces
+set expandtab       "make all tabs into spaces
+set autoindent      
+set smartindent
+" set preserveindent  "keep same indent as the previous line when
+                    "making a new line
 
-  "Wrapping and text width options
-    set wrap
-    set textwidth=74
-    set formatoptions=qrn1
-    set colorcolumn=74
+"Wrapping and text width options
+set wrap
+set textwidth=74
+set formatoptions=qrn1
+set colorcolumn=74
 
-  "Make a horizontal line on the current line if in insert mode
-    augroup insert_mode
-      autocmd!
-      autocmd InsertEnter * set cul
-      autocmd InsertLeave * set nocul
-    augroup END
+"Make a horizontal line on the current line if in insert mode
+augroup insert_mode
+  autocmd!
+  autocmd InsertEnter * set cul
+  autocmd InsertLeave * set nocul
+augroup END
+"}}}
 
-"%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   VUNDLE   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+"NeoBundle Plugin Management-------------------------{{{
   " set rtp+=~/.vim/bundle/vundle/
   set runtimepath+=~/.vim/bundle/neobundle.vim/
 
@@ -162,96 +164,101 @@
    " If there are uninstalled bundles found on startup,
    " this will conveniently prompt you to install them.
    NeoBundleCheck
+   "}}}
 
-"%%%%%%%%%%%%%%%%%%%%   PLUGIN MAPPING AND CONFIG   %%%%%%%%%%%%%%%%%%%%% 
+
+"Mappings and Config for plugins ------------------------{{{
   "Fugitive commands
-    nnoremap <leader>ga :Git<space>commit<space>--amend<cr>
-    nnoremap <leader>gr :Gread<cr>
-    nnoremap <leader>gw :Gwrite<cr>
-    nnoremap <leader>gs :Gstatus<cr>
-    nnoremap <leader>gl :Glog<cr>
-    nnoremap <leader>gc :Gcommit -m ""<left>
-    nnoremap <leader>gd :Gdiff<cr>
-    nmap <leader>dp dp
-    vnoremap <leader>dp :diffput<cr>:diffupdate<cr>
-    nmap <leader>du :diffupdate<cr>
-    nnoremap <leader>gh :Gedit<space>HEAD<cr>
-    nnoremap <leader>ge :Gedit<cr>
+  nnoremap <leader>ga :Git<space>commit<space>--amend<cr>
+  nnoremap <leader>gr :Gread<cr>
+  nnoremap <leader>gw :Gwrite<cr>
+  nnoremap <leader>gs :Gstatus<cr>
+  nnoremap <leader>gl :Git log --graph --oneline<cr>
+  nnoremap <leader>gc :Gcommit -m ""<left>
+  nnoremap <leader>gd :Gdiff<cr>
+  nmap <leader>dp dp
+  vnoremap <leader>dp :diffput<cr>:diffupdate<cr>
+  nmap <leader>du :diffupdate<cr>
+  nnoremap <leader>gh :Gedit<space>HEAD<cr>
+  nnoremap <leader>ge :Gedit<cr>
 
   "ctrl-p commands
-    nnoremap <leader>f :CtrlPClearCache<cr>:CtrlP .<cr>
+  nnoremap <leader>f :CtrlPClearCache<cr>:CtrlP .<cr>
 
   "NERDTree
-    map <leader>n :NERDTreeToggle<CR>B
+  map <leader>n :NERDTreeToggle<CR>B
 
   "make vim-surround use lowercase s instead of capital
-    vmap s S
+  vmap s S
 
   "tComment stuff
-    "Press leader+c to comment instead of ctrl+_ ctrl+_
-      map <leader>c <c-_><c-_>
+  "Press leader+c to comment instead of ctrl+_ ctrl+_
+  map <leader>c <c-_><c-_>
 
   "ack.vim stuff
-    "call Ack-grep
-      nnoremap <leader>ag :Ack<space>-i<space>
-    "call Ack-grep on the current word
-      nnoremap <leader>aw "9yiw:Ack<space><C-r>9<CR>
+  "call Ack-grep
+  nnoremap <leader>ag :Ack<space>-i<space>""<left>
+  "call Ack-grep on the current word
+  nnoremap <leader>aw "9yiw:Ack<space>"<C-r>9"<CR>
 
   "Neocomplcache stuff
-    " Disable AutoComplPop.
-    let g:acp_enableAtStartup = 0
-    " Use neocomplcache.
-    let g:neocomplcache_enable_at_startup = 1
-    " Use smartcase.
-    let g:neocomplcache_enable_smart_case = 1
-    " Set minimum syntax keyword length.
-    let g:neocomplcache_min_syntax_length = 2
-    let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*' 
+  " Disable AutoComplPop.
+  let g:acp_enableAtStartup = 0
+  " Use neocomplcache.
+  let g:neocomplcache_enable_at_startup = 1
+  " Use smartcase.
+  let g:neocomplcache_enable_smart_case = 1
+  " Set minimum syntax keyword length.
+  let g:neocomplcache_min_syntax_length = 2
+  let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*' 
 
-  " Ultisnips and YouCompleteMe stuff
-    " Make YouCompleteMe work properly on tab
-      let g:ycm_key_list_select_completion = ['<C-TAB>', '<Down>']
-      let g:ycm_key_list_previous_completion = ['<C-S-TAB>', '<Up>']
-      let g:SuperTabDefaultCompletionType = '<C-Tab>'
+  " Make YouCompleteMe work properly on tab
+  let g:ycm_key_list_select_completion = ['<C-TAB>', '<Down>']
+  let g:ycm_key_list_previous_completion = ['<C-S-TAB>', '<Up>']
+  let g:SuperTabDefaultCompletionType = '<C-Tab>'
 
-    " Use tab/shift-tab to move to next trigger in Ultisnips
-     let g:UltiSnipsExpandTrigger="<tab>"
-     let g:UltiSnipsJumpForwardTrigger="<c-l>"
-     let g:UltiSnipsJumpBackwardTrigger="<c-h>"
+  " Use tab/shift-tab to move to next trigger in Ultisnips
+  let g:UltiSnipsExpandTrigger="<tab>"
+  let g:UltiSnipsJumpForwardTrigger="<c-l>"
+  let g:UltiSnipsJumpBackwardTrigger="<c-h>"
 
   "Send rspec commands through tslime to tmux
-    let g:rspec_command = 'call Send_to_Tmux("rspec --drb {spec}\n")'
-    map <Leader>rf :call RunCurrentSpecFile()<CR>
-    map <Leader>rn :call RunNearestSpec()<CR>
-    map <Leader>rl :call RunLastSpec()<CR>
-    map <Leader>ra :call RunAllSpecs()<CR>
+  let g:rspec_command = 'call Send_to_Tmux("bundle exec rspec --drb {spec}\n")'
+  map <Leader>rf :call RunCurrentSpecFile()<CR>
+  map <Leader>rn :call RunNearestSpec()<CR>
+  map <Leader>rl :call RunLastSpec()<CR>
+  map <Leader>ra :call RunAllSpecs()<CR>
 
   "Neosnippet stuff
-    "use the currently selected snippet by pressing tab
-    " imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-    "     \ "\<Plug>(neosnippet_expand_or_jump)"
-    "     \: pumvisible() ? "\<C-n>" : "\<TAB>"
-    " smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-    "     \ "\<Plug>(neosnippet_expand_or_jump)"
-    "     \: "\<TAB>"
+  "use the currently selected snippet by pressing tab
+  " imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+  "     \ "\<Plug>(neosnippet_expand_or_jump)"
+  "     \: pumvisible() ? "\<C-n>" : "\<TAB>"
+  " smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+  "     \ "\<Plug>(neosnippet_expand_or_jump)"
+  "     \: "\<TAB>"
 
 
   "Rails.vim shortcuts
-    noremap <leader>rc :Econtroller<CR>
-    noremap <leader>rv :Eview<CR>
-    noremap <leader>rj :Ejavascript<CR>
-    noremap <leader>rs :Estylesheet<CR>
-    vnoremap <leader>rx :Rextract 
+  noremap <leader>rc :Econtroller<CR>
+  noremap <leader>rv :Eview<CR>
+  noremap <leader>rj :Ejavascript<CR>
+  noremap <leader>rs :Estylesheet<CR>
+  vnoremap <leader>rx :Rextract 
+  "}}}
 
-"%%%%%%%%%%%%%%%%%%%%%%%%%%   COLOR SCHEMA   %%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+  "Color Schema -------------------------{{{
   syntax enable
   set background=dark
   let g:solarized_termolors=256 "For some reason, when this is
     " uncommented, sourcing the vimrc file while vim is running will make
     " the colors all screwy
   colorscheme solarized
+  "}}}
 
-"%%%%%%%%%%%%%%%%%%%%%%%%%%%   FUNCTIONS   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+  "Functions -------------------------{{{
   " Use Q to intelligently close a window 
   " (if there are multiple windows into the same buffer) or kill the
   " buffer entirely if it's the last window looking into that buffer
@@ -270,36 +277,39 @@
       bdelete
     endif
   endfunction
+  "}}}
 
 
-"%%%%%%%%%%%%%%%%%%%%%%%%%%%%   KEY MAPS   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  "Key maps -------------------------{{{
   "Set regular backspace during insert mode
   set backspace=indent,eol,start
 
-  "Tab stuff
-    "Switch between tabs using th and tj
-      nnoremap tk  :tabnext<CR>
-      nnoremap tj  :tabprev<CR>
-    "Go to first and last tabs with th and tl
-      nnoremap th  :tabfirst<CR>
-      nnoremap tl  :tablast<CR>
-    "Edit a tab with tt
-      nnoremap tt  :tabedit<Space>
-    "New tab with tn
-      nnoremap tn  :tabnew<Space>
-    "Move a tab to a different position in the tab list at the top
-      nnoremap tm  :tabm<Space>
-    "Close a tab with td
-      nnoremap td  :tabclose<CR>
+  "Tab stuff -------------------------{{{
+  "Switch between tabs using th and tj
+    nnoremap tk  :tabnext<CR>
+    nnoremap tj  :tabprev<CR>
+  "Go to first and last tabs with th and tl
+    nnoremap th  :tabfirst<CR>
+    nnoremap tl  :tablast<CR>
+  "Edit a tab with tt
+    nnoremap tt  :tabedit<Space>
+  "New tab with tn
+    nnoremap tn  :tabnew<Space>
+  "Move a tab to a different position in the tab list at the top
+    nnoremap tm  :tabm<Space>
+  "Close a tab with td
+    nnoremap td  :tabclose<CR>
+  "}}}
 
   "Save quicker with <leader>w - saves all buffers
     nnoremap <leader>w :wa<CR>
 
-  "Switch between windows in the same tab
+  "Switch between windows in the same tab -------------------------{{{
     nnoremap <silent> <C-h> <C-w>h
     nnoremap <silent> <C-j> <C-w>j
     nnoremap <silent> <C-l> <C-w>l
     nnoremap <silent> <C-k> <C-w>k
+  "}}}
 
   "make ctrl backspace delete the entire word when in insert mode
     inoremap <C-BS> <C-W>
@@ -392,46 +402,47 @@
     nnoremap <leader>p :set paste!<cr>
     vnoremap <leader>p :set paste!<cr>
 
-  "Operator for "in next ___" (___ can be (, ), {, }, [, ], ', or " )
-    onoremap in( :<c-u>normal! f(vi(<cr>
-    onoremap in) :<c-u>normal! f(vi(<cr>
-    onoremap in{ :<c-u>normal! f{vi{<cr>
-    onoremap in} :<c-u>normal! f{vi{<cr>
-    onoremap in[ :<c-u>normal! f[vi[<cr>
-    onoremap in] :<c-u>normal! f[vi[<cr>
-    onoremap in' :<c-u>normal! f'lvi'<cr>
-    onoremap in" :<c-u>normal! f"lvi"<cr>
+  "Operator for "in next ___" (___ can be (, ), {, }, [, ], ', or "" ) --------------{{{
+  onoremap in( :<c-u>normal! f(vi(<cr>
+  onoremap in) :<c-u>normal! f(vi(<cr>
+  onoremap in{ :<c-u>normal! f{vi{<cr>
+  onoremap in} :<c-u>normal! f{vi{<cr>
+  onoremap in[ :<c-u>normal! f[vi[<cr>
+  onoremap in] :<c-u>normal! f[vi[<cr>
+  onoremap in' :<c-u>normal! f'lvi'<cr>
+  onoremap in" :<c-u>normal! f"lvi"<cr>
 
   "in last ___
-    onoremap il( :<c-u>normal! F)vi(<cr>
-    onoremap il) :<c-u>normal! F)vi(<cr>
-    onoremap il{ :<c-u>normal! F}vi{<cr>
-    onoremap il} :<c-u>normal! F}vi{<cr>
-    onoremap il[ :<c-u>normal! F]vi[<cr>
-    onoremap il] :<c-u>normal! F]vi[<cr>
-    onoremap il' :<c-u>normal! F'hvi'<cr>
-    onoremap il" :<c-u>normal! F"hvi"<cr>
+  onoremap il( :<c-u>normal! F)vi(<cr>
+  onoremap il) :<c-u>normal! F)vi(<cr>
+  onoremap il{ :<c-u>normal! F}vi{<cr>
+  onoremap il} :<c-u>normal! F}vi{<cr>
+  onoremap il[ :<c-u>normal! F]vi[<cr>
+  onoremap il] :<c-u>normal! F]vi[<cr>
+  onoremap il' :<c-u>normal! F'hvi'<cr>
+  onoremap il" :<c-u>normal! F"hvi"<cr>
 
   "around next ___
-    onoremap an( :<c-u>normal! f(va(<cr>
-    onoremap an) :<c-u>normal! f(va(<cr>
-    onoremap an{ :<c-u>normal! f{va{<cr>
-    onoremap an} :<c-u>normal! f{va{<cr>
-    onoremap an[ :<c-u>normal! f[va[<cr>
-    onoremap an] :<c-u>normal! f[va[<cr>
-    onoremap an] :<c-u>normal! f[va[<cr>
-    onoremap an' :<c-u>normal! f'lva'<cr>
-    onoremap an" :<c-u>normal! f"lva"<cr>
+  onoremap an( :<c-u>normal! f(va(<cr>
+  onoremap an) :<c-u>normal! f(va(<cr>
+  onoremap an{ :<c-u>normal! f{va{<cr>
+  onoremap an} :<c-u>normal! f{va{<cr>
+  onoremap an[ :<c-u>normal! f[va[<cr>
+  onoremap an] :<c-u>normal! f[va[<cr>
+  onoremap an] :<c-u>normal! f[va[<cr>
+  onoremap an' :<c-u>normal! f'lva'<cr>
+  onoremap an" :<c-u>normal! f"lva"<cr>
 
   "around last ___
-    onoremap al( :<c-u>normal! F)va(<cr>
-    onoremap al) :<c-u>normal! F)va(<cr>
-    onoremap al{ :<c-u>normal! F}va{<cr>
-    onoremap al} :<c-u>normal! F}va{<cr>
-    onoremap al[ :<c-u>normal! F]va[<cr>
-    onoremap al] :<c-u>normal! F]va[<cr>
-    onoremap al' :<c-u>normal! F'hva'<cr>
-    onoremap al" :<c-u>normal! F"hva"<cr>
+  onoremap al( :<c-u>normal! F)va(<cr>
+  onoremap al) :<c-u>normal! F)va(<cr>
+  onoremap al{ :<c-u>normal! F}va{<cr>
+  onoremap al} :<c-u>normal! F}va{<cr>
+  onoremap al[ :<c-u>normal! F]va[<cr>
+  onoremap al] :<c-u>normal! F]va[<cr>
+  onoremap al' :<c-u>normal! F'hva'<cr>
+  onoremap al" :<c-u>normal! F"hva"<cr>
+  "}}}
 
     "alter snippets for current file type with <leader>as
     nnoremap <leader>as :UltiSnipsEdit<cr>
@@ -442,27 +453,31 @@
 
     "run a make file install routine with <leader>mi
     nnoremap <leader>mi :! make install<cr>
+    "}}}
 
-"%%%%%%%%%%%%%%%%%%%%%%%%%    AUTOCOMMANDS    %%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  " Filetype commands
-    augroup filetypes
-      autocmd!
-        au FileType scss set ft=scss.css
-        au BufNewFile,BufRead,BufEnter *.md set filetype=markdown
-    augroup END
 
-  " PHP autocommands
-    augroup filetype_php
-      autocmd!
-      "make the currently typed word into a variable with <C-v>
-        autocmd FileType php inoremap <buffer> <C-v> <Esc>bi$<Esc>ea
-        
-      "insert $this with <C-t> (when in a PHP file)
-        autocmd FileType php inoremap <buffer> <C-t> $this
+  " Filetype commands -------------------------{{{
+  augroup filetypes
+    autocmd!
+      au FileType scss set ft=scss.css
+      au BufNewFile,BufRead,BufEnter *.md set filetype=markdown
+  augroup END
+  "}}}
 
-      "open up php SnipMate snippets file (alter snippets)
-        autocmd FileType php nnoremap <buffer> <leader>as :tab new<cr>:e ~/.vim/after/snippets/php.snippets<cr>
-    augroup END
+
+  " PHP (*.php) autocommands -------------------------{{{
+  augroup filetype_php
+    autocmd!
+    "make the currently typed word into a variable with <C-v>
+      autocmd FileType php inoremap <buffer> <C-v> <Esc>bi$<Esc>ea
+      
+    "insert $this with <C-t> (when in a PHP file)
+      autocmd FileType php inoremap <buffer> <C-t> $this
+
+    "open up php SnipMate snippets file (alter snippets)
+      autocmd FileType php nnoremap <buffer> <leader>as :tab new<cr>:e ~/.vim/after/snippets/php.snippets<cr>
+  augroup END
+  "}}}
 
 
   " Ruby (*.rb) autocommands -------------------------{{{
