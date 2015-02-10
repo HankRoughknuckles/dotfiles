@@ -445,20 +445,20 @@ augroup END
   onoremap al" :<c-u>normal! F"hva"<cr>
   "}}}
 
-    "alter snippets for current file type with <leader>as
-    nnoremap <leader>as :UltiSnipsEdit<cr>
+  "alter snippets for current file type with <leader>as
+  nnoremap <leader>as :UltiSnipsEdit<cr>
 
-    "alter all snippets with [leader]aas
-    nnoremap <leader>aas :tab new<cr>:NERDTree 
-             \ ~/.vim/UltiSnips<cr>
+  "alter all snippets with [leader]aas
+  nnoremap <leader>aas :tab new<cr>:NERDTree 
+           \ ~/.vim/UltiSnips<cr>
 
-    "run a make file install routine with <leader>mi
-    nnoremap <leader>mi :! make install<cr>
+  "run a make file install routine with <leader>mi
+  nnoremap <leader>mi :! make install<cr>
 
-    "search for the currently highlighted text inside the file
-    vnoremap * "9y/<C-r>9<CR>
-    vnoremap # "9y?<C-r>9<CR>
-    "}}}
+  "search for the currently highlighted text inside the file
+  vnoremap * "9y/<C-r>9<CR>
+  vnoremap # "9y?<C-r>9<CR>
+  "}}}
 
 
   " Filetype commands -------------------------{{{
