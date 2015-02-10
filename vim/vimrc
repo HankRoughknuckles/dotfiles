@@ -454,6 +454,10 @@ augroup END
 
     "run a make file install routine with <leader>mi
     nnoremap <leader>mi :! make install<cr>
+
+    "search for the currently highlighted text inside the file
+    vnoremap * "9y/<C-r>9<CR>
+    vnoremap # "9y?<C-r>9<CR>
     "}}}
 
 
