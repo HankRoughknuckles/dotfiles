@@ -3,13 +3,13 @@
 "                               .vimrc                          
 "
 "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  set nocompatible               " be iMproved
-  filetype off                   " required!
+set nocompatible               " be iMproved
+filetype off                   " required!
 
 
 "Set variables-------------------------{{{
 "Change leader key
-  let mapleader = "\<Space>"
+let mapleader = "\<Space>"
 
 "Miscellaneous variables to set
 set laststatus=2    "always show the status line
@@ -224,7 +224,7 @@ augroup END
   let g:UltiSnipsJumpBackwardTrigger="<c-h>"
 
   "Send rspec commands through tslime to tmux
-  let g:rspec_command = 'call Send_to_Tmux("bundle exec rspec --drb {spec}\n")'
+  let g:rspec_command = 'call Send_to_Tmux("bin/rspec {spec}\n")'
   map <Leader>rf :call RunCurrentSpecFile()<CR>
   map <Leader>rn :call RunNearestSpec()<CR>
   map <Leader>rl :call RunLastSpec()<CR>
