@@ -284,6 +284,11 @@ augroup END
       bdelete
     endif
   endfunction
+
+  " Execute terminal commands and other stuff silently
+  command! -nargs=1 Silent
+  \ | execute ':silent !'.<q-args>
+  \ | execute ':redraw!'
   "}}}
 
 
