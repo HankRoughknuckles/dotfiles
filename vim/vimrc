@@ -150,6 +150,9 @@ augroup END
   "Brightscript syntax highlighting
   NeoBundle 'chooh/brightscript.vim'
 
+  " View your tags easily
+  NeoBundle 'https://github.com/majutsushi/tagbar'
+
   "make ruby methods and blocks into text objects
     " NeoBundle 'nelstrom/vim-textobj-rubyblock'
 
@@ -246,6 +249,9 @@ augroup END
   noremap <leader>rj :Ejavascript<CR>
   noremap <leader>rs :Estylesheet<CR>
   vnoremap <leader>rx :Rextract 
+
+  "Tagbar
+  nnoremap <leader>b :TagbarToggle<CR>
   "}}}
 
 
