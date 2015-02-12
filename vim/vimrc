@@ -188,6 +188,7 @@ augroup END
 
   "ctrl-p commands
   nnoremap <leader>f :CtrlPClearCache<cr>:CtrlP .<cr>
+  nnoremap <leader>. :CtrlPTag<cr>
 
   "NERDTree
   map <leader>n :NERDTreeToggle<CR>B
@@ -469,6 +470,9 @@ augroup END
   "search for the currently highlighted text inside the file
   vnoremap * "9y/<C-r>9<CR>
   vnoremap # "9y?<C-r>9<CR>
+
+  " [Tag refresh] - run ctags to update the... well... ctags
+  nnoremap <leader>tr :Silent !ctags -R .<cr>
   "}}}
 
 
