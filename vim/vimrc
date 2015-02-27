@@ -472,7 +472,7 @@ augroup END
   vnoremap # "9y?<C-r>9<CR>
 
   " [Tag refresh] - run ctags to update the... well... ctags
-  nnoremap <leader>tr :Silent !ctags -R .<cr>
+  nnoremap <leader>tr :!ctags -R .<cr>
   "}}}
 
 
