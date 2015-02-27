@@ -1,6 +1,6 @@
 [user]
 	name = Thomas Morris
-	email = thomas.imorris@gmail.com
+	email = thomas.morris@3pillarglobal.com
 
 [alias]
 	g = grep --break --heading --line-number
@@ -9,11 +9,12 @@
   b = branch
   c = checkout
   df = diff
+  r = rebase
+  ri = rebase -i
   l = log 
   lp = log -p
-	lg = log --graph --oneline
+	lg = log --graph --oneline --decorate
 	today = !git log --since=midnight --author=\"$(git config user.name)\" --oneline
-  m = merge --no-ff
 
 [color]
 	status = auto
