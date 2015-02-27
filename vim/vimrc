@@ -339,7 +339,7 @@ augroup END
     nnoremap <leader>v V`]
 
   "open up .vimrc with <leader>av (think: alter vimrc)
-    nnoremap <leader>av :tab new<cr>:e $MYVIMRC<cr>
+    nnoremap <leader>av :tabnew $MYVIMRC<cr>
 
   "source .vimrc with <leader>sv (think: source vimrc)
     nnoremap <leader>sv :source<Space>$MYVIMRC<cr>
