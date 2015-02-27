@@ -569,6 +569,15 @@ augroup END
   " }}}
 
 
+  " Brightscript (*.brs) file settings -------------------------{{{
+  augroup filetype_brs
+    autocmd!
+    " Set a custom comment string for brightscript
+    autocmd BufRead,BufEnter,BufNewFile *.brs setlocal commentstring='%s
+  augroup END
+  " }}}
+
+
   " Vimscript file settings -------------------------{{{
   augroup filetype_vim
     autocmd!
