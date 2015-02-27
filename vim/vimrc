@@ -178,7 +178,7 @@ augroup END
   nnoremap <leader>gw :Gwrite<cr>
   nnoremap <leader>gs :Gstatus<cr>
   nnoremap <leader>gl :Git log --graph --oneline<cr>
-  nnoremap <leader>gc :Gcommit -m ""<left>
+  nnoremap <leader>gc :Gcommit<cr>I
   nnoremap <leader>gd :Gdiff<cr>
   nmap <leader>dp dp
   vnoremap <leader>dp :diffput<cr>:diffupdate<cr>
