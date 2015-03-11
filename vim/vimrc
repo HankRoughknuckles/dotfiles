@@ -66,16 +66,12 @@ augroup END
 
 
 "NeoBundle Plugin Management-------------------------{{{
-  " set rtp+=~/.vim/bundle/vundle/
   set runtimepath+=~/.vim/bundle/neobundle.vim/
 
   call neobundle#begin(expand('~/.vim/bundle/'))
   " Let NeoBundle manage NeoBundle
   " Required:
   NeoBundleFetch 'Shougo/neobundle.vim'
-
-  "call vundle#rc() " let Vundle manage Vundle - required! 
-  " NeoBundle 'gmarik/vundle'
 
   " Git integration with fugitive
   NeoBundle 'tpope/vim-fugitive'
@@ -177,14 +173,20 @@ augroup END
   nnoremap <leader>gr :Gread<cr>
   nnoremap <leader>gw :Gwrite<cr>
   nnoremap <leader>gs :Gstatus<cr>
-  nnoremap <leader>gl :Git log --graph --oneline<cr>
-  nnoremap <leader>gc :Gcommit<cr>I
+  nnoremap <leader>gl :Git log --graph --oneline --decorate<cr>
+  nnoremap <leader>gcc :Gcommit<cr>I
+  nnoremap <leader>gcb :Git checkout -b<space>
+  nnoremap <leader>gb :Git branch<cr>
+  nnoremap <leader>ge :Git branch -d<space>
+  nnoremap <leader>gE :Git branch -D<space>
+  nnoremap <leader>go :Git checkout<space>
   nnoremap <leader>gd :Gdiff<cr>
-  nmap <leader>dp dp
+  nnoremap <leader>dp :diffput<cr>:diffupdate<cr>
   vnoremap <leader>dp :diffput<cr>:diffupdate<cr>
-  nmap <leader>du :diffupdate<cr>
+  nnoremap <leader>do :diffget<cr>:diffupdate<cr>
+  vnoremap <leader>do :diffget<cr>:diffupdate<cr>
+  nnoremap <leader>du :diffupdate<cr>
   nnoremap <leader>gh :Gedit<space>HEAD<cr>
-  nnoremap <leader>ge :Gedit<cr>
 
   "ctrl-p commands
   nnoremap <leader>f :CtrlPClearCache<cr>:CtrlP .<cr>
@@ -416,8 +418,8 @@ augroup END
     vnoremap <leader>p :set paste!<cr>
 
   "Operator for "in next ___" (___ can be (, ), {, }, [, ], ', or "" ) --------------{{{
-  onoremap in( :<c-u>normal! f(vi(<cr>
-  onoremap in) :<c-u>normal! f(vi(<cr>
+  onoremap in( :<c-u>normal! f(vi(<cr>  
+  onoremap in) :<c-u>normal! f(vi(<cr> 
   onoremap in{ :<c-u>normal! f{vi{<cr>
   onoremap in} :<c-u>normal! f{vi{<cr>
   onoremap in[ :<c-u>normal! f[vi[<cr>
