@@ -29,6 +29,7 @@ set smartcase         "switch to case sensitive searching if a capital
 set gdefault          "makes search/replace global by default
 set backspace=2       "make backspace able to go over end of lines
 set encoding=utf-8    "make encoding be unicode
+set incsearch         "show preview of search results when using / and ?
 set diffopt=vertical  "make vim diff vertical when using fugitive
 set guifont=Consolas:h14  "set font in gvim (and macvim) to Consolas
                           "size 14
