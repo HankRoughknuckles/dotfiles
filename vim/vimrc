@@ -77,6 +77,9 @@ augroup END
   " Git integration with fugitive
   NeoBundle 'tpope/vim-fugitive'
 
+  " Global search and replace
+  NeoBundle 'yegappan/greplace'
+
   " Autocompletion
   NeoBundle 'Valloric/YouCompleteMe'
 
