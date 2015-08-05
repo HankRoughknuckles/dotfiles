@@ -26,8 +26,10 @@
 
 # rails aliases
   alias raro='rake routes'
-  alias mig='rake db:migrate'
-  alias migs='rake db:migrate:status'
+  alias rap='rake assets:precompile'
+  alias mig='bundle exec rake db:migrate'
+  alias miga='bundle exec rake db:migrate ; bundle exec rake db:migrate test'
+  alias migsa='bundle exec rake db:migrate:status ; bundle exec rake db:migrate:status test'
 
 # heroku aliases
   alias h='heroku'
