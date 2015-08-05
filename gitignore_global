@@ -24,3 +24,6 @@ Thumbs.db
 
 #tags files
 tags
+
+#dropbox files
+.dropbox
