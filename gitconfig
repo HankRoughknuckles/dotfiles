@@ -7,6 +7,8 @@
   s = status
   com = commit
   b = branch
+  bd = branch -d
+  bD = branch -D
   c = checkout
   df = diff
   r = rebase
