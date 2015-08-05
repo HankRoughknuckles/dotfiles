@@ -573,6 +573,13 @@ augroup END
     " Always set relative number lines when any file is opened
     autocmd BufRead,BufNewFile * set rnu
   augroup END
+
+  augroup no_auto_comment
+    " Don't allow auto commenting (when you're on a commented line and
+    " press 'Enter', this will make sure that the next line is not
+    " commented)
+    autocmd FileType * setlocal formatoptions-=cro
+  augroup END
   " }}}
 
 
@@ -602,15 +609,15 @@ augroup END
   " }}}
 
   " Automatically reload firefox when a front-end file is saved
-    " autocmd BufWriteCmd *.html,*.css,*.scss,*.gtpl,*.js,*.coffee,*.coffee.erb :call Refresh_firefox()
-    " function! Refresh_firefox()
-    "   if &modified
-    "     write
-    "     silent !echo  'vimYo = content.window.pageYOffset;
-    "           \ vimXo = content.window.pageXOffset;
-    "           \ BrowserReload();
-    "           \ content.window.scrollTo(vimXo,vimYo);
-    "           \ repl.quit();'  |
-    "           \ nc -w 1 localhost 4242 2>&1 > /dev/null
-    "   endif
-    " endfunction
+    autocmd BufWriteCmd *.html,*.css,*.scss,*.gtpl,*.js,*.coffee,*.coffee.erb :call Refresh_firefox()
+    function! Refresh_firefox()
+      if &modified
+        write
+        silent !echo  'vimYo = content.window.pageYOffset;
+              \ vimXo = content.window.pageXOffset;
+              \ BrowserReload();
+              \ content.window.scrollTo(vimXo,vimYo);
+              \ repl.quit();'  |
+              \ nc -w 1 localhost 4242 2>&1 > /dev/null
+      endif
+    endfunction
