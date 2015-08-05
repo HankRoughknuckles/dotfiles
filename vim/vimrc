@@ -469,6 +469,10 @@ augroup END
   onoremap al" :<c-u>normal! F"hva"<cr>
   "}}}
 
+  " open up the command menu easier
+  nnoremap <leader>; :
+  nnoremap <leader>1 :!<Space>
+
   "alter snippets for current file type with <leader>as
   nnoremap <leader>as :UltiSnipsEdit<cr>
 
