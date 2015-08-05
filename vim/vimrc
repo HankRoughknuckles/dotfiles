@@ -213,6 +213,7 @@ augroup END
   "call Ack-grep on the current word
   nnoremap <leader>aw "9yiw:Ack<space>"<C-r>9"<CR>
 
+
   "Neocomplcache stuff
   " Disable AutoComplPop.
   let g:acp_enableAtStartup = 0
@@ -249,6 +250,10 @@ augroup END
   " smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
   "     \ "\<Plug>(neosnippet_expand_or_jump)"
   "     \: "\<TAB>"
+
+  "Airline stuff
+  let g:airline_powerline_fonts = 1
+  let g:airline#extensions#tabline#enabled = 1
 
 
   "Rails.vim shortcuts
