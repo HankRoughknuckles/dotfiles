@@ -57,3 +57,6 @@
  echo "Installing snippets for vim"
  ./install-snippets.sh
  echo "finished installing snippets"
+
+ # install tmux settings
+ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
