@@ -1,3 +1,6 @@
+#Open zshrc easier
+  alias zshconfig="vim ~/.zshrc"
+
 #Quicker ls
   alias ll='ls -alF'
   alias la='ls -A'
