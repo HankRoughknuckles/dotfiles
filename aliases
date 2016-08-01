@@ -42,10 +42,10 @@
 
 # Change directories
   alias cdd="cd ~/Dropbox/dotfiles" # dotfiles directory
-  alias cdf="cd ~/Projects/Freelancing/no-smoking/website_code" # current freelancing project
+  alias cdf="cd ~/Projects/Freelancing/no-smoking/website_code" # freelancing project
   alias cdp="cd ~/Projects/validate_me/proto" # current practice site
   alias cdt="cd ~/Projects/typical-rails_setup/" # typical rails setup folder
-  alias cdw="cd ~/Work/Roku/PBS-ga-roku" # work folder
+  alias cdw="cd ~/Work/Course-Maven/dualenroll-dev" # work folder
 
 #source bashrc 
   alias sb='source ~/.bashrc'
