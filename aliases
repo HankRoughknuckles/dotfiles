@@ -7,8 +7,8 @@
   alias ~="cd ~"
 
 #Rails aliases
-  #rails server
-    alias ras='rails server'
+  alias ras='bundle exec rails server'
+  alias rac='bundle exec rails console'
 
 #git aliases
   alias gpom='git push origin master'
@@ -23,6 +23,9 @@
   alias gcm='git checkout master'
   alias gbd='git branch -d'
   alias gbD='git branch -D'
+
+# bundle exec
+  alias be='bundle exec'
 
 # rails aliases
   alias raro='rake routes'
@@ -43,3 +46,14 @@
 
 #source bashrc 
   alias sb='source ~/.bashrc'
+  alias sz='source ~/.zshrc'
+
+# Cover my meds aliases
+  alias rxi='cd ~/vagrant/code/rxintake'
+  alias rxs='cd ~/vagrant/code/rxservice'
+  alias atlas='cd ~/vagrant/code/atlas'
+  alias cmm='cd ~/vagrant/code/cmm'
+  alias res='touch tmp/restart.txt'
+
+# tmux attach
+  alias tmuxa='tmux a -t '
