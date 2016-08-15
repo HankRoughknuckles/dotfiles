@@ -218,6 +218,7 @@ augroup END
   map <leader>c <c-_><c-_>
 
   "ack.vim stuff
+  let g:ackprg = "ag"
   "call Ack-grep
   nnoremap <leader>ag :Ack<space>-i<space>""<left>
   "call Ack-grep on the current word
