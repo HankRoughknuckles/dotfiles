@@ -135,6 +135,9 @@ augroup END
   "Multiple cursors like in Sublime Text
   NeoBundle 'https://github.com/terryma/vim-multiple-cursors.git'
 
+  " Syntax highlighting for slim language
+  NeoBundle 'slim-template/vim-slim.git'
+
   "Run rspec tests from inside vim
   NeoBundle 'thoughtbot/vim-rspec'
 
