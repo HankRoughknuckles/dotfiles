@@ -119,6 +119,9 @@ augroup END
   NeoBundle 'SirVer/ultisnips'
   NeoBundle 'honza/vim-snippets'
 
+  " Syntax checking
+  NeoBundle 'scrooloose/syntastic'
+
   NeoBundle 'tpope/vim-endwise' "automatically put end after blocks in ruby
 
   
