@@ -54,9 +54,9 @@ set smartindent
 
 "Wrapping and text width options
 set wrap
-set textwidth=74
+set textwidth=80
 set formatoptions=qrn1
-set colorcolumn=74
+set colorcolumn=80
 
 "Make a horizontal line on the current line if in insert mode
 augroup insert_mode
