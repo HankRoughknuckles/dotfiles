@@ -22,3 +22,9 @@ export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
 if [ -f ~/.git-completion.bash ]; then
   . ~/.git-completion.bash
 fi
+
+# Ensure that we add our private key to ssh-agent on boot
+ssh-add -L &> /dev/null
+if [ $? -eq 1 ]; then
+ssh-add
+fi
