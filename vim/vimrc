@@ -205,6 +205,7 @@ augroup END
   "ctrl-p commands
   nnoremap <leader>f :CtrlPClearCache<cr>:CtrlP .<cr>
   nnoremap <leader>. :CtrlPTag<cr>
+  let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 
   "NERDTree
   map <leader>n :NERDTreeToggle<CR>B
