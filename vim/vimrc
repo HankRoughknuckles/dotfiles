@@ -185,7 +185,10 @@ augroup END
   nnoremap <leader>gs :Gstatus<cr>
   nnoremap <leader>gl :Git log --graph --oneline --decorate<cr>
   nnoremap <leader>gcc :Gcommit<cr>I
+  nnoremap <leader>g. :Git add .<cr>:Gcommit<cr>I
   nnoremap <leader>gcb :Git checkout -b<space>
+  nnoremap <leader>gpo :Git push origin<space>
+  nnoremap <leader>guo :Git pull origin<space>
   nnoremap <leader>gb :Git branch<cr>
   nnoremap <leader>ge :Git branch -d<space>
   nnoremap <leader>gE :Git branch -D<space>
