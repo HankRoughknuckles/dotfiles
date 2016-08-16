@@ -374,14 +374,14 @@ augroup END
     nnoremap / /\v
     nnoremap ? ?\v
 
-  "leader md will call the bash mkdir command
-    nnoremap <leader>md :!mkdir 
+  "leader md will call the bash mkdir command, think: terminal md
+    nnoremap <leader>tmd :!mkdir 
 
-  "leader mv will call the bash mv command
-    nnoremap <leader>mv :!mv 
+  "leader mv will call the bash mv command, think: terminal mv
+    nnoremap <leader>tmv :!mv 
 
-  "leader rm will call the bash command rm 
-    nnoremap <leader>rm :!rm<space>
+  "leader rm will call the bash command rm, think: terminal rm
+    nnoremap <leader>trm :!rm<space>
 
   "get rid of search results
     nnoremap <leader>, :noh<cr>   
