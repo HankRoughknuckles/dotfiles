@@ -153,8 +153,10 @@ augroup END
   " Repeat even complex functions with .
   NeoBundle 'tpope/vim-repeat'
 
-  " vim-scripts repos
-    "Bundle 'L9'
+  " Make ruby blocks into text objects (vir, var, dar, etc.)
+  NeoBundle 'kana/vim-textobj-user' " this is a dependency
+  runtime macros/matchit.vim
+  NeoBundle 'nelstrom/vim-textobj-rubyblock'
 
   " git repos on your local machine (ie. when wrking on yr own plugin)
     "Bundle 'file:///Users/gmarik/path/to/plugin'
