@@ -238,8 +238,11 @@ augroup END
 
 
   "Rails.vim shortcuts
-  noremap <leader>rc :Econtroller<CR>
+  " leader rt is for tests, see :help rails and search alternate for details
+  nnoremap <leader>rt :A<CR> 
+  nnoremap <leader>rm :Emodel<CR>
   noremap <leader>rv :Eview<CR>
+  noremap <leader>rc :Econtroller<CR>
   noremap <leader>rj :Ejavascript<CR>
   noremap <leader>rs :Estylesheet<CR>
   vnoremap <leader>rx :Rextract 
