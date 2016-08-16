@@ -49,8 +49,6 @@ set shiftwidth=2    "when indenting with >> and <<, make it
 set expandtab       "make all tabs into spaces
 set autoindent      
 set smartindent
-" set preserveindent  "keep same indent as the previous line when
-                    "making a new line
 
 "Wrapping and text width options
 set wrap
@@ -113,10 +111,6 @@ augroup END
   "Coffeescript integration and syntax highlighting
   NeoBundle 'kchmck/vim-coffee-script'
 
-  " NeoBundle 'Shougo/neocomplcache.vim'
-  " NeoBundle 'Shougo/neosnippet'
-  " NeoBundle 'Shougo/neosnippet-snippets'
-
   NeoBundle 'SirVer/ultisnips'
   NeoBundle 'honza/vim-snippets'
 
@@ -126,10 +120,6 @@ augroup END
   NeoBundle 'tpope/vim-endwise' "automatically put end after blocks in ruby
 
   
-  " NeoBundle "MarcWeber/vim-addon-mw-utils"
-  " Bundle "tomtom/tlib_vim"
-  " " Bundle "nipmate-snippets"
-  "
   " "Use ack to search files from Vim
   NeoBundle 'mileszs/ack.vim'
 
@@ -225,18 +215,6 @@ augroup END
   "call Ack-grep on the current word
   nnoremap <leader>aw "9yiw:Ack<space>"<C-r>9"<CR>
 
-
-  "Neocomplcache stuff
-  " Disable AutoComplPop.
-  let g:acp_enableAtStartup = 0
-  " Use neocomplcache.
-  let g:neocomplcache_enable_at_startup = 1
-  " Use smartcase.
-  let g:neocomplcache_enable_smart_case = 1
-  " Set minimum syntax keyword length.
-  let g:neocomplcache_min_syntax_length = 2
-  let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*' 
-
   " Make YouCompleteMe work properly on tab
   let g:ycm_key_list_select_completion = ['<C-TAB>', '<Down>']
   let g:ycm_key_list_previous_completion = ['<C-S-TAB>', '<Up>']
@@ -253,16 +231,6 @@ augroup END
   map <Leader>rn :call RunNearestSpec()<CR>
   map <Leader>rl :call RunLastSpec()<CR>
   map <Leader>ra :call RunAllSpecs()<CR>
-
-  "Neosnippet stuff
-  "use the currently selected snippet by pressing tab
-  " imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-  "     \ "\<Plug>(neosnippet_expand_or_jump)"
-  "     \: pumvisible() ? "\<C-n>" : "\<TAB>"
-  " smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-  "     \ "\<Plug>(neosnippet_expand_or_jump)"
-  "     \: "\<TAB>"
-
 
   "Airline stuff
   let g:airline_powerline_fonts = 1
