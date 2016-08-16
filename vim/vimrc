@@ -150,8 +150,8 @@ augroup END
   " View your tags easily
   NeoBundle 'https://github.com/majutsushi/tagbar'
 
-  "make ruby methods and blocks into text objects
-    " NeoBundle 'nelstrom/vim-textobj-rubyblock'
+  " Repeat even complex functions with .
+  NeoBundle 'tpope/vim-repeat'
 
   " vim-scripts repos
     "Bundle 'L9'
