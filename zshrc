@@ -55,6 +55,8 @@ plugins=(git, rails)
 # User configuration
 
 export PATH="/Users/thomas.morris/.rvm/gems/ruby-2.1.3/bin:/Users/thomas.morris/.rvm/gems/ruby-2.1.3@global/bin:/Users/thomas.morris/.rvm/rubies/ruby-2.1.3/bin:/Users/thomas.morris/.rvm/bin:/opt/local/bin:/opt/local/sbin:/usr/local/heroku/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"
+export GEM_HOME=$HOME/.gem
+export GEM_PATH=$HOME/.gem
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
