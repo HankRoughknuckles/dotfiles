@@ -353,6 +353,15 @@ augroup END
     nnoremap <silent> <C-k> <C-w>k
   "}}}
 
+  " Strip all trailing whitespace in the file (think 's'trip 'w'hitespace)
+    function! TrimWhitespace()
+      let save_cursor = getpos(".")
+      silent! %s/\s\+$// "trim whitespace from ends of lines
+      silent! %s#\($\n\s*\)\+\%$## "remove trailing blank lines at eof
+      call setpos('.', save_cursor)
+    endfunction
+    nnoremap <leader>sw :call TrimWhitespace()<CR>
+
   "make ctrl backspace delete the entire word when in insert mode
     inoremap <C-BS> <C-W>
 
