@@ -13,6 +13,7 @@
 
  # list of files/folders to symlink in homedir
  files="bashrc gitconfig gitignore_global inputrc curlrc bash_profile rspec tmux.conf zshrc aliases"       
+ vim_backup_files_dir="~/vimtmp"
  vim_dir="vim"
  vim_color_dir=$vim_dir/colors
  vimrc_name="vimrc"
@@ -60,3 +61,6 @@
 
  # install tmux settings
  git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+ # create the vimtmp dir for saving temporary files
+ mkdir $vim_backup_files_dir
