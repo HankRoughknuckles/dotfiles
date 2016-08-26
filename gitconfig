@@ -1,9 +1,9 @@
 [user]
-	name = Thomas Morris
-	email = thomas.morris@3pillarglobal.com
+  name = Thomas Morris
+  email = thomas.morris@3pillarglobal.com
 
 [alias]
-	g = grep --break --heading --line-number
+  g = grep --break --heading --line-number
   s = status
   com = commit
   b = branch
@@ -15,17 +15,17 @@
   ri = rebase -i
   l = log 
   lp = log -p
-	lg = log --graph --oneline --decorate
-	today = !git log --since=midnight --author=\"$(git config user.name)\" --oneline
+  lg = log --graph --oneline --decorate
+  today = !git log --since=midnight --author=\"$(git config user.name)\" --oneline
 
 [color]
-	status = auto
-	ui = true
+  status = auto
+  ui = true
 
 [core]
-	autocrlf = input
-	excludesfile = ~/.gitignore_global
-	editor = vim
+  autocrlf = input
+  excludesfile = ~/.gitignore_global
+  editor = vim
 
 [push]
-	default = current
+  default = current
