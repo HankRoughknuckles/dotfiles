@@ -27,6 +27,7 @@
   alias gcm='git checkout master'
   alias gbd='git branch -d'
   alias gbD='git branch -D'
+  alias gfa='git fetch --all'
 
 # bundle exec
   alias be='bundle exec'
