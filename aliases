@@ -60,7 +60,9 @@
   alias rxs='cd ~/vagrant/code/rxservice'
   alias atlas='cd ~/vagrant/code/atlas'
   alias cmm='cd ~/vagrant/code/cmm'
+  alias claims='cd ~/vagrant/code/claims'
   alias res='touch tmp/restart.txt'
+  alias vas='vagrant ssh'
 
 # tmux attach
   alias tmuxa='tmux a -t '
