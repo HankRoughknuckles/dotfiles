@@ -281,6 +281,19 @@ augroup END
   let g:syntastic_auto_loc_list = 1
   let g:syntastic_check_on_open = 1
   let g:syntastic_check_on_wq = 0
+  let g:syntastic_quiet_messages = { "level": [] }
+  let g:syntastic_python_checkers = ['flake8']
+  let g:syntastic_ruby_checkers = ['rubocop']
+  let g:syntastic_rake_checkers = ['rubocop']
+  let g:syntastic_haml_checkers = ['haml_lint']
+  let g:syntastic_markdown_checkers = ['proselint']
+  let g:syntastic_tex_checkers = ['proselint']
+  let g:syntastic_text_checkers = ['proselint']
+  let g:syntastic_error_symbol = "E"
+  let g:syntastic_warning_symbol = "W"
+  let g:syntastic_syntax_symbol = "S"
+  " the sqlint doesn't seem to work very well :(
+  let g:syntastic_sql_checkers = []
 
   nnoremap <leader>sc :SyntasticCheck<CR>
 
