@@ -123,7 +123,8 @@ augroup END
   " Syntax checking
   NeoBundle 'scrooloose/syntastic'
 
-  NeoBundle 'tpope/vim-endwise' "automatically put end after blocks in ruby
+  " Automatically put end after blocks in ruby
+  NeoBundle 'tpope/vim-endwise'
 
   
   " "Use ack to search files from Vim
