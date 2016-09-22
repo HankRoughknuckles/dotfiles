@@ -194,6 +194,7 @@ augroup END
   nnoremap <leader>gE :Git branch -D<space>
   nnoremap <leader>go :Git checkout<space>
   nnoremap <leader>gd :Gdiff<cr>
+  nnoremap <leader>grim :Git rebase -i master<cr>
   nnoremap <leader>dp :diffput<cr>:diffupdate<cr>
   vnoremap <leader>dp :diffput<cr>:diffupdate<cr>
   nnoremap <leader>do :diffget<cr>:diffupdate<cr>
