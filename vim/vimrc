@@ -90,6 +90,9 @@ augroup END
   " Allow easy movement between vim splits and tmux panes
   NeoBundle 'christoomey/vim-tmux-navigator'
 
+  " Easily join multiline code into single line. Or vice-versa
+  NeoBundle 'AndrewRadev/splitjoin.vim'
+
   " Fuzzy finding for files
   NeoBundle 'kien/ctrlp.vim'
 
