@@ -18,6 +18,7 @@
   alias gphm='git push heroku master'
   alias gpoa='git push origin --all'
   alias gpo='git push origin'
+  alias gpof='git push origin --force'
   alias guo='git pull origin'
   alias g='git'
   alias gcb='git checkout -b'
