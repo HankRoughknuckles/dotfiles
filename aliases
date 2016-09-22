@@ -37,6 +37,7 @@
   alias raro='rake routes'
   alias rap='rake assets:precompile'
   alias mig='bundle exec rake db:migrate'
+  alias migs='bundle exec rake db:migrate:status'
   alias miga='bundle exec rake db:migrate ; bundle exec rake db:migrate test'
   alias migsa='bundle exec rake db:migrate:status ; bundle exec rake db:migrate:status test'
 
