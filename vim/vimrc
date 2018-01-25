@@ -50,7 +50,7 @@ set softtabstop=2   "make the indentation be the same as tabstop
 set shiftwidth=2    "when indenting with >> and <<, make it
                     "2 spaces
 set expandtab       "make all tabs into spaces
-set autoindent      
+set autoindent
 set smartindent
 
 "Wrapping and text width options
@@ -65,6 +65,28 @@ augroup insert_mode
   autocmd InsertEnter * set cul
   autocmd InsertLeave * set nocul
 augroup END
+
+" Setting up the directories {
+  " Write backup and swp files that vim makes to ~/vimtmp instead of current dir
+  set backup                  " Backups are nice ...
+  set backupdir=~/vimtmp,.
+  set undodir=~/vimtmp,.
+  set directory=~/vimtmp,.
+  if has('persistent_undo')
+      set undofile                " So is persistent undo ...
+      set undolevels=1000         " Maximum number of changes that can be undone
+      set undoreload=10000        " Maximum number lines to save for undo on a buffer reload
+  endif
+
+  " To disable views add the following to your .vimrc.before.local file:
+  "   let g:spf13_no_views = 1
+  if !exists('g:spf13_no_views')
+      " Add exclusions to mkview and loadview
+      " eg: *.*, svn-commit.tmp
+      let g:skipview_files = [
+          \ '\[example pattern\]'
+          \ ]
+  endif
 "}}}
 
 
@@ -79,13 +101,14 @@ augroup END
   " Git integration with fugitive
   NeoBundle 'tpope/vim-fugitive'
 
-  " Global search and replace
-  NeoBundle 'yegappan/greplace'
+  " scala syntax highlighting
+  NeoBundle 'derekwyatt/vim-scala'
 
   " Autocompletion
-  NeoBundle 'Valloric/YouCompleteMe'
+  " NeoBundle 'Valloric/YouCompleteMe'
+  NeoBundle 'Shougo/neocomplete.vim'
 
-  NeoBundle 'ervandew/supertab'
+  " NeoBundle 'ervandew/supertab'
 
   " Allow easy movement between vim splits and tmux panes
   NeoBundle 'christoomey/vim-tmux-navigator'
@@ -95,6 +118,9 @@ augroup END
 
   " Fuzzy finding for files
   NeoBundle 'kien/ctrlp.vim'
+
+  " Show git additions / deletions in the left gutter
+  NeoBundle 'airblade/vim-gitgutter'
 
   "Easily surround words with quotes, brackets, etc.
   NeoBundle 'tpope/vim-surround'
@@ -111,13 +137,18 @@ augroup END
   "Status line
   NeoBundle 'bling/vim-airline'
 
+  " jsx syntax highlighting and indentation
+  NeoBundle 'chemzqm/vim-jsx-improve'
+
   "Comment code easier
   NeoBundle 'vim-scripts/tComment'
 
   "Coffeescript integration and syntax highlighting
   NeoBundle 'kchmck/vim-coffee-script'
 
+  " Snippets
   NeoBundle 'SirVer/ultisnips'
+
   NeoBundle 'honza/vim-snippets'
 
   " Syntax checking
@@ -126,8 +157,7 @@ augroup END
   " Automatically put end after blocks in ruby
   NeoBundle 'tpope/vim-endwise'
 
-  
-  " "Use ack to search files from Vim
+  " Use ack to search files from Vim
   NeoBundle 'mileszs/ack.vim'
 
   "Multiple cursors like in Sublime Text
@@ -142,8 +172,8 @@ augroup END
   "Send rspec commands through tmux
   NeoBundle 'jgdavey/tslime.vim'
 
-  "Sparkup for fast html writing
-  NeoBundle 'rstacruz/sparkup', {'rtp': 'vim/'}
+  " fast html writing
+  NeoBundle 'mattn/emmet-vim'
 
   "Ruby shortcuts and key bindings
   NeoBundle "vim-ruby/vim-ruby"
@@ -154,11 +184,11 @@ augroup END
   "Brightscript syntax highlighting
   NeoBundle 'chooh/brightscript.vim'
 
-  " View your tags easily
-  NeoBundle 'https://github.com/majutsushi/tagbar'
-
   " Repeat even complex functions with .
   NeoBundle 'tpope/vim-repeat'
+
+  " Put colors in indentation levels to make them easier to read
+  NeoBundle 'nathanaelkane/vim-indent-guides'
 
   " Make ruby blocks into text objects (vir, var, dar, etc.)
   NeoBundle 'kana/vim-textobj-user' " this is a dependency
@@ -183,7 +213,7 @@ augroup END
   nnoremap <leader>gr :Gread<cr>
   nnoremap <leader>gw :Gwrite<cr>
   nnoremap <leader>gs :Gstatus<cr>
-  nnoremap <leader>gl :Git log --graph --oneline --decorate<cr>
+  nnoremap <leader>gl :Git log --oneline --abbrev-commit --graph --decorate --color<cr>
   nnoremap <leader>gcc :Gcommit<cr>I
   nnoremap <leader>g. :Git add .<cr>:Gcommit<cr>I
   nnoremap <leader>gcb :Git checkout -b<space>
@@ -202,11 +232,25 @@ augroup END
   nnoremap <leader>du :diffupdate<cr>
   nnoremap <leader>gh :Gedit<space>HEAD<cr>
   nnoremap <leader>g<space> :Git<space>
+  " Think git - view blame
+  nnoremap <leader>gvb :Gblame<cr>
+
 
   "ctrl-p commands
   nnoremap <leader>f :CtrlPClearCache<cr>:CtrlP .<cr>
   nnoremap <leader>. :CtrlPTag<cr>
-  let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
+  nnoremap <leader>b :CtrlPBuffer<cr>
+  let g:ctrlp_switch_buffer = '0'
+  if executable('ag')
+    let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+  endif
+  let g:ctrlp_use_caching = 1
+  let g:ctrlp_clear_cache_on_exit = 0
+  let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|vendor'
+
+
+  " highlight the last thing you pasted with gb
+  nnoremap <expr> gb '`[' . strpart(getregtype(), 0, 1) . '`]'
 
   "NERDTree
   map <leader>n :NERDTreeToggle<CR>B
@@ -218,41 +262,65 @@ augroup END
   "Press leader+c to comment instead of ctrl+_ ctrl+_
   map <leader>c <c-_><c-_>
 
+  " emmet configs
+  let g:user_emmet_settings = {
+  \  'javascript' : {
+  \      'extends' : 'jsx',
+  \  },
+  \}
+
   "ack.vim stuff
   let g:ackprg = "ag"
   "call Ack-grep
-  nnoremap <leader>ag :Ack<space>-i<space>""<left>
+  nnoremap <leader>ag :tabnew<CR>:Ack<space>-i<space>""<left>
   "call Ack-grep on the current word
-  nnoremap <leader>aw "9yiw:Ack<space>"<C-r>9"<CR>
+  nnoremap <leader>aw "9yiw:tabnew<CR>:Ack<space>"<C-r>9"<CR>
+  vnoremap <leader>aw "9y:tabnew<CR>:Ack<space>"<C-r>9"<CR>
+
 
   " Use The Silver Searcher for indexing files for CtrlP
   if executable('ag')
     " Use ag over grep
     set grepprg=ag\ --nogroup\ --nocolor
-
-    " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-    let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-
-    " ag is fast enough that CtrlP doesn't need to cache
-    let g:ctrlp_use_caching = 0
   endif
 
-  " Make YouCompleteMe work properly on tab
-  let g:ycm_key_list_select_completion = ['<C-TAB>', '<Down>']
-  let g:ycm_key_list_previous_completion = ['<C-S-TAB>', '<Up>']
-  let g:SuperTabDefaultCompletionType = '<C-Tab>'
+
+  " NewComplete settings
+  let g:acp_enableAtStartup = 0
+  " Use neocomplete.
+  let g:neocomplete#enable_at_startup = 1
+  " Use smartcase.
+  let g:neocomplete#enable_smart_case = 1
+  " Set minimum syntax keyword length.
+  let g:neocomplete#sources#syntax#min_keyword_length = 3
+
+  " Define dictionary.
+  let g:neocomplete#sources#dictionary#dictionaries = {
+      \ 'default' : '',
+      \ 'vimshell' : $HOME.'/.vimshell_hist',
+      \ 'scheme' : $HOME.'/.gosh_completions'
+          \ }
+
+  " Define keyword.
+  if !exists('g:neocomplete#keyword_patterns')
+      let g:neocomplete#keyword_patterns = {}
+  endif
+  let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 
   " Use tab/shift-tab to move to next trigger in Ultisnips
   let g:UltiSnipsExpandTrigger="<tab>"
   let g:UltiSnipsJumpForwardTrigger="<c-l>"
   let g:UltiSnipsJumpBackwardTrigger="<c-h>"
 
+
   "Send rspec commands through tslime to tmux
-  let g:rspec_command = 'call Send_to_Tmux("bin/rspec {spec}\n")'
+  let g:rspec_command = 'call Send_to_Tmux("RAILS_ENV=test bundle exec rspec {spec} -fd\n")'
+  " let g:rspec_command = 'call Send_to_Tmux("bundle exec bin/rspec {spec} -fd\n")'
   map <Leader>rf :call RunCurrentSpecFile()<CR>
   map <Leader>rn :call RunNearestSpec()<CR>
   map <Leader>rl :call RunLastSpec()<CR>
   map <Leader>ra :call RunAllSpecs()<CR>
+
 
   "Airline stuff
   let g:airline_powerline_fonts = 1
@@ -261,45 +329,35 @@ augroup END
 
   "Rails.vim shortcuts
   " leader rt is for tests, see :help rails and search alternate for details
-  nnoremap <leader>rt :A<CR> 
+  nnoremap <leader>rt :AT<CR>
   nnoremap <leader>rm :Emodel<CR>
   noremap <leader>rv :Eview<CR>
   noremap <leader>rc :Econtroller<CR>
   noremap <leader>rj :Ejavascript<CR>
   noremap <leader>rs :Estylesheet<CR>
-  vnoremap <leader>rx :Rextract 
-
-  "Tagbar
-  nnoremap <leader>b :TagbarToggle<CR>
+  vnoremap <leader>rx :Rextract
 
   "Syntastic
-  set statusline+=%#warningmsg#
-  set statusline+=%{SyntasticStatuslineFlag()}
-  set statusline+=%*
+  " set statusline+=%#warningmsg#
+  " set statusline+=%{SyntasticStatuslineFlag()}
+  " set statusline+=%*
 
-  let g:syntastic_always_populate_loc_list = 1
-  let g:syntastic_auto_loc_list = 1
-  let g:syntastic_check_on_open = 1
-  let g:syntastic_check_on_wq = 0
-  let g:syntastic_quiet_messages = { "level": [] }
-  let g:syntastic_python_checkers = ['flake8']
-  let g:syntastic_ruby_checkers = ['rubocop']
-  let g:syntastic_rake_checkers = ['rubocop']
-  let g:syntastic_haml_checkers = ['haml_lint']
-  let g:syntastic_markdown_checkers = ['proselint']
-  let g:syntastic_tex_checkers = ['proselint']
-  let g:syntastic_text_checkers = ['proselint']
-  let g:syntastic_error_symbol = "E"
-  let g:syntastic_warning_symbol = "W"
-  let g:syntastic_syntax_symbol = "S"
-  " the sqlint doesn't seem to work very well :(
-  let g:syntastic_sql_checkers = []
+  " let g:syntastic_always_populate_loc_list = 1
+  " let g:syntastic_auto_loc_list = 1
+  " let g:syntastic_check_on_open = 1
+  " let g:syntastic_check_on_wq = 0
+  " let g:syntastic_python_checkers = ['flake8']
+  " let g:syntastic_haml_checkers = ['haml_lint']
+  " let g:syntastic_markdown_checkers = ['proselint']
+  " let g:syntastic_tex_checkers = ['proselint']
+  " let g:syntastic_text_checkers = ['proselint']
+  " let g:syntastic_error_symbol = "E"
+  " let g:syntastic_warning_symbol = "W"
+  " let g:syntastic_syntax_symbol = "S"
+  " " the sqlint doesn't seem to work very well :(
+  " let g:syntastic_sql_checkers = []
 
-  nnoremap <leader>sc :SyntasticCheck<CR>
-
-  vnoremap <silent> s //e<C-r>=&selection=='exclusive'?'+1':''<CR><CR>
-      \:<C-u>call histdel('search',-1)<Bar>let @/=histget('search',-1)<CR>gv
-  omap s :normal vs<CR>
+  " nnoremap <leader>sc :SyntasticCheck<CR>
   "}}}
 
 
@@ -314,7 +372,7 @@ augroup END
 
 
   "Functions -------------------------{{{
-  " Use Q to intelligently close a window 
+  " Use Q to intelligently close a window
   " (if there are multiple windows into the same buffer) or kill the
   " buffer entirely if it's the last window looking into that buffer
   function! CloseWindowOrKillBuffer()
@@ -327,7 +385,7 @@ augroup END
     endif
 
     if number_of_windows_to_this_buffer > 1
-      wincmd c
+      q
     else
       bdelete
     endif
@@ -372,13 +430,13 @@ augroup END
   "}}}
 
   " Strip all trailing whitespace in the file (think 's'trip 'w'hitespace)
-    function! TrimWhitespace()
+    function! StripWhitespace()
       let save_cursor = getpos(".")
       silent! %s/\s\+$// "trim whitespace from ends of lines
       silent! %s#\($\n\s*\)\+\%$## "remove trailing blank lines at eof
       call setpos('.', save_cursor)
     endfunction
-    nnoremap <leader>sw :call TrimWhitespace()<CR>
+    nnoremap <leader>sw :call StripWhitespace()<CR>
 
   "make ctrl backspace delete the entire word when in insert mode
     inoremap <C-BS> <C-W>
@@ -400,21 +458,17 @@ augroup END
   "source .vimrc with <leader>sv (think: source vimrc)
     nnoremap <leader>sv :source<Space>$MYVIMRC<cr>
 
-  "make the default regex type to be Perl regex
-    nnoremap / /\v
-    nnoremap ? ?\v
-
   "leader md will call the bash mkdir command, think: terminal md
-    nnoremap <leader>tmd :!mkdir 
+    nnoremap <leader>tmd :!mkdir<space>
 
   "leader mv will call the bash mv command, think: terminal mv
-    nnoremap <leader>tmv :!mv 
+    nnoremap <leader>tmv :!mv<space>
 
   "leader rm will call the bash command rm, think: terminal rm
     nnoremap <leader>trm :!rm<space>
 
   "get rid of search results
-    nnoremap <leader>, :noh<cr>   
+    nnoremap <leader>, :noh<cr>
 
   "make tab go to the corresponding parens or brackets
     nnoremap <leader><tab> %
@@ -423,8 +477,11 @@ augroup END
   "insert a => hash rocket <C-k>
     inoremap <C-k> =><Space>
 
+  " insert a message for squashing with <C-s>
+    inoremap <C-s> SQUASH<Space>-<Space>
+
   "insert an erb <%= %> tag (with output) using <C-r>
-    inoremap <C-t> <%=<space>%><left><left><left> 
+    inoremap <C-t> <% <space> %><left><left><left>
 
   "make a vertical split with <leader>vv
     nnoremap <leader>vv :vsp<cr>
@@ -462,18 +519,22 @@ augroup END
   "delete a padding space on the inside of the selected ()
     nnoremap <leader>ds vi(<Esc>x`<xh%
     vnoremap <leader>ds <Esc>vi(<Esc>x`<xh%
-    
-  "Use Q to intelligently close a window 
+
+  "Use Q to intelligently close a window
     nnoremap <silent> Q :call CloseWindowOrKillBuffer()<CR>
-    
+
   "Use <leader>p to toggle paste.  When paste is set, then pasting from
   "the system clipboard will have the right format
     nnoremap <leader>p :set paste!<cr>
     vnoremap <leader>p :set paste!<cr>
 
+  " copy from the system clipboard easily and keep formatting
+    nnoremap <C-q> :set<space>paste<cr>"*p:set<space>nopaste<cr>
+    inoremap <C-q> <Esc>:set<space>paste<cr>"*p:set<space>nopaste<cr>a
+
   "Operator for "in next ___" (___ can be (, ), {, }, [, ], ', or "" ) --------------{{{
-  onoremap in( :<c-u>normal! f(vi(<cr>  
-  onoremap in) :<c-u>normal! f(vi(<cr> 
+  onoremap in( :<c-u>normal! f(vi(<cr>
+  onoremap in) :<c-u>normal! f(vi(<cr>
   onoremap in{ :<c-u>normal! f{vi{<cr>
   onoremap in} :<c-u>normal! f{vi{<cr>
   onoremap in[ :<c-u>normal! f[vi[<cr>
@@ -522,8 +583,7 @@ augroup END
   let g:UltiSnipsSnippetDirectories = ['~/.vim/UltiSnips', 'UltiSnips']
 
   "alter all snippets with [leader]aas
-  nnoremap <leader>aas :tab new<cr>:NERDTree 
-           \ ~/.vim/UltiSnips<cr>
+  nnoremap <leader>aas :tab new<cr>:NERDTree ~/.vim/UltiSnips<cr>
 
   "run a make file install routine with <leader>mi
   nnoremap <leader>mi :! make install<cr>
@@ -533,7 +593,7 @@ augroup END
   vnoremap # "9y?<C-r>9<CR>
 
   " [Tag refresh] - run ctags to update the... well... ctags
-  nnoremap <leader>tr :!ctags -R .<cr>
+  nnoremap <leader>tr :!ctags -R . --exclude=vendor<cr>
   "}}}
 
 
@@ -549,14 +609,8 @@ augroup END
   " PHP (*.php) autocommands -------------------------{{{
   augroup filetype_php
     autocmd!
-    "make the currently typed word into a variable with <C-v>
-      autocmd FileType php inoremap <buffer> <C-v> <Esc>bi$<Esc>ea
-      
     "insert $this with <C-t> (when in a PHP file)
       autocmd FileType php inoremap <buffer> <C-t> $this
-
-    "open up php SnipMate snippets file (alter snippets)
-      autocmd FileType php nnoremap <buffer> <leader>as :tab new<cr>:e ~/.vim/after/snippets/php.snippets<cr>
   augroup END
   "}}}
 
@@ -564,14 +618,13 @@ augroup END
   " Ruby (*.rb) autocommands -------------------------{{{
   augroup filetype_ruby
     autocmd!
-    "make the currently typed word into a variable with <C-v>
-      autocmd FileType ruby inoremap <buffer> <C-v> #{}<Esc>i
-
     "make the currently typed word into an attribute (@ in front)
       autocmd FileType ruby inoremap <buffer> <C-b> <Esc>bi@<Esc>ea
 
     "make the currently typed word into a symbol (: in front)
       autocmd FileType ruby inoremap <buffer> <C-y> <Esc>bi:<Esc>ea
+
+    inoremap <C-v> #{}<Esc>i
   augroup END
   "}}}
 
@@ -590,7 +643,7 @@ augroup END
   "4 space indentation, expandtab
   augroup 4_indent
     autocmd!
-    autocmd BufRead,BufEnter,BufNewFile *.brs,*.html,*.xml setlocal tabstop=4 | setlocal softtabstop=4 | setlocal shiftwidth=4
+    autocmd BufRead,BufEnter,BufNewFile *.brs,*.xml,*.py,*.php setlocal tabstop=4 | setlocal softtabstop=4 | setlocal shiftwidth=4
   augroup END
   " }}}
 
@@ -598,7 +651,8 @@ augroup END
   " nowrap based on filetype -------------------------{{{
   augroup nowrap
     autocmd!
-    autocmd BufRead,BufEnter,BufNewFile *.brs,*.html,*.xml setlocal nowrap
+    autocmd BufRead,BufEnter,BufNewFile *.brs,*.xml,*.py setlocal nowrap
+    " autocmd BufRead,BufEnter,BufNewFile *.brs,*.html,*.xml,*.py setlocal nowrap
   augroup END
   " }}}
 
