@@ -6,7 +6,6 @@
 set nocompatible               " be iMproved
 filetype off                   " required!
 
-
 "Set variables-------------------------{{{
 "Change leader key
 let mapleader = "\<Space>"
@@ -22,7 +21,7 @@ set mousehide       "hide mouse cursor while typing
 set showmode        "display the current mode
 set cursorline      "highlight the current line
 set hlsearch        "highlight search patterns
-set visualbell      "no sounds
+" set visualbell      "no sounds
 set ignorecase        "ignore case when search query is all lower-case
 set smartcase         "switch to case sensitive searching if a capital
                       "letter is present
@@ -78,15 +77,15 @@ augroup END
       set undoreload=10000        " Maximum number lines to save for undo on a buffer reload
   endif
 
-  " To disable views add the following to your .vimrc.before.local file:
-  "   let g:spf13_no_views = 1
-  if !exists('g:spf13_no_views')
-      " Add exclusions to mkview and loadview
-      " eg: *.*, svn-commit.tmp
-      let g:skipview_files = [
-          \ '\[example pattern\]'
-          \ ]
-  endif
+  " " To disable views add the following to your .vimrc.before.local file:
+  " "   let g:spf13_no_views = 1
+  " if !exists('g:spf13_no_views')
+  "     " Add exclusions to mkview and loadview
+  "     " eg: *.*, svn-commit.tmp
+  "     let g:skipview_files = [
+  "         \ '\[example pattern\]'
+  "         \ ]
+  " endif
 "}}}
 
 
@@ -98,6 +97,26 @@ augroup END
   " Required:
   NeoBundleFetch 'Shougo/neobundle.vim'
 
+  " vimproc for asynchronous command execution
+  NeoBundle 'Shougo/vimproc.vim', {
+  \ 'build' : {
+  \     'windows' : 'tools\\update-dll-mingw',
+  \     'cygwin' : 'make -f make_cygwin.mak',
+  \     'mac' : 'make -f make_mac.mak',
+  \     'linux' : 'make',
+  \     'unix' : 'gmake',
+  \    },
+  \ }
+
+  " Typescript completion and syntax checking
+  NeoBundle 'Quramy/tsuquyomi'
+
+  " Allow each project to have local settings (file at .lvimrc in project)
+  NeoBundle 'embear/vim-localvimrc'
+
+  " Syntax files for typescript
+  NeoBundle 'leafgarland/typescript-vim'
+
   " Git integration with fugitive
   NeoBundle 'tpope/vim-fugitive'
 
@@ -105,10 +124,17 @@ augroup END
   NeoBundle 'derekwyatt/vim-scala'
 
   " Autocompletion
-  " NeoBundle 'Valloric/YouCompleteMe'
-  NeoBundle 'Shougo/neocomplete.vim'
-
-  " NeoBundle 'ervandew/supertab'
+  NeoBundle 'Valloric/YouCompleteMe', {
+        \ 'build' : {
+        \     'mac' : './install.sh --clang-completer --system-libclang --omnisharp-completer',
+        \     'unix' : './install.sh --clang-completer --system-libclang --omnisharp-completer',
+        \     'windows' : './install.sh --clang-completer --system-libclang --omnisharp-completer',
+        \     'cygwin' : './install.sh --clang-completer --system-libclang --omnisharp-completer'
+        \    }
+        \ }
+  " NeoBundle 'Shougo/neocomplete.vim'
+  " NeoBundle 'prabirshrestha/asyncomplete.vim'
+  " NeoBundle 'lifepillar/vim-mucomplete'
 
   " Allow easy movement between vim splits and tmux panes
   NeoBundle 'christoomey/vim-tmux-navigator'
@@ -149,13 +175,18 @@ augroup END
   " Snippets
   NeoBundle 'SirVer/ultisnips'
 
+  " Repo of built-in snippets
   NeoBundle 'honza/vim-snippets'
 
   " Syntax checking
-  NeoBundle 'scrooloose/syntastic'
+  " NeoBundle 'scrooloose/syntastic'
+  NeoBundle 'w0rp/ale'
 
   " Automatically put end after blocks in ruby
   NeoBundle 'tpope/vim-endwise'
+
+  " Automatically format js to be pretty
+  NeoBundle 'prettier/vim-prettier'
 
   " Use ack to search files from Vim
   NeoBundle 'mileszs/ack.vim'
@@ -201,10 +232,10 @@ augroup END
 
   filetype plugin indent on     " required!
 
-   " If there are uninstalled bundles found on startup,
-   " this will conveniently prompt you to install them.
-   NeoBundleCheck
-   "}}}
+  " If there are uninstalled bundles found on startup,
+  " this will conveniently prompt you to install them.
+  NeoBundleCheck
+  "}}}
 
 
 "Mappings and Config for plugins ------------------------{{{
@@ -225,6 +256,7 @@ augroup END
   nnoremap <leader>go :Git checkout<space>
   nnoremap <leader>gd :Gdiff<cr>
   nnoremap <leader>grim :Git rebase -i master<cr>
+  nnoremap <leader>grid :Git rebase -i develop<cr>
   nnoremap <leader>dp :diffput<cr>:diffupdate<cr>
   vnoremap <leader>dp :diffput<cr>:diffupdate<cr>
   nnoremap <leader>do :diffget<cr>:diffupdate<cr>
@@ -235,6 +267,11 @@ augroup END
   " Think git - view blame
   nnoremap <leader>gvb :Gblame<cr>
 
+  " autocomplete settings
+  set completeopt+=menuone
+  set completeopt+=noselect
+  set completeopt+=noinsert
+  let g:mucomplete#enable_auto_at_startup = 1 " show suggestions while typing
 
   "ctrl-p commands
   nnoremap <leader>f :CtrlPClearCache<cr>:CtrlP .<cr>
@@ -242,21 +279,31 @@ augroup END
   nnoremap <leader>b :CtrlPBuffer<cr>
   let g:ctrlp_switch_buffer = '0'
   if executable('ag')
-    let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+    let g:ctrlp_user_command = 'ag %s -l --nocolor -g "" | ag -v "`cat ~/.ctrlpignore`"'
   endif
   let g:ctrlp_use_caching = 1
   let g:ctrlp_clear_cache_on_exit = 0
   let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|vendor'
 
+  " vim-localvimrc settings
+  let g:localvimrc_ask = 0 " don't ask for confirmation at startup for sourcing
+
+  "run ALEFix to run eslint --fix on your files - think "javascript fix"
+  nnoremap <leader>jf :ALEFix<CR>
+  nnoremap <leader>je :lopen<CR> " think "javascript error"
 
   " highlight the last thing you pasted with gb
   nnoremap <expr> gb '`[' . strpart(getregtype(), 0, 1) . '`]'
 
   "NERDTree
+  let NERDTreeShowHidden=1 " show hidden files starting with a '.'
   map <leader>n :NERDTreeToggle<CR>B
 
   "make vim-surround use lowercase s instead of capital
   vmap s S
+
+  " run prettier for format your js (and other js flavored) files
+  nnoremap <leader>; :PrettierAsync<cr>
 
   "tComment stuff
   "Press leader+c to comment instead of ctrl+_ ctrl+_
@@ -269,18 +316,33 @@ augroup END
   \  },
   \}
 
+  " Tsuquyomi typescript stuff
+  autocmd FileType typescript nmap <buffer> <Leader>r <Plug>(TsuquyomiRenameSymbolC)
+  autocmd FileType typescript nmap <buffer> <Leader>i :TsuImport<CR>
+  autocmd FileType typescript nmap <buffer> <Leader>e :TsuGeterr<CR>
+  let g:tsuquyomi_shortest_import_path = 1
+
+
+  " Always search forward with n, backward with N, regardless if ? or #
+  nnoremap <expr> n (v:searchforward ? 'n' : 'N')
+  nnoremap <expr> N (v:searchforward ? 'N' : 'n')
+
+
+  " YouCompleteMe stuff
+  if !exists("g:ycm_semantic_triggers")
+    let g:ycm_semantic_triggers = {}
+  endif
+  let g:ycm_semantic_triggers['typescript'] = ['.']
+
   "ack.vim stuff
   let g:ackprg = "ag"
-  "call Ack-grep
   nnoremap <leader>ag :tabnew<CR>:Ack<space>-i<space>""<left>
-  "call Ack-grep on the current word
   nnoremap <leader>aw "9yiw:tabnew<CR>:Ack<space>"<C-r>9"<CR>
   vnoremap <leader>aw "9y:tabnew<CR>:Ack<space>"<C-r>9"<CR>
 
 
-  " Use The Silver Searcher for indexing files for CtrlP
+  " Use The Silver Searcher (ag) for indexing files for CtrlP
   if executable('ag')
-    " Use ag over grep
     set grepprg=ag\ --nogroup\ --nocolor
   endif
 
@@ -313,18 +375,11 @@ augroup END
   let g:UltiSnipsJumpBackwardTrigger="<c-h>"
 
 
-  "Send rspec commands through tslime to tmux
-  let g:rspec_command = 'call Send_to_Tmux("RAILS_ENV=test bundle exec rspec {spec} -fd\n")'
-  " let g:rspec_command = 'call Send_to_Tmux("bundle exec bin/rspec {spec} -fd\n")'
-  map <Leader>rf :call RunCurrentSpecFile()<CR>
-  map <Leader>rn :call RunNearestSpec()<CR>
-  map <Leader>rl :call RunLastSpec()<CR>
-  map <Leader>ra :call RunAllSpecs()<CR>
-
-
   "Airline stuff
   let g:airline_powerline_fonts = 1
   let g:airline#extensions#tabline#enabled = 1
+  let g:airline_section_y = ''
+  let g:airline_section_z = ''
 
 
   "Rails.vim shortcuts
@@ -338,33 +393,27 @@ augroup END
   vnoremap <leader>rx :Rextract
 
   "Syntastic
-  " set statusline+=%#warningmsg#
+  set statusline+=%#warningmsg#
   " set statusline+=%{SyntasticStatuslineFlag()}
   " set statusline+=%*
-
   " let g:syntastic_always_populate_loc_list = 1
   " let g:syntastic_auto_loc_list = 1
-  " let g:syntastic_check_on_open = 1
+  " let g:syntastic_check_on_open = 0
   " let g:syntastic_check_on_wq = 0
-  " let g:syntastic_python_checkers = ['flake8']
-  " let g:syntastic_haml_checkers = ['haml_lint']
-  " let g:syntastic_markdown_checkers = ['proselint']
-  " let g:syntastic_tex_checkers = ['proselint']
-  " let g:syntastic_text_checkers = ['proselint']
-  " let g:syntastic_error_symbol = "E"
-  " let g:syntastic_warning_symbol = "W"
-  " let g:syntastic_syntax_symbol = "S"
-  " " the sqlint doesn't seem to work very well :(
-  " let g:syntastic_sql_checkers = []
+  " let g:syntastic_javascript_checkers = ['eslint']
+  " " let g:syntastic_javascript_eslint_exe = 'npm run lint --'
+  " "}}}
 
-  " nnoremap <leader>sc :SyntasticCheck<CR>
-  "}}}
-
+  "Ale config
+  let g:ale_fixers = {
+  \ 'javascript': ['eslint']
+  \ }
 
   "Color Schema -------------------------{{{
   syntax enable
   set background=dark
-  let g:solarized_termolors=256 "For some reason, when this is
+  let g:solarized_termtrans = 1 " This gets rid of the grey background
+  let g:solarized_termcolors=16 " For some reason, when this is
     " uncommented, sourcing the vimrc file while vim is running will make
     " the colors all screwy
   colorscheme solarized
@@ -574,8 +623,7 @@ augroup END
   onoremap al" :<c-u>normal! F"hva"<cr>
   "}}}
 
-  " open up the command menu easier
-  nnoremap <leader>; :
+  " run terminal commands easier
   nnoremap <leader>1 :!<Space>
 
   "alter snippets for current file type with <leader>as
@@ -623,6 +671,14 @@ augroup END
 
     "make the currently typed word into a symbol (: in front)
       autocmd FileType ruby inoremap <buffer> <C-y> <Esc>bi:<Esc>ea
+
+    "Send rspec commands through tslime to tmux
+    let g:rspec_command = 'call Send_to_Tmux("RAILS_ENV=test bundle exec rspec {spec} -fd\n")'
+    " let g:rspec_command = 'call Send_to_Tmux("bundle exec bin/rspec {spec} -fd\n")'
+    autocmd FileType ruby nnoremap <buffer> <Leader>rf :call RunCurrentSpecFile()<CR>
+    autocmd FileType ruby nnoremap <buffer> <Leader>rn :call RunNearestSpec()<CR>
+    autocmd FileType ruby nnoremap <buffer> <Leader>rl :call RunLastSpec()<CR>
+    autocmd FileType ruby nnoremap <buffer> <Leader>ra :call RunAllSpecs()<CR>
 
     inoremap <C-v> #{}<Esc>i
   augroup END
@@ -699,6 +755,13 @@ augroup END
   augroup END
   " }}}
 
+  " Javascript / typescript settings -------------------------{{{
+  augroup filetype_js_ts
+    autocmd!
+    " Run prettier before saving
+    " autocmd BufWritePre *.js,*.jsx,*.ts,*.tsx :PrettierAsync<CR>
+  augroup END
+  " }}}
 
   " Vimscript file settings -------------------------{{{
   augroup filetype_vim
