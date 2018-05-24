@@ -31,7 +31,7 @@ DEFAULT_USER="$USER"
 # ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
+COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
@@ -54,8 +54,8 @@ plugins=(git, rails)
 
 # User configuration
 
-export PATH="/Users/thomas.morris/.rvm/gems/ruby-2.1.3/bin:/Users/thomas.morris/.rvm/gems/ruby-2.1.3@global/bin:/Users/thomas.morris/.rvm/rubies/ruby-2.1.3/bin:/Users/thomas.morris/.rvm/bin:/opt/local/bin:/opt/local/sbin:/usr/local/heroku/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"
-export GEM_HOME=$HOME/.gem
+export PATH="$PATH:$HOME/.gem/bin:$HOME/.rvm/gems/ruby-2.1.3/bin:$HOME/.rvm/gems/ruby-2.1.3@global/bin:$HOME/.rvm/rubies/ruby-2.1.3/bin:$HOME/.rvm/bin:/opt/local/bin:/opt/local/sbin:/usr/local/heroku/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"
+# export GEM_HOME=$HOME/.gem
 export GEM_PATH=$HOME/.gem
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -106,3 +106,7 @@ export EDITOR="/usr/local/bin/vim"
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
+# NVM config
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
