@@ -104,3 +104,5 @@ export PATH=$ANDROID_HOME/build-tools/23.0.1:$PATH
 # Set editor to edit commands in using <C-x><C-e>
 export EDITOR="/usr/local/bin/vim"
 
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+
