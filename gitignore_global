@@ -1,6 +1,7 @@
-# Vim Swap Files 
+# Vim temporary files
 **/*.swp
 **/*.swo
+**/*~
 
 # Compiled source
 **.com
@@ -27,3 +28,6 @@ tags
 
 #dropbox files
 .dropbox
+
+.byebug_history
+.lvimrc

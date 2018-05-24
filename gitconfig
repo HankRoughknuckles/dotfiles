@@ -1,6 +1,6 @@
 [user]
   name = Thomas Morris
-  email = thomas.morris@3pillarglobal.com
+  email = tmorris@salsitasoft.com
 
 [alias]
   g = grep --break --heading --line-number
@@ -13,7 +13,7 @@
   df = diff
   r = rebase
   ri = rebase -i
-  l = log 
+  l = log
   lp = log -p
   lg = log --graph --oneline --decorate
   today = !git log --since=midnight --author=\"$(git config user.name)\" --oneline
@@ -23,9 +23,13 @@
   ui = true
 
 [core]
-  autocrlf = input
+  autocrlf = false
   excludesfile = ~/.gitignore_global
   editor = vim
 
 [push]
   default = current
+
+# [remote "origin"]
+#   fetch = +refs/heads/*:refs/remotes/origin/*
+#   fetch = +refs/pull/*/head:refs/remotes/origin/pr/*

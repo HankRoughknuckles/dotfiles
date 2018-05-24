@@ -1,68 +1,84 @@
-#Open zshrc easier
-  alias zshconfig="vim ~/.zshrc"
+# Open zshrc easier
+alias zshconfig="vim ~/.zshrc"
 
-#Quicker ls
-  alias ll='ls -alF'
-  alias la='ls -A'
-  alias l='ls -CF'
+# Quicker ls
+# alias ll='ls -alF'
+# alias la='ls -A'
+# alias l='ls -CF'
+alias ll='exa -alF'
+alias la='exa -A'
 
-#Quick cd to home directory
-  alias ~="cd ~"
+# Quick cd to home directory
+alias ~="cd ~"
 
-#Rails aliases
-  alias ras='bundle exec rails server'
-  alias rac='bundle exec rails console'
+# c to cd and also show contents of new directory
+c() { cd "$@" && pwd && exa -alF; }
 
-#git aliases
-  alias gpom='git push origin master'
-  alias gphm='git push heroku master'
-  alias gpoa='git push origin --all'
-  alias gpo='git push origin'
-  alias gpof='git push origin --force'
-  alias guo='git pull origin'
-  alias g='git'
-  alias gcb='git checkout -b'
-  alias gnb='git checkout -b' #think git new branch
-  alias gcd='git checkout develop'
-  alias gcm='git checkout master'
-  alias gbd='git branch -d'
-  alias gbD='git branch -D'
-  alias grim='git rebase -i master'
-  alias gfa='git fetch --all'
+# Rails aliases
+alias ras='bundle exec bin/rails server'
+alias rac='bundle exec bin/rails console'
+
+# git aliases
+alias gc='git commit'
+alias gpom='git push origin master'
+alias gphm='git push heroku master'
+alias gpoa='git push origin --all'
+alias gpo='git push origin'
+alias gpof='git push origin --force'
+alias guo='git pull origin'
+alias g='git'
+alias gcb='git checkout -b'
+alias gnb='git checkout -b' #think git new branch
+alias gcd='git checkout develop'
+alias gcm='git checkout master'
+alias gcr='git checkout release'
+alias gbd='git branch -d'
+alias gbD='git branch -D'
+alias grim='git rebase -i master'
+alias grid='git rebase -i develop'
+alias gfa='git fetch --all'
 
 # bundle exec
-  alias be='bundle exec'
+alias be='bundle exec'
 
 # rails aliases
-  alias raro='rake routes'
-  alias rap='rake assets:precompile'
-  alias mig='bundle exec rake db:migrate'
-  alias migs='bundle exec rake db:migrate:status'
-  alias miga='bundle exec rake db:migrate ; bundle exec rake db:migrate test'
-  alias migsa='bundle exec rake db:migrate:status ; bundle exec rake db:migrate:status test'
+alias raro='rake routes'
+alias rap='rake assets:precompile'
+alias mig='bundle exec rake db:migrate'
+alias migs='bundle exec rake db:migrate:status'
+alias miga='bundle exec rake db:migrate ; bundle exec rake db:migrate test'
+alias migsa='bundle exec rake db:migrate:status ; bundle exec rake db:migrate:status test'
 
 # heroku aliases
-  alias h='heroku'
+alias h='heroku'
 
 # Change directories
-  alias cdd="cd ~/Dropbox/dotfiles" # dotfiles directory
-  alias cdf="cd ~/Projects/Freelancing/no-smoking/website_code" # freelancing project
-  alias cdp="cd ~/Projects/validate_me/proto" # current practice site
-  alias cdt="cd ~/Projects/typical-rails_setup/" # typical rails setup folder
-  alias cdw="cd ~/Work/Course-Maven/dualenroll-dev" # work folder
+alias cdd="cd ~/Dropbox/dotfiles" # dotfiles directory
+alias cdf="cd ~/Projects/Freelancing/no-smoking/website_code" # freelancing project
+alias cdp="cd ~/Dropbox/Programming/Projects/" # projects folder
+alias cdt="cd ~/Projects/typical-rails_setup/" # typical rails setup folder
+alias cdw="cd ~/Work/" # work folder
 
-#source bashrc 
-  alias sb='source ~/.bashrc'
-  alias sz='source ~/.zshrc'
+# Salsita alises
+alias ecourt="cd ~/Work/eCourt/"
+alias ebay="cd ~/Work/ebay/"
 
-# Cover my meds aliases
-  alias rxi='cd ~/vagrant/code/rxintake'
-  alias rxs='cd ~/vagrant/code/rxservice'
-  alias atlas='cd ~/vagrant/code/atlas'
-  alias cmm='cd ~/vagrant/code/cmm'
-  alias claims='cd ~/vagrant/code/claims'
-  alias res='touch tmp/restart.txt'
-  alias vas='vagrant ssh'
+# source bashrc
+alias sb='source ~/.bashrc'
+alias sz='source ~/.zshrc'
+alias aliases='vim ~/.aliases'
+alias sa='source ~/.aliases'
+
+# docker stuff
+alias doc='docker-compose'
+alias doce='docker-compose exec'
+alias docb='docker-compose exec api bash'
 
 # tmux attach
-  alias tmuxa='tmux a -t '
+alias tmuxa='tmux a -t '
+
+# npm
+alias n='npm'
+
+# use the newest version of vim
+# alias vim='/Applications/MacVim.app/Contents/MacOS/Vim'
