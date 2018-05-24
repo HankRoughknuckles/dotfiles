@@ -100,3 +100,7 @@ export PATH=$GRADLE_HOME/bin:$PATH
 export PATH=$ANDROID_HOME/tools:$PATH
 export PATH=$ANDROID_HOME/platform-tools:$PATH
 export PATH=$ANDROID_HOME/build-tools/23.0.1:$PATH
+
+# Set editor to edit commands in using <C-x><C-e>
+export EDITOR="/usr/local/bin/vim"
+
