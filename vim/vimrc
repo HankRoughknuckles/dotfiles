@@ -679,10 +679,10 @@ augroup END
     "Send rspec commands through tslime to tmux
     let g:rspec_command = 'call Send_to_Tmux("RAILS_ENV=test bundle exec rspec {spec} -fd\n")'
     " let g:rspec_command = 'call Send_to_Tmux("bundle exec bin/rspec {spec} -fd\n")'
-    autocmd FileType ruby nnoremap <buffer> <Leader>rf :call RunCurrentSpecFile()<CR>
-    autocmd FileType ruby nnoremap <buffer> <Leader>rn :call RunNearestSpec()<CR>
-    autocmd FileType ruby nnoremap <buffer> <Leader>rl :call RunLastSpec()<CR>
-    autocmd FileType ruby nnoremap <buffer> <Leader>ra :call RunAllSpecs()<CR>
+    autocmd FileType ruby nnoremap <buffer> <Leader>tf :call RunCurrentSpecFile()<CR>
+    autocmd FileType ruby nnoremap <buffer> <Leader>tt :call RunNearestSpec()<CR>
+    autocmd FileType ruby nnoremap <buffer> <Leader>tp :call RunLastSpec()<CR>
+    autocmd FileType ruby nnoremap <buffer> <Leader>ta :call RunAllSpecs()<CR>
 
     inoremap <C-v> #{}<Esc>i
   augroup END
