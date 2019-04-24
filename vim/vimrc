@@ -764,6 +764,7 @@ augroup END
     autocmd!
     " Run prettier before saving
     " autocmd BufWritePre *.js,*.jsx,*.ts,*.tsx :PrettierAsync<CR>
+    inoremap <C-v> ${}<Esc>i
   augroup END
   " }}}
 
