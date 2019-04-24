@@ -320,12 +320,17 @@ augroup END
   \  },
   \}
 
-  " Tsuquyomi typescript stuff
-  autocmd FileType typescript nmap <buffer> <Leader>r <Plug>(TsuquyomiRenameSymbolC)
-  autocmd FileType typescript nmap <buffer> <Leader>i :TsuImport<CR>
-  autocmd FileType typescript nmap <buffer> <Leader>e :TsuGeterr<CR>
-  let g:tsuquyomi_shortest_import_path = 1
-
+  " find/replace across all project files:
+  " Step 1 - do this - (think 'replace: all find')
+  nnoremap <Leader>raf "9yiw*N:args<space>`ag<space>-r<space>-l<space>'<C-r>9'<space>.`<CR>
+  " Step 2 - do this - (think 'replace: all replace')
+  nnoremap <Leader>rar :argdo<space>%s/<c-r>//<c-r>9/cI<space><bar><space>update<left><left><left><left><left><left><left><left><left><left><left><left>
+  " find/replace current word in file (think replace word)
+  nnoremap <leader>rw "9yiw*N:%s/<c-r>//<c-r>9/cI<left><left><left>
+  " find/replace something in the file that you type word in (think 'replace: replace')
+  nnoremap <leader>rr :%s//cI<left><left><left>
+  " find/replace something in the file that you have highlighted (think 'replace: visual')
+  vnoremap <leader>rw "9y:%s/<c-r>9//cI<left><left><left>
 
   " Always search forward with n, backward with N, regardless if ? or #
   nnoremap <expr> n (v:searchforward ? 'n' : 'N')
@@ -390,7 +395,6 @@ augroup END
   " leader rt is for tests, see :help rails and search alternate for details
   nnoremap <leader>rt :AT<CR>
   nnoremap <leader>rm :Emodel<CR>
-  noremap <leader>rv :Eview<CR>
   noremap <leader>rc :Econtroller<CR>
   noremap <leader>rj :Ejavascript<CR>
   noremap <leader>rs :Estylesheet<CR>
