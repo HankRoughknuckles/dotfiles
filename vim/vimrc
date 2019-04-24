@@ -253,6 +253,7 @@ augroup END
   nnoremap <leader>gcb :Git checkout -b<space>
   nnoremap <leader>gpo :Git push origin<space>
   nnoremap <leader>guo :Git pull origin<space>
+  nnoremap <leader>gfa :Git fetch --all<cr>
   nnoremap <leader>gb :Git branch<cr>
   nnoremap <leader>ge :Git branch -d<space>
   nnoremap <leader>gE :Git branch -D<space>
