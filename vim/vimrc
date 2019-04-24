@@ -301,7 +301,7 @@ augroup END
 
   "NERDTree
   let NERDTreeShowHidden=1 " show hidden files starting with a '.'
-  map <leader>n :NERDTreeToggle<CR>B
+  map <leader>n :NERDTreeToggle<CR>
 
   "make vim-surround use lowercase s instead of capital
   vmap s S
