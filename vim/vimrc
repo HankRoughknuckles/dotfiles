@@ -139,6 +139,9 @@ augroup END
   " Allow easy movement between vim splits and tmux panes
   NeoBundle 'christoomey/vim-tmux-navigator'
 
+  " Kotlin syntax highlighting and indentation
+  NeoBundle 'udalov/kotlin-vim'
+
   " Easily join multiline code into single line. Or vice-versa
   NeoBundle 'AndrewRadev/splitjoin.vim'
 
