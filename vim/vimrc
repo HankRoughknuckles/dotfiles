@@ -388,6 +388,8 @@ augroup END
   let g:airline_section_y = ''
   let g:airline_section_z = ''
 
+  " insert a semicolon at the end of the line (think 'semicolon semicolon')
+  nnoremap <leader>ss $a;<Esc>
 
   "Rails.vim shortcuts
   " leader rt is for tests, see :help rails and search alternate for details
