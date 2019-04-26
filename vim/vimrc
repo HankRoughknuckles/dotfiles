@@ -424,6 +424,8 @@ augroup END
   \ 'javascript': ['eslint'],
   \ 'typescript': ['tslint']
   \ }
+  " only runs the linters when files are changed, not when text is changed
+  let g:ale_lint_on_text_changed = 'never'
 
   " automatically save the file after ale runs the linter and fixes stuff in it
   augroup ALE_autogroup
