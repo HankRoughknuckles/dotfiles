@@ -186,7 +186,25 @@ augroup END
   NeoBundle 'tpope/vim-endwise'
 
   " Automatically format js to be pretty
-  NeoBundle 'prettier/vim-prettier'
+  NeoBundle 'prettier/vim-prettier', {
+  \ 'do': 'yarn install',
+  \ 'branch': 'release/1.x',
+  \ 'for': [
+    \ 'javascript',
+    \ 'typescript',
+    \ 'css',
+    \ 'less',
+    \ 'scss',
+    \ 'json',
+    \ 'graphql',
+    \ 'markdown',
+    \ 'vue',
+    \ 'lua',
+    \ 'php',
+    \ 'python',
+    \ 'ruby',
+    \ 'html',
+    \ 'swift' ] }
 
   " Use ack to search files from Vim
   NeoBundle 'mileszs/ack.vim'
@@ -305,6 +323,7 @@ augroup END
 
   " run prettier for format your js (and other js flavored) files
   nnoremap <leader>; :PrettierAsync<cr>
+  let g:prettier#config#config_precedence = 'file-override'
 
   "tComment stuff
   "Press leader+c to comment instead of ctrl+_ ctrl+_
@@ -769,6 +788,9 @@ augroup END
     " Run prettier before saving
     " autocmd BufWritePre *.js,*.jsx,*.ts,*.tsx :PrettierAsync<CR>
     inoremap <C-v> ${}<Esc>i
+    " Run prettier before saving
+    let g:prettier#autoformat = 0
+    autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
   augroup END
   " }}}
 
