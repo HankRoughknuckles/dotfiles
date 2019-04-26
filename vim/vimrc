@@ -582,15 +582,6 @@ augroup END
   "'f'reelancing project
     nnoremap <leader>cf :cd ~/Projects/Freelancing/mealapp<cr>
 
-  "insert a padding space on the inside of the selected () with <leader>
-  "is
-    nnoremap <leader>is vi(<Esc>a<Space><Esc>`<i<Space><Esc>h%
-    vnoremap <leader>is <Esc>vi(<Esc>a<Space><Esc>`<i<Space><Esc>h%
-
-  "delete a padding space on the inside of the selected ()
-    nnoremap <leader>ds vi(<Esc>x`<xh%
-    vnoremap <leader>ds <Esc>vi(<Esc>x`<xh%
-
   "Use Q to intelligently close a window
     nnoremap <silent> Q :call CloseWindowOrKillBuffer()<CR>
 
