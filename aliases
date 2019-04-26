@@ -61,7 +61,7 @@ alias cdw="cd ~/Work/" # work folder
 
 # Salsita alises
 alias ecourt="cd ~/Work/eCourt/"
-alias ebay="cd ~/Work/ebay/"
+alias ebay="cd ~/Work/ebay/qsx-web"
 
 # source bashrc
 alias sb='source ~/.bashrc'
