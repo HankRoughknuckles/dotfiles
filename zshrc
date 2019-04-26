@@ -105,6 +105,7 @@ export PATH=$ANDROID_HOME/build-tools/23.0.1:$PATH
 export EDITOR="/usr/local/bin/vim"
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
 # NVM config
 export NVM_DIR="$HOME/.nvm"
