@@ -179,7 +179,6 @@ augroup END
   NeoBundle 'honza/vim-snippets'
 
   " Syntax checking
-  " NeoBundle 'scrooloose/syntastic'
   NeoBundle 'w0rp/ale'
 
   " Automatically put end after blocks in ruby
@@ -419,21 +418,16 @@ augroup END
   noremap <leader>rs :Estylesheet<CR>
   vnoremap <leader>rx :Rextract
 
-  "Syntastic
-  set statusline+=%#warningmsg#
-  " set statusline+=%{SyntasticStatuslineFlag()}
-  " set statusline+=%*
-  " let g:syntastic_always_populate_loc_list = 1
-  " let g:syntastic_auto_loc_list = 1
-  " let g:syntastic_check_on_open = 0
-  " let g:syntastic_check_on_wq = 0
-  " let g:syntastic_javascript_checkers = ['eslint']
-  " " let g:syntastic_javascript_eslint_exe = 'npm run lint --'
-  " "}}}
-
   "Ale config
+	" Only run linters named in ale_linters settings.
+	let g:ale_linters_explicit = 1
+	let b:ale_linters = {
+	\ 'javascript': ['eslint'],
+  \ 'typescript': ['tslint']
+	\ }
   let g:ale_fixers = {
-  \ 'javascript': ['eslint']
+  \ 'javascript': ['eslint'],
+  \ 'typescript': ['tslint']
   \ }
 
   "Color Schema -------------------------{{{
@@ -785,12 +779,7 @@ augroup END
   " Javascript / typescript settings -------------------------{{{
   augroup filetype_js_ts
     autocmd!
-    " Run prettier before saving
-    " autocmd BufWritePre *.js,*.jsx,*.ts,*.tsx :PrettierAsync<CR>
-    inoremap <C-v> ${}<Esc>i
-    " Run prettier before saving
-    let g:prettier#autoformat = 0
-    autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
+    autocmd Filetype javascript inoremap <C-v> ${}<Esc>i
   augroup END
   " }}}
 
