@@ -323,7 +323,7 @@ augroup END
 
   " run prettier for format your js (and other js flavored) files
   nnoremap <leader>; :PrettierAsync<cr>
-  let g:prettier#config#config_precedence = 'file-override'
+  let g:prettier#config#config_precedence = 'file-override' " use your projects config file first
 
   "tComment stuff
   "Press leader+c to comment instead of ctrl+_ ctrl+_
