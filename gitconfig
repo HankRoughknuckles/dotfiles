@@ -10,7 +10,7 @@
   bd = branch -d
   bD = branch -D
   c = checkout
-  df = diff
+  d = diff
   r = rebase
   ri = rebase -i
   l = log
