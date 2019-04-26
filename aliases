@@ -15,8 +15,8 @@ alias ~="cd ~"
 c() { cd "$@" && pwd && exa -alF; }
 
 # Rails aliases
-alias ras='bundle exec bin/rails server'
-alias rac='bundle exec bin/rails console'
+alias ras='bundle exec rails server'
+alias rac='bundle exec rails console'
 
 # git aliases
 alias gc='git commit'
