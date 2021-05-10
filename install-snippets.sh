@@ -1,9 +1,9 @@
 #!/bin/bash
 
-MY_SNIPPETS=~/Dropbox/dotfiles/vim/mySnippets/*
-OLD_FILES=~/.vim/bundle/snipmate-snippets/snippets/*
-DESTINATION_DIRECTORY=~/.vim/bundle/snipmate-snippets/snippets
-BACKUP_DIRECTORY=~/.vim/bundle/snipmate-snippets/snippets/backup
+MY_SNIPPETS=~/Dropbox/dotfiles/vim/UltiSnips/*
+OLD_FILES=~/.vim/bundle/UltiSnips/*
+DESTINATION_DIRECTORY=~/.vim/UltiSnips/
+BACKUP_DIRECTORY=~/.vim/UltiSnips/backup
 
 echo "creating backup of all default snippets"
 mkdir -p $BACKUP_DIRECTORY

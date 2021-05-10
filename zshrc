@@ -50,56 +50,34 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git, rails)
 
 # User configuration
-
-export PATH="$PATH:$HOME/.gem/bin:$HOME/.rvm/gems/ruby-2.1.3/bin:$HOME/.rvm/gems/ruby-2.1.3@global/bin:$HOME/.rvm/rubies/ruby-2.1.3/bin:$HOME/.rvm/bin:/opt/local/bin:/opt/local/sbin:/usr/local/heroku/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/.gem/bin:$HOME/.rvm/rubies/ruby-2.1.3/bin:$HOME/.rvm/bin:/opt/local/bin:/opt/local/sbin:/usr/local/heroku/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 # export GEM_HOME=$HOME/.gem
 export GEM_PATH=$HOME/.gem
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
 
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+# Correct any local problems that may result from using a non-US locale
+export LANG=en_US.UTF-8
 
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+# Set personal aliases by putting them in ~/.aliases - they are loaded here
 source $HOME/.aliases
 
 # Set env vars for android/react-native development
-export ANT_HOME=/usr/local/opt/ant
-export MAVEN_HOME=/usr/local/opt/maven
-export GRADLE_HOME=/usr/local/opt/gradle
+# export ANT_HOME=/usr/local/opt/ant
+# export MAVEN_HOME=/usr/local/opt/maven
+# export GRADLE_HOME=/usr/local/opt/gradle
 export ANDROID_HOME=$HOME/Library/Android/sdk
-export ANDROID_SDK_ROOT=$HOME/Library/Android/sdk
-export ANDROID_AVD_HOME=$HOME/.android/avd
-export PATH=$ANT_HOME/bin:$PATH
-export PATH=$MAVEN_HOME/bin:$PATH
-export PATH=$GRADLE_HOME/bin:$PATH
-export PATH=$ANDROID_HOME/tools:$PATH
-export PATH=$ANDROID_HOME/platform-tools:$PATH
-export PATH=$ANDROID_HOME/build-tools/23.0.1:$PATH
+# export ANDROID_SDK_ROOT=$HOME/Library/Android/sdk
+# export ANDROID_AVD_HOME=$HOME/.android/avd
+# export PATH=$ANT_HOME/bin:$PATH
+# export PATH=$MAVEN_HOME/bin:$PATH
+# export PATH=$GRADLE_HOME/bin:$PATH
+# export PATH=$ANDROID_HOME/tools:$PATH
+# export PATH=$ANDROID_HOME/platform-tools:$PATH
+# export PATH=$ANDROID_HOME/build-tools/23.0.1:$PATH
 
 # Set editor to edit commands in using <C-x><C-e>
 export EDITOR="/usr/local/bin/vim"

@@ -1,17 +1,45 @@
+snippet desc "describe(() => {})"
+describe('$1', () => {
+  $2
+});
+endsnippet
+
 snippet it "it test"
 it('$1', () => {
   $2
-})
+});
 endsnippet
 
 snippet exp "expect()"
-expect(
-  $1
-)$2
+expect($1)$2
 endsnippet
 
 snippet exptms "expect().toMatchSnapshot()"
 expect(
   $1
-).toMatchSnapshot()
+).toMatchSnapshot();
+endsnippet
+
+snippet con "console.log()"
+console.log('$1')
+endsnippet
+
+snippet deb "debugging a var value in console.log()"
+console.log('$1', $1)
+endsnippet
+
+snippet imi "Import inject (mobx-state-tree)"
+import { inject } from 'mobx-react';
+endsnippet
+
+snippet imio "Import inject/observer (mobx-state-tree)"
+import { inject, observer } from 'mobx-react';
+endsnippet
+
+snippet imo "Import observer (mobx-state-tree)"
+import { observer } from 'mobx-react';
+endsnippet
+
+snippet iml "import lodash"
+import { $1 } from 'lodash';
 endsnippet

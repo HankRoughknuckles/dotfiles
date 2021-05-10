@@ -13,6 +13,8 @@ alias ~="cd ~"
 
 # c to cd and also show contents of new directory
 c() { cd "$@" && pwd && exa -alF; }
+# easy way to put up a growl notification (like when somethings finished)
+notify() {/usr/bin/osascript -e "display notification \"$*\""}
 
 # Rails aliases
 alias ras='bundle exec rails server'
@@ -25,18 +27,25 @@ alias gphm='git push heroku master'
 alias gpoa='git push origin --all'
 alias gpo='git push origin'
 alias gpof='git push origin --force'
+alias gpofn='git push origin --force --no-verify'
+alias gca='git commit --amend'
 alias guo='git pull origin'
 alias g='git'
 alias gcb='git checkout -b'
 alias gcd='git checkout develop'
 alias gcm='git checkout master'
+alias gcn='git checkout next'
 alias gcr='git checkout release'
 alias gbd='git branch -d'
 alias gbD='git branch -D'
 alias grh='git reset --hard'
 alias grim='git rebase -i master'
 alias grid='git rebase -i develop'
+alias grin='git rebase -i next'
 alias gfa='git fetch --all'
+
+# github aliases (note: must have gh and fzf installed)
+alias prl='gh pr list | fzf'
 
 # bundle exec
 alias be='bundle exec'
@@ -46,8 +55,8 @@ alias raro='rake routes'
 alias rap='rake assets:precompile'
 alias mig='bundle exec rake db:migrate'
 alias migs='bundle exec rake db:migrate:status'
-alias miga='bundle exec rake db:migrate ; bundle exec rake db:migrate test'
-alias migsa='bundle exec rake db:migrate:status ; bundle exec rake db:migrate:status test'
+alias miga='bundle exec rake db:migrate ; bundle exec rake db:migrate RAILS_ENV=test'
+alias migsa='bundle exec rake db:migrate:status ; bundle exec rake db:migrate:status RAILS_ENV=test'
 
 # heroku aliases
 alias h='heroku'
@@ -82,3 +91,50 @@ alias n='npm'
 
 # use the newest version of vim
 # alias vim='/Applications/MacVim.app/Contents/MacOS/Vim'
+
+#################
+# staffbase stuff
+#################
+NGROK_ADDRESS_FILE=~/.staffbase_ngrok_address
+CHAT_UI_PATH=~/Work/Staffbase/chat-ui
+UI_PATH=~/Work/Staffbase/ui
+BACKEND_PATH=~/Work/Staffbase/backend
+FRONTEND_PATH=~/Work/Staffbase/frontend
+FRONTEND_E2E_PATH=$FRONTEND_PATH/test/e2e
+STAFFBASE_BE_SERVER=salsitatest2:testDE
+CHAT_MICROFRONTEND_URL=http://localhost:9000/microfrontend.js#renderChat
+
+alias ytest='yarn ; yarn test --watch'
+
+# set the reverse proxy address to be used by other stuff
+setngrok() { echo "$@" > $NGROK_ADDRESS_FILE }
+alias getngrok='cat $NGROK_ADDRESS_FILE'
+alias cdchat='cd $CHAT_UI_PATH'
+alias cdchatapp='cd $CHAT_UI_PATH/app'
+alias cdfe='cd $FRONTEND_PATH'
+
+alias nativedev='cdchatapp && yarn ; DEPLOY_URL=`getngrok` yarn native-dev'
+
+# run these before running fe
+# possible chat urls
+alias localchat='CHAT_MICROFRONTEND_URL=http://localhost:9000/microfrontend.js#renderChat'
+alias ngrokchat='CHAT_MICROFRONTEND_URL=`getngrok`/microfrontend.js#renderChat'
+
+# possible backend options
+alias salsitabe='STAFFBASE_BE_SERVER=salsitatest2:testDE' # use salsitatest2 for backend
+alias emybe='STAFFBASE_BE_SERVER=emy:testDE'
+STAFFBASE_BE_SERVER=salsitatest2:testDE
+alias greencombe='STAFFBASE_BE_SERVER=greencom:testDE' # use greencom's backend
+alias localbe='STAFFBASE_BE_SERVER=staffbase:local' # use local server for backend
+
+alias fe='cdfe && yarn ; CHAT_UI=$CHAT_MICROFRONTEND_URL grunt server:$STAFFBASE_BE_SERVER --ac=test'
+alias e2efe='cd $FRONTEND_E2E_PATH ; grunt server:staffbasetest:testDE'
+alias package_staffbase='cdfe && yarn ; CHAT_UI=`getngrok`/microfrontend.js#renderChat grunt package:salsitatest2:testDE --ac=test'
+alias package_ios='cdfe && yarn ; CHAT_UI=`getngrok`/microfrontend.js#renderChat grunt package_ios:salsitatest2:testDE --ac=test'
+alias package_android='cdfe && yarn ; CHAT_UI=`getngrok`/microfrontend.js#renderChat grunt package_android:salsitatest2:testDE --ac=test'
+#################
+# END staffbase stuff
+#################
+
+# see what ports are in use by what applications
+alias ports='lsof -i -n -P | grep TCP'

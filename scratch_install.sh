@@ -47,10 +47,18 @@ mkdir $install_dir
 echo "=========="
 echo "installing colors for vim"
 git clone git@github.com:altercation/vim-colors-solarized.git $vim_colors_dir
-cp $vim_colors_dir/colors ~/.vim/
+cp -r $vim_colors_dir/colors ~/.vim/
+
 # # setup ssh keys, keychain
 # # oh my zsh
-# # vim solarized
+# # install nvm
+# # install a version of node
+# # install NPM
+# # install yarn
+# # vim solarized colors
+# # install syntastic
+# # install dein for vim
+# # install power line fonts
 #
 # echo "=========="
 # echo "installing dotfiles information"

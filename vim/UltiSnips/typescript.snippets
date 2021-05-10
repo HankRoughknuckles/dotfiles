@@ -1,0 +1,33 @@
+snippet comp "React class component" b
+import React from 'react';
+
+interface PublicProps {
+}
+
+interface InjectedProps {
+}
+
+interface Props extends InjectedProps, PublicProps {}
+
+export class $1 extends React.Component<Props> {
+	render() {
+		return null;
+	}
+}
+
+export default $1
+endsnippet
+
+snippet fcomp "functional react component"
+import React from 'react';
+
+interface Props {
+}
+
+export default function $1(props: Props) {
+  return (
+    $2
+  );
+}
+
+endsnippet
