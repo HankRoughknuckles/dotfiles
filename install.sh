@@ -12,7 +12,7 @@
  olddir=~/dotfiles_old      # old dotfiles backup directory
 
  # list of files/folders to symlink in homedir
- files="bashrc gitconfig gitignore_global inputrc curlrc bash_profile rspec tmux.conf zshrc aliases agignore ctrlpignore"
+ files="bashrc gitconfig gitignore_global inputrc curlrc bash_profile rspec tmux.conf zshrc aliases agignore ctrlpignore ideavimrc"
  vim_backup_files_dir="~/vimtmp"
  vim_dir="vim"
  vim_color_dir=$vim_dir/colors
