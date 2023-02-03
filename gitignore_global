@@ -36,3 +36,5 @@ prettier.config.js
 
 # any package files installed by npm or yarn
 **/node_modules
+
+.idea
