@@ -5,6 +5,9 @@ set ignorecase                    " ignore case in search patterns
 set smartcase                     " no ignore case when pattern is uppercase
 set incsearch                     " show search results while typing
 set wrapscan                      " searches wrap around the end of the file
+set easymotion                    " enable the easymotion plugin
+set relativenumber
+set number
 
 nnoremap tj :tabprev<CR>
 nnoremap tk :tabnext<CR>
@@ -16,6 +19,8 @@ nnoremap <leader>sv :source ~/.ideavimrc<CR>
 " make empty space above or below current line
 nnoremap [<space> O<esc>j
 nnoremap ]<space> o<esc>k
+
+nnoremap <leader><tab> %
 
 "make 'kj' do the equivalent of escape
 inoremap kj <Esc>
