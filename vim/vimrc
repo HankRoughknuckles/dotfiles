@@ -107,15 +107,15 @@ if dein#load_state('~/.cache/dein')
   " scala syntax highlighting
   call dein#add('derekwyatt/vim-scala')
 
-  " Autocompletion
-  call dein#add('Valloric/YouCompleteMe', {
-        \ 'build' : {
-        \     'mac' : './install.sh --clang-completer --system-libclang --omnisharp-completer',
-        \     'unix' : './install.sh --clang-completer --system-libclang --omnisharp-completer',
-        \     'windows' : './install.sh --clang-completer --system-libclang --omnisharp-completer',
-        \     'cygwin' : './install.sh --clang-completer --system-libclang --omnisharp-completer'
-        \    }
-        \ })
+  " " Autocompletion
+  " call dein#add('Valloric/YouCompleteMe', {
+  "       \ 'build' : {
+  "       \     'mac' : './install.sh --clang-completer --system-libclang --omnisharp-completer',
+  "       \     'unix' : './install.sh --clang-completer --system-libclang --omnisharp-completer',
+  "       \     'windows' : './install.sh --clang-completer --system-libclang --omnisharp-completer',
+  "       \     'cygwin' : './install.sh --clang-completer --system-libclang --omnisharp-completer'
+  "       \    }
+  "       \ })
 
   " Allow easy movement between vim splits and tmux panes
   call dein#add('christoomey/vim-tmux-navigator')
@@ -321,19 +321,17 @@ vnoremap <leader>rv "9y:%s/<c-r>9//cI<left><left><left>
 nnoremap <expr> n (v:searchforward ? 'n' : 'N')
 nnoremap <expr> N (v:searchforward ? 'N' : 'n')
 
-
-" YouCompleteMe stuff
-if !exists("g:ycm_semantic_triggers")
-  let g:ycm_semantic_triggers = {}
-endif
-let g:ycm_semantic_triggers['typescript'] = ['.']
-" Jump to the definition of the item under the cursor (think: see definition)
-nnoremap <leader>sd :YcmCompleter<space>GoTo<CR>
-" Jump to the places the item under the cursor is referenced (think: see
-" references)
-nnoremap <leader>sr :YcmCompleter<space>GoToReferences<CR>
-let g:ycm_auto_hover= "false"
-
+" " YouCompleteMe stuff
+" if !exists("g:ycm_semantic_triggers")
+"   let g:ycm_semantic_triggers = {}
+" endif
+" let g:ycm_semantic_triggers['typescript'] = ['.']
+" " Jump to the definition of the item under the cursor (think: see definition)
+" nnoremap <leader>sd :YcmCompleter<space>GoTo<CR>
+" " Jump to the places the item under the cursor is referenced (think: see
+" " references)
+" nnoremap <leader>sr :YcmCompleter<space>GoToReferences<CR>
+" let g:ycm_auto_hover= "false"
 
 "ack.vim stuff
 let g:ackprg = "ag"
