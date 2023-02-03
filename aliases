@@ -139,3 +139,5 @@ alias package_android='cdfe && yarn ; CHAT_UI=`getngrok`/microfrontend.js#render
 
 # see what ports are in use by what applications
 alias ports='lsof -i -n -P | grep TCP'
+
+alias lint='npm run lint'
