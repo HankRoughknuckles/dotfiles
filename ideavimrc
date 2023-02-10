@@ -20,11 +20,20 @@ nnoremap <leader>sv :source ~/.ideavimrc<CR>
 nnoremap [<space> O<esc>j
 nnoremap ]<space> o<esc>k
 
+"move between splits with C-hjkl
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
 " make vertical and horizontal splits
 nnoremap <leader>vv :vsp<CR>
 nnoremap <leader>vs :sp<CR>
 
 nnoremap <leader><tab> %
+vnoremap <leader><tab> %
+
+inoremap <C-k> =>
 
 "make 'kj' do the equivalent of escape
 inoremap kj <Esc>
