@@ -94,3 +94,5 @@ export NVM_DIR="$HOME/.nvm"
 # make homebrew work
 eval $(/opt/homebrew/bin/brew shellenv)
 
+# add any sensitive env vars
+source $HOME/.env
