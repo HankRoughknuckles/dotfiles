@@ -11,8 +11,8 @@
 - [ ] MacVim
 - [ ] YouCompleteMe
 - [ ] Solarized dark theme for vim
-- [ ] exa
-- [ ] The silver searcher
+- [ ] brew install ag
+- [ ] brew install exa
 - [ ] install.sh in my dotfiles
 - [ ] yarn
 - [ ] hot corners
