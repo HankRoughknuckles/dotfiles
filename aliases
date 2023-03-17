@@ -145,3 +145,7 @@ alias lint='npm run lint'
 
 # start alice services in dev mode
 alias nsd='npm run start:dev'
+
+# aws sso for amcc
+alias sso='aws-vault exec amcc-developer -- ${@: +1}'
+alias sk='sso kubectl'

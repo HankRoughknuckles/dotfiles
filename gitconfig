@@ -27,9 +27,6 @@
   excludesfile = ~/.gitignore_global
   editor = vim
 
-[merge]
-  ff = no
-
 [push]
   default = current
 
