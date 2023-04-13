@@ -1,6 +1,6 @@
 [user]
 	name = Thomas Morris
-	email = tmorris@salsitasoft.com
+	email = tmorris@amp.energy
 
 [alias]
   g = grep --break --heading --line-number
