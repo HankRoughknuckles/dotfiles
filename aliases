@@ -31,6 +31,7 @@ alias gpofn='git push origin --force --no-verify'
 alias gca='git commit --amend'
 alias gcaa='git add . ; git commit --amend'
 alias gcan='git add . ; git commit -a --no-verify'
+alias gcaf='git add . ; git commit -a --fixup'
 alias guo='git pull origin'
 alias guod='git pull origin develop'
 alias g='git'
@@ -42,9 +43,9 @@ alias gcr='git checkout release'
 alias gbd='git branch -d'
 alias gbD='git branch -D'
 alias grh='git reset --hard'
-alias grim='git rebase -i master'
-alias grid='git rebase -i develop'
-alias grin='git rebase -i next'
+alias grim='git rebase -i master --autosquash'
+alias grid='git rebase -i develop --autosquash'
+alias grin='git rebase -i next --autosquash'
 alias gfa='git fetch --all'
 
 # github aliases (note: must have gh and fzf installed)
@@ -56,10 +57,10 @@ alias be='bundle exec'
 # rails aliases
 alias raro='rake routes'
 alias rap='rake assets:precompile'
-alias mig='bundle exec rake db:migrate'
-alias migs='bundle exec rake db:migrate:status'
-alias miga='bundle exec rake db:migrate ; bundle exec rake db:migrate RAILS_ENV=test'
-alias migsa='bundle exec rake db:migrate:status ; bundle exec rake db:migrate:status RAILS_ENV=test'
+# alias mig='bundle exec rake db:migrate'
+# alias migs='bundle exec rake db:migrate:status'
+# alias miga='bundle exec rake db:migrate ; bundle exec rake db:migrate RAILS_ENV=test'
+# alias migsa='bundle exec rake db:migrate:status ; bundle exec rake db:migrate:status RAILS_ENV=test'
 
 # heroku aliases
 alias h='heroku'
@@ -72,9 +73,19 @@ alias cdp="cd ~/Dropbox/Programming/Projects/" # projects folder
 alias cdt="cd ~/Projects/typical-rails_setup/" # typical rails setup folder
 alias cdw="c ${WORK_DIR}" # work folder
 
+# npm aliases
+alias nr="npm run"
+
 # ampx aliases
 CORE_COMPONENTS_DIR=${WORK_DIR}/core-components
 alias ccc="c ${CORE_COMPONENTS_DIR}" # core-components folder
+alias household="c ${CORE_COMPONENTS_DIR}/alco/public/household-service"
+alias kafka="c ${CORE_COMPONENTS_DIR}/amcc/private/kafka-schemata"
+alias infra="c ${WORK_DIR}/amcc/terraform/infrastructure"
+alias apps="c ${WORK_DIR}/amcc/terraform/apps"
+alias migs="npm run typeorm:migration:show"
+alias migu="npm run typeorm:migration:run ; npm run typeorm:migration:show"
+alias migd="npm run typeorm:migration:revert ; npm run typeorm:migration:show"
 
 # Salsita alises
 alias ecourt="cd ~/Work/eCourt/"
