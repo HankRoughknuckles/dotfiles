@@ -26,11 +26,9 @@ alias gpom='git push origin master'
 alias gphm='git push heroku master'
 alias gpoa='git push origin --all'
 alias gpo='git push origin'
-alias gpof='git push origin --force'
-alias gpofn='git push origin --force --no-verify'
 alias gca='git commit --amend'
 alias gcaa='git add . ; git commit --amend'
-alias gcan='git add . ; git commit -a --no-verify'
+alias gcan='git add . ; git commit -a'
 alias gcaf='git add . ; git commit -a --fixup'
 alias guo='git pull origin'
 alias guod='git pull origin develop'
@@ -165,4 +163,7 @@ alias nsd='npm run start:dev'
 
 # aws sso for amcc
 alias sso='aws-vault exec amcc-developer -- ${@: +1}'
+alias getToken='sso zsh'
 alias sk='sso kubectl'
+
+source ~/.aliases.local
