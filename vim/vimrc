@@ -230,7 +230,8 @@ endif
 nnoremap <leader>ga :Git<space>commit<space>--amend<cr>
 nnoremap <leader>gr :Gread<cr>
 nnoremap <leader>gw :Gwrite<cr>
-nnoremap <leader>gs :Gstatus<cr>
+" open up git status
+nnoremap <leader>gs :Git<cr>
 nnoremap <leader>gl :!git log --oneline --abbrev-commit --graph --decorate --color<cr>
 nnoremap <leader>gcc :Gcommit<cr>I
 nnoremap <leader>gnc :Git commit -n<cr>I
