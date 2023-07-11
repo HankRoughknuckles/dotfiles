@@ -9,7 +9,7 @@ set easymotion                    " enable the easymotion plugin
 set relativenumber
 set number
 
-nnoremap tj :tabprev<CR>
+nnoremap tj :tabp<CR>
 nnoremap tk :tabnext<CR>
 
 " open and source .ideavimrc
