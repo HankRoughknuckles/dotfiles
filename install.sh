@@ -11,8 +11,8 @@
  dir=$(pwd)                 # dotfiles directory
  olddir=~/dotfiles_old      # old dotfiles backup directory
 
- # list of files/folders to symlink in homedir
- files="bashrc gitconfig gitignore_global inputrc curlrc bash_profile rspec tmux.conf zshrc aliases aliases.local agignore ctrlpignore ideavimrc"
+ files_to_symlink="bashrc gitconfig gitignore_global inputrc curlrc bash_profile rspec tmux.conf zshrc aliases agignore ctrlpignore ideavimrc"
+ files_to_copy="aliases.local"
  vim_backup_files_dir="~/vimtmp"
  vim_dir="vim"
  vim_color_dir=$vim_dir/colors
@@ -31,10 +31,16 @@
  # move any existing dotfiles in homedir to dotfiles_old directory, then
  # create symlinks
  echo "Moving any existing dotfiles from ~ to $olddir..."
- for file in $files; do
+ for file in $files_to_symlink; do
      echo "Creating symlink in the home directory to $file"
      mv ~/.$file $olddir
      ln -s $dir/$file ~/.$file
+ done
+
+ for file in $files_to_copy; do
+     echo "Copying $file to the home directory"
+     mv ~/.$file $olddir
+     cp $dir/$file ~/.$file
  done
 
  # set up vim stuff
