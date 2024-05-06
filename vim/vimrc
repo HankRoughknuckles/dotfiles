@@ -159,9 +159,6 @@ if dein#load_state('~/.cache/dein')
   "Coffeescript integration and syntax highlighting
   call dein#add('kchmck/vim-coffee-script')
 
-  " Snippets
-  call dein#add('SirVer/ultisnips')
-
   " Repo of built-in snippets
   call dein#add('honza/vim-snippets')
 
@@ -368,13 +365,6 @@ if !exists('g:neocomplete#keyword_patterns')
     let g:neocomplete#keyword_patterns = {}
 endif
 let g:neocomplete#keyword_patterns['default'] = '\h\w*'
-
-let g:UltiSnipsExpandTrigger="<c-j>"
-let g:UltiSnipsJumpForwardTrigger="<c-l>"
-let g:UltiSnipsJumpBackwardTrigger="<c-h>"
-let g:UltiSnipsEditSplit="horizontal"
-let g:UltiSnipsSnippetDirectories=['~/.vim/UltiSnips', 'UltiSnips', '~/.vim/bundle/vim-snippets']
-
 
 "Airline stuff
 let g:airline_powerline_fonts = 1
@@ -663,13 +653,6 @@ onoremap al" :<c-u>normal! F"hva"<cr>
 
 " run terminal commands easier
 nnoremap <leader>1 :!<Space>
-
-"alter snippets for current file type with <leader>as
-nnoremap <leader>as :UltiSnipsEdit<cr>
-let g:UltiSnipsSnippetDirectories = ['~/.vim/UltiSnips', 'UltiSnips']
-
-"alter all snippets with [leader]aas
-nnoremap <leader>aas :tab new<cr>:NERDTree ~/.vim/UltiSnips<cr>
 
 "run a make file install routine with <leader>mi
 nnoremap <leader>mi :! make install<cr>
